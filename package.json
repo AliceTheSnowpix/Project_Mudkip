@@ -109,13 +109,5 @@
     "ytdl-core": "^0.20.4"
   },
   "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CloroxBleach6/project_chicken.git"
-  },
-  "keywords": [],
-  "bugs": {
-    "url": "https://github.com/CloroxBleach6/project_chicken/issues"
-  },
-  "homepage": "https://github.com/CloroxBleach6/project_chicken#readme"
+  "keywords": []
 }
