@@ -1,0 +1,11 @@
+/node_modules
+/ffmpeg-20180613-c5e6c0b-win64-static
+/dblstats.js
+/botconfig
+/BotCommands/botconfig/token.json
+/.vscode
+/.env
+/BotCommands/nsfwcommands
+/BotCommands/musiccommands
+/BotCommands/songcommands
+/Audio
