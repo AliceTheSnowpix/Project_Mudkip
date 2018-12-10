@@ -2,8 +2,9 @@ const db = require('quick.db')
 const discord = require('discord.js')
 exports.run = async(bot, message, args) => {
     let selfbubbles = await db.fetch(`bubbles_${message.author.id}`)
+    let input = msg.content.toLowerCase();
  
-    if(message.content + '1')
+    if(input === ';buy 1')
         {
             let cost = 10
             if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**")
@@ -11,7 +12,7 @@ exports.run = async(bot, message, args) => {
             message.guild.member(message.author.id).addRole('481129804347867165')
             message.reply(`I have gave you the <@&481129804347867165> role and removed ${cost} bubbles`)
         }
-    else if(message.content + '2')
+    else if(input === ';buy 2')
         {
             let cost = 25
             if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**")
@@ -19,7 +20,7 @@ exports.run = async(bot, message, args) => {
             message.guild.member(message.author.id).addRole('481581654167781392')
             message.reply(`I have gave you the <@&481581654167781392> role and removed ${cost} bubbles`)
         }
-    else if(message.content + '3')
+    else if(input === ';buy 3')
         {
             let cost = 50
             if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**")
@@ -27,7 +28,7 @@ exports.run = async(bot, message, args) => {
             message.guild.member(message.author.id).addRole('481609753651576842')
             message.reply(`I have gave you the <@&481609753651576842> role and removed ${cost} bubbles`)
         }
-    else if(message.content + '4')
+    else if(input === ';buy 4')
         {
             let cost = 100
             if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**")
@@ -35,7 +36,7 @@ exports.run = async(bot, message, args) => {
             message.guild.member(message.author.id).addRole('481609899206508545')
             message.reply(`I have gave you the <@&481609899206508545> role and removed ${cost} bubbles`)
         }
-    else if(message.content + '5')
+    else if(input === ';buy 5')
         {
             let cost = 200
             if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**")
@@ -43,7 +44,7 @@ exports.run = async(bot, message, args) => {
             message.guild.member(message.author.id).addRole('481610167083991071')
             message.reply(`I have gave you the <@&481610167083991071> role and removed ${cost} bubbles`)
         }
-    else if(message.content + '6')
+    else if(input === ';buy 6')
         {
             let cost = 300
             if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**")
@@ -51,7 +52,7 @@ exports.run = async(bot, message, args) => {
             message.guild.member(message.author.id).addRole('481614285416431617')
             message.reply(`I have gave you the <@&481614285416431617> role and removed ${cost} bubbles`)
         }
-    else if(message.content + '7')
+    else if(input === ';buy 7')
         {
             let cost = 400
             if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**")
@@ -59,7 +60,7 @@ exports.run = async(bot, message, args) => {
             message.guild.member(message.author.id).addRole('481615302459785216')
             message.reply(`I have gave you the <@&481615302459785216> role and removed ${cost} bubbles`)
         }
-    else if(message.content + '8')
+    else if(input === ';buy 8')
         {
             let cost = 500
             if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**")
@@ -67,7 +68,7 @@ exports.run = async(bot, message, args) => {
             message.guild.member(message.author.id).addRole('481613362099126273')
             message.reply(`I have gave you the <@&481613362099126273> role and removed ${cost} bubbles`)
         }
-    else if(message.content + '9')
+    else if(input === ';buy 9')
         {
             let cost = 1000
             if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**")
@@ -75,7 +76,7 @@ exports.run = async(bot, message, args) => {
             message.guild.member(message.author.id).addRole('481616059930247169')
             message.reply(`I have gave you the <@&481616059930247169> role and removed ${cost} bubbles`)
         }
-    else if(message.content + '10')
+    else if(input === ';buy 10')
         {
             let cost = 5000
             if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**")
