@@ -24,7 +24,7 @@ exports.run = async(bot, message, args) => {
     .addField("Shop Item 12", "<#483551789254311937> you need to pop and pay 5 bubbles to talk in the channel")
     .addField("NOTE", "**to pop bubbles do the ;bubble command in <#481178520718934026> you can pop one bubble every 30 seconds.**")
     .setTimestamp(message.createdAt)
-    
+     
     message.channel.send(shopembed)
 
 }
