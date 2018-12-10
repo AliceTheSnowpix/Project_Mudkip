@@ -6,7 +6,7 @@ exports.run = async(bot, message, args) => {
         let cost = 1
                 db.subtract(`bubbles_${message.author.id}`, cost)
                 message.guild.member(message.author.id).addRole('521718720415006725')
-                message.reply('I have added the ${args.join("test")} role`)
+                message.reply(`I have added the ${args.join("test")} role`)
         }
     }
 
