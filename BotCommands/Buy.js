@@ -2,7 +2,7 @@ const db = require('quick.db')
 exports.run = async(bot, message, args) => {
     let selfbubbles = await db.fetch(`bubbles_${message.author.id}`)
  
-    if(args.join("1"))
+    if(args = '1')
         {
             let cost = 10
             if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**")
@@ -10,7 +10,7 @@ exports.run = async(bot, message, args) => {
             message.guild.member(message.author.id).addRole('481129804347867165')
             message.reply(`I have gave you the <@&481129804347867165> role and removed ${cost} bubbles`)
         }
-    else if(args.join('2'))
+    else if(args = '2')
         {
             let cost = 25
             if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**")
