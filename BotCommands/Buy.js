@@ -2,7 +2,7 @@ const db = require('quick.db')
 const discord = require('discord.js')
 exports.run = async(bot, message, args) => {
     let selfbubbles = await db.fetch(`bubbles_${message.author.id}`)
-    let input = msg.content.toLowerCase();
+    let input = message.content.toLowerCase();
  
     if(input === ';buy 1')
         {
