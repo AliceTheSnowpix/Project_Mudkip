@@ -67,7 +67,7 @@ exports.run = async(bot, message, args) => {
             message.guild.member(message.author.id).addRole('481613362099126273')
             message.reply(`I have gave you the <@&481613362099126273> role and removed ${cost} bubbles`)
         }
-    else if(message.content + '9'))
+    else if(message.content + '9')
         {
             let cost = 1000
             if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**")
