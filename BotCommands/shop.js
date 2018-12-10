@@ -9,7 +9,7 @@ exports.run = async(bot, message, args) => {
     let shopembed = new Discord.RichEmbed()
     .setColor('RANDOM')
     .setTitle('here are all shop items')
-    .setDescription(`you need to do ;pay <@${botID}> <cost of item> to buy the item`)
+    .setDescription(`To buy an item use the commad ;buy <shop item number>`)
     .addField("Shop Item 1", '<@&481129804347867165> you need to pop 10 bubbles to buy this role.')
     .addField("Shop Item 2", "<@&481581654167781392> you need to pop 25 bubbles to buy this role.")
     .addField("Shop Item 3", "<@&481609753651576842> you need to pop 50 bubbles to buy this role.")
