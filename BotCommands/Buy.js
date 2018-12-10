@@ -9,7 +9,7 @@ exports.run = async(bot, message, args) => {
             if (amount > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**")
                 db.subtract(`bubbles_${message.author.id}`, cost)
                 message.guild.member(message.author.id).addRole('521718720415006725')
-                message.reply(`I have gave you the ${args} role and removed ${cost} bubbles)
+                message.reply(`I have gave you the ${args} role and removed ${cost} bubbles`)
         }
     }
 
