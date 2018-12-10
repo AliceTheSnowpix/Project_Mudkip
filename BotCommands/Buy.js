@@ -53,7 +53,7 @@ exports.run = async(bot, message, args) => {
     else if(input === ';buy 6')
         {
             let cost = 300
-            if(Member.roles.has('481614285416431617') return message.reply("you already have this item")
+            if(Member.roles.has('481614285416431617')) return message.reply("you already have this item")
             if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**")
             db.subtract(`bubbles_${message.author.id}`, cost)
             message.guild.member(message.author.id).addRole('481614285416431617')
@@ -71,7 +71,7 @@ exports.run = async(bot, message, args) => {
     else if(input === ';buy 8')
         {
             let cost = 500
-            if(Member.roles.has('481613362099126273') return message.reply("you already have this item")
+            if(Member.roles.has('481613362099126273')) return message.reply("you already have this item")
             if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**")
             db.subtract(`bubbles_${message.author.id}`, cost)
             message.guild.member(message.author.id).addRole('481613362099126273')
