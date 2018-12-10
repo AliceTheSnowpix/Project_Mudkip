@@ -9,8 +9,8 @@ exports.run = async(bot, message, args) => {
         }
 
 exports.config = {
-    allies: [ ]
-}
+    aliases: [  ]
+};
 
 exports.help = {
     name: 'buy'
