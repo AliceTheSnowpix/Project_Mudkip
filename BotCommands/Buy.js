@@ -95,7 +95,7 @@ exports.run = async(bot, message, args) => {
             message.guild.member(message.author.id).addRole('481615070930010122')
             message.reply(`I have gave you the <@&481615070930010122> role and removed ${cost} bubbles`)
         }
-    else if(input ===';buy 11')
+    else if(input === ';buy 11')
         {
             let cost = 10000
             if(Member.channel.permitions.has('SEND_MESSAGES')) return message.reply('**you already have that item')
