@@ -102,7 +102,7 @@ exports.run = async(bot, message, args) => {
             if(cost > selfbubbles) return message.reply('**Sorry you do not have enough bubbles to buy that')
             db.subtract(`bubbles_${message.author.id}`, cost)
             message.guild.channel.get('483550966965075968').overwritePermissions(Member, {SEND_MESSAGES:true})
-            message.reply('I have access to the channel <#483550966965075968> and removed ${cost} bubbles`)
+            message.reply(`I have access to the channel <#483550966965075968> and removed ${cost} bubbles`)
         }
     }
 
