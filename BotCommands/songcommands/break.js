@@ -15,7 +15,7 @@ module.exports.run = async (bot,message,args) => {
         
 voiceChannel.join().then(connection =>
 {
-    const dispatcher = connection.playFile('./Audio/break.mp3');
+    const dispatcher = connection.playStream('https://drive.google.com/file/d/15tYBgUCC7LDT494I0KKYOGn-Qx_lxTzn/view');
     if (dispatcher.on("speaking", speaking => speaking == true)){
         dispatcher
     } 
