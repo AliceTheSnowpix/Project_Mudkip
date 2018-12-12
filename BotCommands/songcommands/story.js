@@ -14,7 +14,7 @@ exports.run = async (bot,message,args) => {
     await message.channel.send("Song Loading Please Wait")
 voiceChannel.join().then(connection =>
 {
-    const dispatcher = connection.playFile('./Audio/story.mp3');
+    const dispatcher = connection.playFile('https://github.com/CloroxBleach6/projectchicken/blob/master/Audio/story.mp3');
     if (dispatcher.on("speaking", speaking => speaking == true)){
         dispatcher
     } 
