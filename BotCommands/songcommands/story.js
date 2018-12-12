@@ -14,7 +14,7 @@ exports.run = async (bot,message,args) => {
     await message.channel.send("Song Loading Please Wait")
 voiceChannel.join().then(connection =>
 {
-    const dispatcher = connection.playStream('https://github.com/CloroxBleach6/projectchicken/blob/master/Audio/story.mp3');
+    const dispatcher = connection.playStream('https://my.pcloud.com/publink/show?code=XZC8CP7ZUup0Fd70kbFBmWXpsT17Vf6tYFN7');
     if (dispatcher.on("speaking", speaking => speaking == true)){
         dispatcher
     } 
