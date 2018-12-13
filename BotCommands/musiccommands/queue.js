@@ -12,7 +12,7 @@ exports.run = async(bot, message, args, ops) => {
 
     let resp =`__**Now Playing**__\n**${nowPlaying.songTitle}** -- **Requested By:** *${nowPlaying.requester}*\n\n__**Queue**__\n`;
 
-    for (var i = 0; i < queue.length; i++) {
+    for (var i = 1; i < queue.length; i++) {
         resp += `${i}. **${queue[i].songTitle}** -- **Requested By:** *${queue[i].requester}*\n`;
     }
 
