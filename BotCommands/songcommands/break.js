@@ -15,7 +15,7 @@ module.exports.run = async (bot,message,args) => {
         
 voiceChannel.join().then(connection =>
 {
-    const dispatcher = connection.playStream('');
+    const dispatcher = connection.playStream('./Audio/break.mp3');
     if (dispatcher.on("speaking", speaking => speaking == true)){
         dispatcher
     } 
