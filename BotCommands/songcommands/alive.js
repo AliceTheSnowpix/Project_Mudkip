@@ -29,4 +29,4 @@ exports.config = {
 
 module.exports.help = {
     name: "alive"
-}
+} 
