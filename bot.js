@@ -45,7 +45,7 @@ fs.readdir("./BotCommands/musiccommands/", (err, files) => {
 });
 });
 
-fs.readdir("./BotCommands/musiccommands/", (err, files) => {
+fs.readdir("./BotCommands/songcommands/", (err, files) => {
   if(err) console.log(err);
 
   let jsfile = files.filter(f => f.split(".").pop() === "js")
@@ -55,7 +55,7 @@ fs.readdir("./BotCommands/musiccommands/", (err, files) => {
   }
 
   jsfile.forEach((f, i) =>{
-      let props = require(`./BotCommands/musiccommands/${f}`);
+      let props = require(`./BotCommands/songcommands/${f}`);
       console.log(`${f} Files loaded`);
       bot.commands.set(props.help.name, props)
       props.config.aliases.forEach(alias => {
