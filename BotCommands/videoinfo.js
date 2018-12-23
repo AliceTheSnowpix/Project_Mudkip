@@ -19,8 +19,8 @@ let maininfoembed = new discord.RichEmbed()
     .setAuthor(info.author.name)
     .setTimestamp(info.published)
     .addField('Video Link', info.video_url)
-    .addField('View Count', `${info.view_count}`)
-    .addField('KeyWords', `${info.keywords}`)
+    .addField('View Count', `${info.player_response.videoDetails.view_count}`)
+    .addField('KeyWords', `${info.player_response.videoDetails.keywords}`)
 let description = new discord.RichEmbed()
     .setColor(color)
     .setImage(info.thumbnail_url)
@@ -36,5 +36,3 @@ exports.config = {
 exports.help = {
     name: 'videoinfo'
 }
-
-    //.setDescription(`**View Count**\n ${info.view_count.toString()}\n **KeyWords**\n ${info.keywords.toString()}\n\n`)
