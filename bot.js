@@ -7,7 +7,29 @@ const active = new Map();
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
+bot.logger = require("./modules/logger");
+require("./modules/functions.js")(bot);
+
 fs.readdir("./BotCommands/", (err, files) => {
+  if(err) console.log(err);
+
+  let jsfile = files.filter(f => f.split(".").pop() === "js")
+  if(jsfile.length <= 0){
+      console.log("Could not find commands");
+      return;
+  } 
+
+  jsfile.forEach((f, i) =>{
+    let props = require(`./BotCommands/${f}`);
+    console.log(`${f} Files loaded`);
+    bot.commands.set(props.help.name, props)
+    props.config.aliases.forEach(alias => {
+    bot.aliases.set(alias, props.help.name);
+});
+});
+});
+ 
+fs.readdir("./BotCommands/songcommands/", (err, files) => {
   if(err) console.log(err);
 
   let jsfile = files.filter(f => f.split(".").pop() === "js")
@@ -17,7 +39,7 @@ fs.readdir("./BotCommands/", (err, files) => {
   }
 
   jsfile.forEach((f, i) =>{
-      let props = require(`./BotCommands/${f}`);
+      let props = require(`./BotCommands/songcommands/${f}`);
       console.log(`${f} Files loaded`);
       bot.commands.set(props.help.name, props)
       props.config.aliases.forEach(alias => {
@@ -45,22 +67,22 @@ fs.readdir("./BotCommands/musiccommands/", (err, files) => {
 });
 });
 
-fs.readdir("./BotCommands/songcommands/", (err, files) => {
+fs.readdir("./BotCommands/imagecommands/", (err, files) => {
   if(err) console.log(err);
 
   let jsfile = files.filter(f => f.split(".").pop() === "js")
   if(jsfile.length <= 0){
       console.log("Could not find commands");
       return;
-  }
+  } 
 
   jsfile.forEach((f, i) =>{
-      let props = require(`./BotCommands/songcommands/${f}`);
-      console.log(`${f} Files loaded`);
-      bot.commands.set(props.help.name, props)
-      props.config.aliases.forEach(alias => {
-      bot.aliases.set(alias, props.help.name);
-  });
+    let props = require(`./BotCommands/imagecommands/${f}`);
+    console.log(`${f} Files loaded`);
+    bot.commands.set(props.help.name, props)
+    props.config.aliases.forEach(alias => {
+    bot.aliases.set(alias, props.help.name);
+});
 });
 });
 
@@ -69,25 +91,14 @@ bot.on('ready', async () => {
     bot.user.setActivity(";help commands", {type: "LISTENING"});
 });
 
-
 bot.on("message", async message => {
   if(message.author.bot) return;
-  if (message.channel.type === "dm") return;
-  
-  let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
-
-if(!prefixes[message.guild.id]){
-prefixes[message.guild.id] = {
-prefixes: botconfig.prefix
-};
-}
 
   let ops = {
     active: active
   };
-  
-    let prefix = prefixes[message.guild.id].prefixes;
-    if (!message.content.startsWith(";")) return;
+    let prefix = ';'
+    if (!message.content.startsWith(prefix)) return;
     let command = message.content.split(" ")[0].slice(prefix.length);
     let args = message.content.split(" ").slice(1);
     let cmd;
@@ -100,7 +111,7 @@ prefixes: botconfig.prefix
     if (cmd) {
       cmd.run(bot, message, args, ops);
     }
-  });  
+  }); 
 const ownerID = '293148538886553602'
 const prefix = ';'
 var isPlaying = false
@@ -115,7 +126,7 @@ bot.on('message', async (msg) => {
     isPlaying = false
     round = 0
     msg.channel.send('Good job, you killed the foe.')
-
+    msg.channel.type
   }
   //If you are under 1 hp, you die.
   if(stats.plrHP < 1 && isPlaying == true) {
