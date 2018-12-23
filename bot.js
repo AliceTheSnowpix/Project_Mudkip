@@ -7,8 +7,8 @@ const active = new Map();
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
-//require("./modules/logger.js");
-require("./modules/functions.js")(bot);
+bot.logger = require("modules/logger.js");
+require("modules/functions.js")(bot);
 
 fs.readdir("./BotCommands/", (err, files) => {
   if(err) console.log(err);
