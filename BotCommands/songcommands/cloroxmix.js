@@ -19,7 +19,8 @@ exports.run = async (bot,message,args) => {
         if (dispatcher.on("speaking", speaking => speaking == true)){
         } 
         if (dispatcher.on('end', end => connection.playStream('https://cdn.glitch.com/3266dedb-0ed2-42c3-a45d-8cb0a8559df0%2Fentropy.mp3?1544921239890'))) {
-            connection.playStream('https://cdn.glitch.com/3266dedb-0ed2-42c3-a45d-8cb0a8559df0%2Ffireflies.mp3?1544921586964')
+        }
+        if (dispatcher.on('end', end => connection.playStream('https://cdn.glitch.com/3266dedb-0ed2-42c3-a45d-8cb0a8559df0%2Ffireflies.mp3?1544921586964'))) {
         }
     }).catch(err => console.log(err));
 }
