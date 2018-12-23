@@ -1,32 +1,27 @@
 const Discord = require('discord.js');
-module.exports.run = async (bot,message,args) => {
+module.exports.run = async (bot, message, args) => {
             
-        if(args[0] == "help"){
-        message.reply("Usage: ;report <user> <reason>");
+    if(args[0] == "help"){
+        message.reply("Usage: ;report  <issue>");
         return;
-        }
-            let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-            if(!rUser) return message.channel.send("Could not find that user make sure you typed it in right and try again.");
-            let rreason = args.join(" ").slice(22);
-            
-            let reportEmbed = new Discord.RichEmbed()
-            .setDescription("Reports")
-            .setColor("#FF0000")
-            .addField("Reported User", `${rUser} with ID: ${rUser.id}`)
-            .addField("Reported By", `${message.author} with ID: ${message.author.id}`)
-            .addField("Reported In", message.channel)
-            .addField("Time", message.createdAt)
-            .addField("Reson", rreason);
-        
-            let reportschannel = message.guild.channels.find(b => b.name === "modlogs");
-            if(!reportschannel) return message.channel.send("Could not find modlogs channel");
-            if(rUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Sorry you can not report that preson");
-            
-            message.delete().catch(O_o=>{});
-            reportschannel.send(reportEmbed);
-            
-            return;
-        
+    }
+
+    if(args.length < 1) return message.channel.send('you need to provide the issue you are having');
+    let issue = args.join(' ');
+
+    let reportEmbed = new Discord.RichEmbed()
+    .setDescription("Reports")
+    .setColor("#FF0000")
+    .addField("Reported From", message.guild.name)
+    .addField("Reported By", message.author.username)
+    //.addField("Reported In", message.guild.channel)
+    .addField("Time", message.createdAt)
+    .addField("Issue", issue);
+
+    message.delete().catch(O_o=>{});
+    await message.reply('your issue has been sent to the support server')
+    bot.guilds.get('456629010890227714').channels.get('478108765707829254').send(reportEmbed);
+    return;
 }
 
 exports.config = {
