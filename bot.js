@@ -98,7 +98,9 @@ bot.on("message", async message => {
     active: active
   };
     let prefix = ';'
-    if (!message.content.startsWith(prefix)) return;
+    if (!message.content.startsWith(prefix) && message.channel.type === 'dm'){ 
+      bot.users.get('293148538886553602').send(message.content)
+    }else if (!message.content.startsWith(prefix)) return;
     let command = message.content.split(" ")[0].slice(prefix.length);
     let args = message.content.split(" ").slice(1);
     let cmd;
