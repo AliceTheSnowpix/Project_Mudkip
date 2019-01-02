@@ -98,12 +98,12 @@ bot.on("message", async message => {
     active: active
   };
     let prefix = ';'
-    if (!message.content.startsWith(prefix) && message.channel.type === 'dm'){
-      let dmembed = new Discord.RichEmbed()
+    let dmembed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setTitle(message.author.username)
       .setAuthor(message.author.id)
       .setDescription(message.content)
+    if (!message.content.startsWith(prefix) && message.channel.type === 'dm'){
       bot.users.get('293148538886553602').send(dmembed)
     }else if (!message.content.startsWith(prefix)) return;
     let command = message.content.split(" ")[0].slice(prefix.length);
