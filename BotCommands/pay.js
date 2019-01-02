@@ -7,6 +7,7 @@ exports.run = async(bot, message, args) => {
         amount = parseInt(args.join(' ').replace(targetMember, ''))
 
         if(isNaN(amount)) return message.reply("**Please tell me the nummber of bubbles you want to give to that person**")
+        if(-amount) return message.reply('**you cant give negative bubbles to someone**')
 
         let targetBubbles = await db.fetch(`bubbles_${targetMember.id}`),
             selfbubbles = await db.fetch(`bubbles_${message.author.id}`)
