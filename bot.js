@@ -86,9 +86,18 @@ fs.readdir("./BotCommands/imagecommands/", (err, files) => {
 });
 });
 
-bot.on('ready', async () => {
-    console.log(`${bot.user.username} is now ready for action`);
-    bot.user.setActivity(";help commands", {type: "LISTENING"});
+bot.on('ready', () => {
+  const activities_list = [
+    ";help commands",
+    `${bot.users.size} users`,
+    `${bot.guilds.size} servers`,
+    null
+  ];
+  console.log(`${bot.user.username} is now ready for action`);
+  setInterval(() => {
+      const index = Math.floor(Math.random() * (activities_list.length - 1))
+      bot.user.setActivity(activities_list[index], {type: "LISTENING"});
+  }, 5000);
 });
 
 bot.on("message", async message => {
