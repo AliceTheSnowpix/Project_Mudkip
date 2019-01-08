@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 exports.run = async() => {
-fs.readdir("../../BotCommands/songcommands/", (err, files) => {
+fs.readdir("projectchicken/BotCommands/songcommands/", (err, files) => {
   if(err) console.log(err);
 
   let jsfile = files.filter(f => f.split(".").pop() === "js")
@@ -11,7 +11,7 @@ fs.readdir("../../BotCommands/songcommands/", (err, files) => {
   }
 
   jsfile.forEach((f, i) =>{
-      let props = require(`../../BotCommands/songcommands/${f}`);
+      let props = require(`projectchicken/BotCommands/songcommands/${f}`);
       console.log(`${f} Files loaded`);
       bot.commands.set(props.help.name, props)
       props.config.aliases.forEach(alias => {
@@ -20,7 +20,7 @@ fs.readdir("../../BotCommands/songcommands/", (err, files) => {
 });
 });
 
-fs.readdir("../../BotCommands/musiccommands/", (err, files) => {
+fs.readdir("projectchicken/BotCommands/musiccommands/", (err, files) => {
   if(err) console.log(err);
 
   let jsfile = files.filter(f => f.split(".").pop() === "js")
@@ -30,7 +30,7 @@ fs.readdir("../../BotCommands/musiccommands/", (err, files) => {
   }
 
   jsfile.forEach((f, i) =>{
-      let props = require(`../../BotCommands/musiccommands/${f}`);
+      let props = require(`projectchicken/BotCommands/musiccommands/${f}`);
       console.log(`${f} Files loaded`);
       bot.commands.set(props.help.name, props)
       props.config.aliases.forEach(alias => {
@@ -39,7 +39,7 @@ fs.readdir("../../BotCommands/musiccommands/", (err, files) => {
 });
 });
 
-fs.readdir("../../BotCommands/imagecommands/", (err, files) => {
+fs.readdir("projectchicken/BotCommands/imagecommands/", (err, files) => {
   if(err) console.log(err);
 
   let jsfile = files.filter(f => f.split(".").pop() === "js")
@@ -49,7 +49,7 @@ fs.readdir("../../BotCommands/imagecommands/", (err, files) => {
   } 
 
   jsfile.forEach((f, i) =>{
-    let props = require(`../../BotCommands/imagecommands/${f}`);
+    let props = require(`projectchicken/BotCommands/imagecommands/${f}`);
     console.log(`${f} Files loaded`);
     bot.commands.set(props.help.name, props)
     props.config.aliases.forEach(alias => {
