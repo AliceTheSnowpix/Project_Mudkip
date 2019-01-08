@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 exports.run = async() => {
 fs.readdir("./BotCommands/songcommands/", (err, files) => {
   if(err) console.log(err);
