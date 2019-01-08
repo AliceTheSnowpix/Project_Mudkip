@@ -10,8 +10,9 @@ module.exports.run = async (bot, message, args) => {
   
 	let matches = users.filter(u => u.tag.toLowerCase().includes(searchTerm.toLowerCase()));
   let bestMatch = matches.map(u => u.tag).join("\n");
+  let ids = matches.map(u => u.id).join("\n");
   if(bestMatch.length > 1000){
-    hastebin(bestMatch, "txt").then(r => {
+    hastebin(bestMatch + ids, "txt").then(r => {
     message.channel.send(`Output was too large. Data was exported to hastebin! ${r}`)
 }).catch(console.error);
   
@@ -19,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
   const embed = new Discord.RichEmbed()
             .setTitle("All the users found.")
             .setColor(0x26a98b)
-            .setDescription(bestMatch);
+            .setDescription(bestMatch + ids);
         message.channel.send(embed);
   }
 
