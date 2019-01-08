@@ -31,7 +31,7 @@ fs.readdir("./BotCommands/", (err, files) => {
 });
 });
 
-await loadfils;
+loadfils.run()
 
 bot.on('ready', () => {
   const activities_list = [
