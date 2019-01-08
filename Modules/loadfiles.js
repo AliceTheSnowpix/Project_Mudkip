@@ -1,3 +1,4 @@
+exports.run = async() => {
 fs.readdir("./BotCommands/songcommands/", (err, files) => {
   if(err) console.log(err);
 
@@ -54,3 +55,4 @@ fs.readdir("./BotCommands/imagecommands/", (err, files) => {
 });
 });
 });
+}
