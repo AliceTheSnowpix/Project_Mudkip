@@ -2,6 +2,8 @@ process.on('unhandledRejection', console.error)
 const botconfig = require('./botconfig/botconfig.json');
 const Discord = require('discord.js');
 const fs = require('fs');
+const path =require("path")
+const commando = require('discord.js-commando');
 const bot = new Discord.Client()
 const active = new Map();
 bot.commands = new Discord.Collection();
@@ -10,6 +12,7 @@ bot.aliases = new Discord.Collection();
 bot.logger = require("./Modules/logger.js");
 require("./Modules/functions.js")(bot);
 
+.registerCommandsIn(path.join(__dirname, 'BotCommands'));
 
 fs.readdir("./BotCommands/", (err, files) => {
   if(err) console.log(err);
