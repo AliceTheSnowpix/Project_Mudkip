@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const flipText = require('./assets/flipText.json');
+const flipText = require('../assets/flipText.json');
 
 module.exports.run = async (bot,message,args) => {
   await message.delete()
