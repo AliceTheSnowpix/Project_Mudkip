@@ -10,7 +10,7 @@ bot.aliases = new Discord.Collection();
 bot.logger = require("./Modules/logger.js");
 require("./Modules/functions.js")(bot);
 
-let folders = ["songcommands", "musiccommands", "imagecommands", "funcommands", "modcommands", "maincommands"]
+let folders = ["songcommands", "musiccommands", "imagecommands", "funcommands", "modcommands", "maincommands", "economycommands", "ownercommands"]
 
 folders.forEach(function(folder) {
   fs.readdir(`./BotCommands/${folder}/`, (err, files) => {
