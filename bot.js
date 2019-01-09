@@ -11,7 +11,7 @@ bot.logger = require("./Modules/logger.js");
 require("./Modules/functions.js")(bot);
 
 let folders = ["songcommands", "musiccommands"]
-fs.readdir(`./BotCommands/${folders.length}/`, (err, files) => {
+fs.readdir(`./BotCommands/${folders}/`, (err, files) => {
   if(err) console.log(err);
 
   let jsfile = files.filter(f => f.split(".").pop() === "js")
@@ -21,7 +21,7 @@ fs.readdir(`./BotCommands/${folders.length}/`, (err, files) => {
   } 
 
   jsfile.forEach((f, i) =>{
-    let props = require(`./BotCommands/${folders.length}/${f}`);
+    let props = require(`./BotCommands/${folders}/${f}`);
     console.log(`${f} Files loaded`);
     bot.commands.set(props.help.name, props)
     props.config.aliases.forEach(alias => {
