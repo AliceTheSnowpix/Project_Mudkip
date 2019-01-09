@@ -2,8 +2,6 @@ process.on('unhandledRejection', console.error)
 const botconfig = require('./botconfig/botconfig.json');
 const Discord = require('discord.js');
 const fs = require('fs');
-const path =require("path")
-const commando = require('discord.js-commando');
 const bot = new Discord.Client()
 const active = new Map();
 bot.commands = new Discord.Collection();
@@ -12,10 +10,8 @@ bot.aliases = new Discord.Collection();
 bot.logger = require("./Modules/logger.js");
 require("./Modules/functions.js")(bot);
 
-bot.registry
-.registerCommandsIn(path.join(__dirname, 'BotCommands'));
-
-fs.readdir("./BotCommands/", (err, files) => {
+let folders = ["songcommands", "musiccommands"]
+fs.readdir(`./BotCommands/${folders.length}/`, (err, files) => {
   if(err) console.log(err);
 
   let jsfile = files.filter(f => f.split(".").pop() === "js")
@@ -25,7 +21,7 @@ fs.readdir("./BotCommands/", (err, files) => {
   } 
 
   jsfile.forEach((f, i) =>{
-    let props = require(`./BotCommands/${f}`);
+    let props = require(`./BotCommands/${folders.length}/${f}`);
     console.log(`${f} Files loaded`);
     bot.commands.set(props.help.name, props)
     props.config.aliases.forEach(alias => {
@@ -34,7 +30,7 @@ fs.readdir("./BotCommands/", (err, files) => {
 });
 });
 
-fs.readdir("./BotCommands/songcommands/", (err, files) => {
+/*fs.readdir("./BotCommands/songcommands/", (err, files) => {
   if(err) console.log(err);
 
   let jsfile = files.filter(f => f.split(".").pop() === "js")
@@ -89,7 +85,7 @@ fs.readdir("./BotCommands/imagecommands/", (err, files) => {
     bot.aliases.set(alias, props.help.name);
 });
 });
-});
+});*/
                         
 bot.on('ready', () => {
   const activities_list = [
