@@ -12,7 +12,7 @@ require("./Modules/functions.js")(bot);
 
 let folders = ["songcommands", "musiccommands"]
 
-folders.forEach(function(folder)) {
+folders.forEach(function(folder) {
   fs.readdir(`./BotCommands/${folder}/`, (err, files) => {
     if(err) console.log(err);
 
@@ -31,7 +31,7 @@ folders.forEach(function(folder)) {
       });
     });
   });
-}
+});
 
 /*fs.readdir("./BotCommands/songcommands/", (err, files) => {
   if(err) console.log(err);
