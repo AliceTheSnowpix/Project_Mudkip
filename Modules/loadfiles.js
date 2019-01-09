@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-exports.run = async() => {
+exports.run => {
 fs.readdir("projectchicken/BotCommands/songcommands/", (err, files) => {
   if(err) console.log(err);
 
