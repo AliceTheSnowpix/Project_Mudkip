@@ -1,4 +1,6 @@
 const fs = require('fs');
+bot.commands = new Discord.Collection();
+bot.aliases = new Discord.Collection();
 
 exports.run = async() => {
 fs.readdir("../BotCommands/songcommands/", (err, files) => {
