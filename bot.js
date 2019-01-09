@@ -12,25 +12,25 @@ require("./Modules/functions.js")(bot);
 
 let folders = ["songcommands", "musiccommands"]
 
-forEach(folder in folders) => {
-fs.readdir(`./BotCommands/${folder}/`, (err, files) => {
-  if(err) console.log(err);
+folders.forEach(function(folder)) {
+  fs.readdir(`./BotCommands/${folder}/`, (err, files) => {
+    if(err) console.log(err);
 
-   let jsfile = files.filter(f => f.split(".").pop() === "js")
-    if(jsfile.length <= 0){
-      console.log("Could not find commands");
-      return;
-    } 
+     let jsfile = files.filter(f => f.split(".").pop() === "js")
+      if(jsfile.length <= 0){
+        console.log("Could not find commands");
+        return;
+      } 
 
-    jsfile.forEach((f, i) =>{
-      let props = require(`./BotCommands/${folder}/${f}`);
-      console.log(`${f} Files loaded`);
-      bot.commands.set(props.help.name, props)
-      props.config.aliases.forEach(alias => {
-        bot.aliases.set(alias, props.help.name);
+      jsfile.forEach((f, i) =>{
+        let props = require(`./BotCommands/${folder}/${f}`);
+        console.log(`${f} Files loaded`);
+        bot.commands.set(props.help.name, props)
+        props.config.aliases.forEach(alias => {
+          bot.aliases.set(alias, props.help.name);
+      });
     });
   });
-});
 }
 
 /*fs.readdir("./BotCommands/songcommands/", (err, files) => {
