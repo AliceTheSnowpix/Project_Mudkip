@@ -1,4 +1,4 @@
-const copypastas = require('./assets/copypastas.json');
+const copypastas = require('../assets/copypastas.json');
 const Discord = require('discord.js');
 
 exports.run = async (bot, message, args) => {
