@@ -1,4 +1,6 @@
 const fs = require('fs');
+const Discord = require('discord.js');
+const bot = new Discord.Client()
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
