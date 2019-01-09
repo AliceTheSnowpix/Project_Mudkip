@@ -9,6 +9,7 @@ bot.aliases = new Discord.Collection();
 
 bot.logger = require("./Modules/logger.js");
 require("./Modules/functions.js")(bot);
+require("./Modules/loadfiles.js")
 
 fs.readdir("./BotCommands/", (err, files) => {
   if(err) console.log(err);
