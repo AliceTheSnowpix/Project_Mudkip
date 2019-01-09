@@ -1,4 +1,4 @@
-const question = require('./assets/wouldYouRather.json');
+const question = require('../assets/wouldYouRather.json');
 const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
