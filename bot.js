@@ -30,7 +30,7 @@ fs.readdir("./BotCommands/", (err, files) => {
 });
 
 let loadfiles = require("./Modules/loadfiles.js")
-loadfiles.run;
+loadfiles.run();
 
 bot.on('ready', () => {
   const activities_list = [
