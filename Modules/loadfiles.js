@@ -60,5 +60,3 @@ fs.readdir("../BotCommands/imagecommands/", (err, files) => {
 });
 });
 });
-
-module.exports = loadfiles
