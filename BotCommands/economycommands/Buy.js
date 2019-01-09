@@ -1,12 +1,11 @@
 const db = require('quick.db')
 const discord = require('discord.js')
-const botconfig = require('./botconfig/botconfig.json')
 exports.run = async(bot, message, args) => {
     let selfbubbles = await db.fetch(`bubbles_${message.author.id}`)
     let input = message.content.toLowerCase();
     let Member = message.guild.member(message.author.id)
     
-     let serverID = (botconfig.serverID)
+     let serverID = (456629010890227714)
      if (message.guild.id != serverID) return message.channel.send("Support Server Only Sorry Here Is The Link To Join https://discord.gg/fGQTVek");
  
     if(input === ';buy 1')
