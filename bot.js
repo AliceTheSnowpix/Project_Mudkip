@@ -12,6 +12,7 @@ bot.aliases = new Discord.Collection();
 bot.logger = require("./Modules/logger.js");
 require("./Modules/functions.js")(bot);
 
+bot.registry
 .registerCommandsIn(path.join(__dirname, 'BotCommands'));
 
 fs.readdir("./BotCommands/", (err, files) => {
