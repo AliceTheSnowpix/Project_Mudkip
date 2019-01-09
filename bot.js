@@ -30,7 +30,7 @@ fs.readdir("./BotCommands/", (err, files) => {
 });
 });
 
-fs.readdir("./BotCommands/songcommands/", (err, files) => {
+/*fs.readdir("./BotCommands/songcommands/", (err, files) => {
   if(err) console.log(err);
 
   let jsfile = files.filter(f => f.split(".").pop() === "js")
@@ -85,7 +85,7 @@ fs.readdir("./BotCommands/imagecommands/", (err, files) => {
     bot.aliases.set(alias, props.help.name);
 });
 });
-});
+});*/
                         
 bot.on('ready', () => {
   const activities_list = [
