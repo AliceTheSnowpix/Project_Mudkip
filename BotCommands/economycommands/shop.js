@@ -1,9 +1,8 @@
 const Discord = require('discord.js')
-const botconfig = require('./botconfig/botconfig.json')
 const botID = '460159835544092674'
 exports.run = async(bot, message, args) => {
 
-    let serverID = (botconfig.serverID)
+    let serverID = (456629010890227714)
     if (message.guild.id != serverID) return message.channel.send("Support Server Only Sorry Here Is The Link To Join https://discord.gg/fGQTVek");
 
     let shopembed = new Discord.RichEmbed()
