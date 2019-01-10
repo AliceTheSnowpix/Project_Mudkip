@@ -1,10 +1,9 @@
-const botconfig = require('./botconfig/botconfig.json')
 const db = require('quick.db')
 const ms = require('parse-ms')
 
 exports.run = async(bot, message, args) => {
 
-    let serverID = (botconfig.serverID)
+    let serverID = (456629010890227714)
     if (message.guild.id != serverID) return message.channel.send("Support Server Only Sorry Here Is The Link To Join https://discord.gg/fGQTVek");
 
 let cooldown = 8.64e+7
