@@ -40,12 +40,11 @@ module.exports.run = async (bot,message,args) => {
         .addField("Bot Name", bot.user.username)
         .addField("Created By", "<@293148538886553602>")
         .addField("Created On", bot.user.createdAt)
-        .addField("If You Are An Admin Do", ";bothelp")
         .addField("Total Members", "`" + bot.users.size + "` Total\n`" + totalOnline + "` Online\n\n`" + message.guild.memberCount + "` this server\n`" + guildTotalOnline + "` online this server")
         .addField("Total Channels", "`" + (bot.channels.size - nonGuildChannels)+ "` Total\n`" + message.guild.channels.size + "` this server\n`" + totalTextChannels + "` Total Text\n`" + totalVoiceChannels + "` Total Voice")
-		.addField("Total Servers", bot.guilds.size)
-		.addField("Ping", `${bot.pings[0]}ms\``)
-		.setTimestamp(message.createdAt)
+	.addField("Total Servers", bot.guilds.size)
+	.addField("Ping", `${bot.pings[0]}ms\``)
+	.setTimestamp(message.createdAt)
 
         return message.channel.send(botembed);
 }
