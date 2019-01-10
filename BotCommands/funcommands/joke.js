@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const jokes = require('./assets/jokes.json')
+const jokes = require('../assets/jokes.json')
 
 exports.run = async (bot, message, args) => {
     args = args.join(" ");
