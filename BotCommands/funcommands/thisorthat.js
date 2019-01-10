@@ -1,4 +1,4 @@
-const question = require('./assets/thisOrThat.json');
+const question = require('../assets/thisOrThat.json');
 const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
