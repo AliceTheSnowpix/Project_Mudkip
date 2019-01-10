@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const botconfig = require('./botconfig/botconfig.json');
 
 module.exports.run = async (bot,message,args) => {
 
@@ -39,7 +38,7 @@ module.exports.run = async (bot,message,args) => {
         .setColor("#E8FF00")
         .setThumbnail(bicon)
         .addField("Bot Name", bot.user.username)
-        .addField("Created By", botconfig.ownerID)
+        .addField("Created By", "<@293148538886553602>")
         .addField("Created On", bot.user.createdAt)
         .addField("If You Are An Admin Do", ";bothelp")
         .addField("Total Members", "`" + bot.users.size + "` Total\n`" + totalOnline + "` Online\n\n`" + message.guild.memberCount + "` this server\n`" + guildTotalOnline + "` online this server")
