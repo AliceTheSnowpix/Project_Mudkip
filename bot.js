@@ -1,5 +1,4 @@
 process.on('unhandledRejection', console.error)
-const botconfig = require('./botconfig/botconfig.json');
 const Discord = require('discord.js');
 const fs = require('fs');
 const bot = new Discord.Client()
