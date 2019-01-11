@@ -8,7 +8,7 @@ exports.run = async(bot, message, args, ops) => {
         let videos = res.videos.slice(0, 10);
 
         let resp = '';
-        resp.forEach (function(i) {
+        videos.forEach (function(i) {
             resp += `**[${parseInt(i)+1}]:** \`${videos[i].title}\`\n`;
         })
 
