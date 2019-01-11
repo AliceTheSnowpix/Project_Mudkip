@@ -8,11 +8,11 @@ exports.run = async(bot, message, args, ops) => {
         let videos = res.videos.slice(0, 10);
 
         let resp = '';
-        for (var i in videos) {
+        resp.forEach (function(i) {
             resp += `**[${parseInt(i)+1}]:** \`${videos[i].title}\`\n`;
-        }
+        })
 
-        resp += `\n**Choose a number between** \` 1-${videos.length - 1}\``;
+        resp += `\n**Choose a number between** \` 1-${videos.length}\``;
 
         message.channel.send(resp);
 
