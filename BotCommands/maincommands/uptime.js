@@ -4,7 +4,8 @@ exports.run = async (bot, message) => {
     var milliseconds = parseInt((bot.uptime % 1000) / 100),
         seconds = parseInt((bot.uptime / 1000) % 60),
         minutes = parseInt((bot.uptime / (1000 * 60)) % 60),
-        hours = parseInt((bot.uptime / (1000 * 60 * 60)) % 24);
+        hours = parseInt((bot.uptime / (1000 * 60 * 60)) % 24),
+        days = Math.floor(bot.uptime / 86400);
 
         hours = (hours < 10) ? "0" + hours : hours;
         minutes = (minutes < 10) ? "0" + minutes : minutes;
@@ -13,7 +14,7 @@ exports.run = async (bot, message) => {
         let upembed = new Discord.RichEmbed()
         .setColor('#c464ea')
         .setTitle(":chart_with_upwards_trend: I've been running for")
-        .setDescription("** " + hours + " **hours, **" + minutes + "** minutes and **" + seconds + "." + milliseconds + "** seconds!")
+        .setDescription("** " + days + "**days, **" + hours + " **hours, **" + minutes + "** minutes and **" + seconds + "." + milliseconds + "** seconds!")
 
         message.channel.send(upembed)
 }
