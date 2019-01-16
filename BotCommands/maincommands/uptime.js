@@ -14,7 +14,7 @@ exports.run = async (bot, message) => {
         let upembed = new Discord.RichEmbed()
         .setColor('#c464ea')
         .setTitle(":chart_with_upwards_trend: I've been running for")
-        .setDescription("** " + days + "**days, **" + hours + " **hours, **" + minutes + "** minutes and **" + seconds + "." + milliseconds + "** seconds!")
+        .setDescription("** " + days + " **days, **" + hours + " **hours, **" + minutes + "** minutes and **" + seconds + "." + milliseconds + "** seconds!")
 
         message.channel.send(upembed)
 }
