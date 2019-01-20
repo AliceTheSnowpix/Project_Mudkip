@@ -5,8 +5,9 @@ exports.run = async (bot, message) => {
         seconds = parseInt((bot.uptime / 1000) % 60),
         minutes = parseInt((bot.uptime / (1000 * 60)) % 60),
         hours = parseInt((bot.uptime / (1000 * 60 * 60)) % 24),
-        days = Math.floor(bot.uptime / 86400);
+        days = parseInt((bot.uptime / (1000 * 60 * 60 * 24)) % 99);
 
+        days = (days < 10) ? "0" + days : days;
         hours = (hours < 10) ? "0" + hours : hours;
         minutes = (minutes < 10) ? "0" + minutes : minutes;
         seconds = (seconds < 10) ? "0" + seconds : seconds;
