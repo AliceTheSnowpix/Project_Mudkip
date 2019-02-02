@@ -14,11 +14,9 @@ module.exports.run = async (bot,message,args) => {
 voiceChannel.join().then(connection =>
 {
     const dispatcher = connection.playStream('https://cdn.glitch.com/3266dedb-0ed2-42c3-a45d-8cb0a8559df0%2Fjapanese.mp3?1544921703881');
-    if (dispatcher.on("speaking", speaking => speaking == true)){
-        dispatcher
-    } 
-    if (dispatcher.on('end', end => end == voiceChannel.leave())){ 
-    }
+    dispatcher.on("end", end => {
+        voiceChannel.leave();
+    })
     }).catch(err => console.log(err));
 }
 
