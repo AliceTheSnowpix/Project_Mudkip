@@ -14,7 +14,7 @@ module.exports.run = async (bot,message,args) => {
 
 voiceChannel.join().then(connection =>
 {
-    const dispatcher = connection.playStream('https://cdn.glitch.com/3266dedb-0ed2-42c3-a45d-8cb0a8559df0%2FSnail's%20House%20-%20Candy%20Spaceship.mp3?1549135180830');
+    const dispatcher = connection.playStream('https://cdn.glitch.com/3266dedb-0ed2-42c3-a45d-8cb0a8559df0%2FSnail\'s%20House%20-%20Candy%20Spaceship.mp3?1549135180830');
     dispatcher.on('end', end => {
         voiceChannel.leave();
     })
