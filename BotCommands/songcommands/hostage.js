@@ -13,13 +13,11 @@ module.exports.run = async (bot,message,args) => {
         return message.reply("please join a voice chat to use this command")
     
 voiceChannel.join().then(connection =>
-{
-    const dispatcher = connection.playStream('https://cdn.glitch.com/3266dedb-0ed2-42c3-a45d-8cb0a8559df0%2Fhostage.mp3?1544921710862');
-    if (dispatcher.on("speaking", speaking => speaking == true)){
-        dispatcher
-    } 
-    if (dispatcher.on('end', end => end == voiceChannel.leave())){ 
-    }
+    {
+        const dispatcher = connection.playStream('https://cdn.glitch.com/3266dedb-0ed2-42c3-a45d-8cb0a8559df0%2Fhostage.mp3?1544921710862');
+        dispatcher.on("end", end => {
+            voiceChannel.leave();
+        })
     }).catch(err => console.log(err));
 }
 
