@@ -1,8 +1,8 @@
 exports.run = async (bot, message, args) => {
   
-  if(!message.guild.member(bot.user).hasPermission("MANAGE_MESSAGES")){
-    return message.reply(":x: " + "| i need the \"MANAGE_MESSAGES\" permission!").catch(console.error);
-  }
+//   if(!message.guild.member(bot.user).hasPermission("MANAGE_MESSAGES")){
+//     return message.reply(":x: " + "| i need the \"MANAGE_MESSAGES\" permission!").catch(console.error);
+//   }
 
   await message.delete()
     if (args.length < 1) {
