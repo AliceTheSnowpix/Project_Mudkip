@@ -301,7 +301,7 @@ exports.run = async(bot, message, args) => {
                         if (page === 2){
                             let infoembed = new discord.RichEmbed()
                             .setTitle(pages[page-1])
-                            .setDescription('bubble: pops a bubble and tells you how many bubbles you popped\n "bubbles: tells you how many bubbles you or the mentioned user has popped\n buy: lets you buy roles from the support server\n pay: lets you give the mentioned user the amount of bubbles you want to give\n shop: shows you all items in the shop for the support server')
+                            .setDescription('bubble: pops a bubble and tells you how many bubbles you popped\n bubbles: tells you how many bubbles you or the mentioned user has popped\n buy: lets you buy roles from the support server\n pay: lets you give the mentioned user the amount of bubbles you want to give\n shop: shows you all items in the shop for the support server')
                             .setFooter(`Page ${page} of ${pages.length}`)
                             .setColor('#FF00EC')
                             msg.edit(infoembed)
