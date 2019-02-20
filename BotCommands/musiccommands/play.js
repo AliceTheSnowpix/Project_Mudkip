@@ -73,8 +73,11 @@ async function play(bot, ops, data, connection, message) {
         data.queue.shift();
         data.dispatcher.once('end', function() {
             let commandFile2 = require('./stop.js');
-            if (data.queue[0].url) play(bot, ops, data, connection, message)
-            else return commandFile2.run(bot, message, args, ops)
+            if (data.queue[0].url) {
+                play(bot, ops, data, connection, message)
+            } else {
+                commandFile2.run(bot, message, args, ops)
+            }
     })
 }
 
