@@ -437,7 +437,7 @@ exports.run = async(bot, message, args) => {
         const songembed1 = new discord.RichEmbed()
         .setColor('#FF00EC')
         .setTitle(pages[page-1])
-        .setDescription(';alien\n ;alive\n ;bad\n ;bellyache\n ;bored\n ;break\n ;broken\n ;broken2\n ;burn\n ;copycat\n ;crown\n ;damn\n ;dirty\n ;ending\n ;enemies\n ;entropy\n ;fakelove\n ;fireflies\n ;friends\n ;friendship')
+        .setDescription(';alien\n ;alive\n ;bad\n ;bellyache\n ;bored\n ;break\n ;broken\n ;broken2\n ;burn\n ;copycat\n ;cosmic\n ;crown\n ;damn\n ;dirty\n ;ending\n ;enemies\n ;entropy\n ;fakelove\n ;fireflies\n ;friends\n ;friendship')
         .setFooter(`Page ${page} of ${pages.length}`)
         
         message.channel.send(songembed1).then(msg => { 
@@ -457,7 +457,7 @@ exports.run = async(bot, message, args) => {
                         let songembed1 = new discord.RichEmbed()
                         .setColor('#FF00EC')
                         .setTitle(pages[page-1])
-                        .setDescription(';alien\n ;alive\n ;bad\n ;bellyache\n ;bored\n ;break\n ;broken\n ;broken2\n ;burn\n ;copycat\n ;crown\n ;damn\n ;dirty\n ;ending\n ;enemies\n ;entropy\n ;fakelove\n ;fireflies\n ;friends\n ;friendship')
+                        .setDescription(';alien\n ;alive\n ;bad\n ;bellyache\n ;bored\n ;break\n ;broken\n ;broken2\n ;burn\n ;copycat\n ;cosmic\n ;crown\n ;damn\n ;dirty\n ;ending\n ;enemies\n ;entropy\n ;fakelove\n ;fireflies\n ;friends\n ;friendship')
                         .setFooter(`Page ${page} of ${pages.length}`)
                         msg.edit(songembed1)
                     }else if (page === 2) {
@@ -470,7 +470,7 @@ exports.run = async(bot, message, args) => {
                     }else if (page === 3){
                         let songembed3 = new discord.RichEmbed()
                             .setTitle(pages[page-1])
-                            .setDescription(';side\n ;six\n ;ski\n ;smoothie\n ;snow\n ;something\n ;starting\n ;story\n ;summertime\n ;sun\n ;sunshine\n ;surf\n ;team\n ;tennis\n ;trials\n ;warpstar\n ;why')
+                            .setDescription(';side\n ;six\n ;ski\n ;smoothie\n ;snow\n ;something\n ;spaceship\n ;starting\n ;story\n ;summertime\n ;sun\n ;sunshine\n ;surf\n ;team\n ;tennis\n ;trials\n ;warpstar\n ;why')
                             .setFooter(`Page ${page} of ${pages.length}`)
                             .setColor('#FF00EC')
                             msg.edit(songembed3)
@@ -491,7 +491,7 @@ exports.run = async(bot, message, args) => {
                     }else if (page === 3){
                         let songembed3 = new discord.RichEmbed()
                             .setTitle(pages[page-1])
-                            .setDescription(';side\n ;six\n ;ski\n ;smoothie\n ;snow\n ;something\n ;starting\n ;story\n ;summertime\n ;sun\n ;sunshine\n ;surf\n ;team\n ;tennis\n ;trials\n ;warpstar\n ;why')
+                            .setDescription(';side\n ;six\n ;ski\n ;smoothie\n ;snow\n ;something\n ;spaceship\n ;starting\n ;story\n ;summertime\n ;sun\n ;sunshine\n ;surf\n ;team\n ;tennis\n ;trials\n ;warpstar\n ;why')
                             .setFooter(`Page ${page} of ${pages.length}`)
                             .setColor('#FF00EC')
                             msg.edit(songembed3)
