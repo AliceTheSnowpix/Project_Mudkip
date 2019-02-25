@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
 };
 
 exports.config = {
-  aliases: [  ]
+  aliases: [ 'wyr' ]
 };
 
 exports.help = {
