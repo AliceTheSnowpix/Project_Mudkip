@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
 
   message.channel.send(wouldembed).then(async msg => { 
     await msg.react("1⃣");
-    await msg.react("2⃣");
+     msg.react("2⃣");
   });
 };
 
