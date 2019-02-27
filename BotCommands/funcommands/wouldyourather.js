@@ -7,8 +7,9 @@ module.exports.run = async (bot, message, args) => {
     .setColor("#f99d9d")
     .setDescription(question[Math.floor(Math.random() * question.length)])
 
-  message.channel.send(wouldembed)
-
+  message.channel.send(wouldembed);
+  message.react("1⃣");
+  message.react("2⃣");
 };
 
 exports.config = {
