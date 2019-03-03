@@ -1,4 +1,4 @@
-exports.run = (bit, message, args) => {
+exports.run = (bot, message, args) => {
   const reason = args.slice(1).join(' ');
   bot.unbanReason = reason;
   bot.unbanAuth = message.author;
