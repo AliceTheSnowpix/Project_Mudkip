@@ -3,6 +3,8 @@ const discord = require("discord.js");
 exports.run = (bot, message, args) => {
   const reason = args.slice(1).join(' ');
   const user = args[0];
+  bot.unbanReason = reason;
+  bot.unbanAuth = message.author;
   const modlog = bot.channels.find('a => a.name === modlogs');
   if (!modlog) return message.reply('I cannot find a modlogs channel');
   if (reason.length < 1) return message.reply('You must supply a reason for the unban.');
