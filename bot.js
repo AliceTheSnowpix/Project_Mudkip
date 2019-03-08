@@ -53,6 +53,7 @@ bot.on("message", async message => {
     active: active
   };
     let prefix = ';'
+    let bannedUsers = [];
     let dmembed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setTitle(message.author.username)
