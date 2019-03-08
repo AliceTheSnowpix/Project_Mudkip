@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const randomPuppy = require("random-puppy");
 
 exports.run = async (bot, message, args) => {
-   randomPuppy.all('dankmemes').then(url => {
+   randomPuppy('dankmemes').then(url => {
       const embed = new Discord.RichEmbed()
           .setTitle('Here is a meme')
           .setTimestamp()
