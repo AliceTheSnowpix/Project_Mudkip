@@ -5,7 +5,7 @@ exports.run = (bot, message, args) => {
   const user = args[0];
   bot.unbanReason = reason;
   bot.unbanAuth = message.author;
-  const modlog = bot.channels.find(a => a.name === 'modlogs');
+  const modlog = message.guild.channels.find(a => a.name === 'modlogs');
   if (!modlog) return message.reply('I cannot find a modlogs channel');
   if (reason.length < 1) return message.reply('You must supply a reason for the unban.');
   if (!user) return message.reply('You need to send the id of the user you want to unban').catch(console.error);
