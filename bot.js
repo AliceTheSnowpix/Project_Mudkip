@@ -37,6 +37,7 @@ bot.on('ready', () => {
     ";help commands",
     `${bot.users.size} users`,
     `${bot.guilds.size} servers`,
+    `${bot.commands.size} commands`,
     null
   ];
   console.log(`${bot.user.username} is now ready for action`);
