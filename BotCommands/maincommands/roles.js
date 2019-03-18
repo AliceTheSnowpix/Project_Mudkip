@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-module.exports.run = async (bot, message, args) => {
+exports.run = async (bot, message, args) => {
     let roles = message.guild.roles.filter(r => r.position !== 0).map(r => `${r.name} - ${r.id}`).map((r, i) => `${i + 1}. ${r}`);
   
     let noOfPages = roles.length / 25;
@@ -24,20 +24,21 @@ module.exports.run = async (bot, message, args) => {
         const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 }); 
         const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
         forwards.on('collect', r => { 
-           let rolesembed = new Discord.RichEmbed()
+            let rolesembed = new Discord.RichEmbed()
             .setColor("#84ff96")
             .setTitle("Roles")
             .setDescription(roles.slice(i * 1, (i * 50) + 50).join('\n'))
             .setFooter(`Page: ${i + 1} of ${noOfPages > parseInt(noOfPages) ? parseInt(noOfPages) + 1 : parseInt(noOfPages)}`)
+            msg.edit(rolesembed)
            });
         });
     });
 }
 
-module.exports.config = {
+exports.config = {
     aliases: []
   };
 
-module.exports.help = {
+exports.help = {
     name: "roles",
 }
