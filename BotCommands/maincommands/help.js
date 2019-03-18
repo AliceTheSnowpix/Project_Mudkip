@@ -24,7 +24,7 @@ exports.run = async(bot, message, args) => {
                 const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 }); 
                 const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
                 backwards.on('collect', r => { 
-                if (page === pages.length) {}
+                if (page === pages.length) return
                     page--; 
                     if (page === 1){
                         let helpembed = new discord.RichEmbed()
@@ -52,7 +52,7 @@ exports.run = async(bot, message, args) => {
                     }
                 })
                 forwards.on('collect', r => { 
-                    if (page === pages.length) {}
+                    if (page === pages.length) return
                         page++; 
                         if (page === 2){
                             let infoembed = new discord.RichEmbed()
@@ -98,7 +98,7 @@ exports.run = async(bot, message, args) => {
               const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
 
               backwards.on('collect', r => { 
-                if (page === pages.length) {}
+                if (page === pages.length) return
                     page--; 
                     if (page === 1){
                         let mainembed = new discord.RichEmbed()
@@ -119,7 +119,7 @@ exports.run = async(bot, message, args) => {
                     }
                 })
                 forwards.on('collect', r => { 
-                    if (page === pages.length) {}
+                    if (page === pages.length) return
                         page++; 
                         if (page === 2){
                             let infoembed = new discord.RichEmbed()
@@ -157,7 +157,7 @@ exports.run = async(bot, message, args) => {
                   const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
     
                   backwards.on('collect', r => { 
-                    if (page === pages.length) {}
+                    if (page === pages.length) return
                         page--; 
                         if (page === 1){
                             let modembed = new discord.RichEmbed()
@@ -178,7 +178,7 @@ exports.run = async(bot, message, args) => {
                         }
                     })
                     forwards.on('collect', r => { 
-                        if (page === pages.length) {}
+                        if (page === pages.length) return
                             page++; 
                             if (page === 2){
                                 let infoembed = new discord.RichEmbed()
@@ -216,7 +216,7 @@ exports.run = async(bot, message, args) => {
               const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
 
               backwards.on('collect', r => { 
-                if (page === pages.length) {}
+                if (page === pages.length) return
                     page--; 
                     if (page === 1){
                         let funembed = new discord.RichEmbed()
@@ -237,7 +237,7 @@ exports.run = async(bot, message, args) => {
                     }
                 })
                 forwards.on('collect', r => { 
-                    if (page === pages.length) {}
+                    if (page === pages.length) return
                         page++; 
                         if (page === 2){
                             let infoembed = new discord.RichEmbed()
@@ -275,7 +275,7 @@ exports.run = async(bot, message, args) => {
               const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
 
               backwards.on('collect', r => { 
-                if (page === pages.length) {}
+                if (page === pages.length) return
                     page--; 
                     if (page === 1){
                         let ecoembed = new discord.RichEmbed()
@@ -296,7 +296,7 @@ exports.run = async(bot, message, args) => {
                     }
                 })
                 forwards.on('collect', r => { 
-                    if (page === pages.length) {}
+                    if (page === pages.length) return
                         page++; 
                         if (page === 2){
                             let infoembed = new discord.RichEmbed()
@@ -334,7 +334,7 @@ exports.run = async(bot, message, args) => {
               const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
 
               backwards.on('collect', r => { 
-                if (page === pages.length) {}
+                if (page === pages.length) return
                     page--; 
                     if (page === 1){
                         let imageembed = new discord.RichEmbed()
@@ -355,7 +355,7 @@ exports.run = async(bot, message, args) => {
                     }
                 })
                 forwards.on('collect', r => { 
-                    if (page === pages.length) {}
+                    if (page === pages.length) return
                         page++; 
                         if (page === 2){
                             let infoembed = new discord.RichEmbed()
@@ -393,7 +393,7 @@ exports.run = async(bot, message, args) => {
               const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
 
               backwards.on('collect', r => { 
-                if (page === pages.length) {}
+                if (page === pages.length) return
                     page--; 
                     if (page === 1){
                         let musicembed = new discord.RichEmbed()
@@ -414,7 +414,7 @@ exports.run = async(bot, message, args) => {
                     }
                 })
                 forwards.on('collect', r => { 
-                    if (page === pages.length) {}
+                    if (page === pages.length) return
                         page++; 
                         if (page === 2){
                             let infoembed = new discord.RichEmbed()
@@ -451,7 +451,7 @@ exports.run = async(bot, message, args) => {
               const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 }); 
               const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
               backwards.on('collect', r => { 
-                if (page === pages.length){}
+                if (page === pages.length) return
                     page--; 
                     if (page === 1){
                         let songembed1 = new discord.RichEmbed()
@@ -479,7 +479,7 @@ exports.run = async(bot, message, args) => {
                     }
                 })
                 forwards.on('collect', r => { 
-                    if (page === pages.length){}
+                    if (page === pages.length) return
                         page++; 
                         if (page === 2){
                             let songembed2 = new discord.RichEmbed()
