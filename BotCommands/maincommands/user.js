@@ -41,7 +41,7 @@ module.exports.run = async (bot, message, args) => {
 }
 
 exports.config = {
-  aliases: [  ]
+  aliases: [ 'userinfo', 'user-info' ]
 };
 
 module.exports.help = {
