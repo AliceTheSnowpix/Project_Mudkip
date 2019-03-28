@@ -5,20 +5,20 @@ exports.run = async (bot, message, args) => {
   let role = message.member.highestRole;
 
   if(!memberInfo){
-       let userinf = new Discord.RichEmbed()
-      .setAuthor(message.author.username)
-      .setThumbnail(message.author.avatarURL)
-      .setDescription("This is the user's info!")
-      .setColor(role.hexColor)
-      .addField("Full Username:", `${message.author.username}#${message.author.discriminator}`)
-      .addField("ID:", message.author.id)
-      .addField('Currently', `${message.author.presence.status.toUpperCase()}`, true)
-      .addField('Game', `${message.author.presence.game === null ? "No Game" : message.author.presence.game.name}`, true)
-      .addField('Created At', message.author.createdAt)
-      .addField('Joined At', `${message.member.joinedAt}`, true)
-      .addField('Roles', message.member.roles.filter(r => "<@" + r.id + ">").join(' '), true)
+        let userinf = new Discord.RichEmbed()
+        .setAuthor(message.author.username)
+        .setThumbnail(message.author.avatarURL)
+        .setDescription("This is the user's info!")
+        .setColor(role.hexColor)
+        .addField("Full Username:", `${message.author.username}#${message.author.discriminator}`)
+        .addField("ID:", message.author.id)
+        .addField('Currently', `${message.author.presence.status.toUpperCase()}`, true)
+        .addField('Game', `${message.author.presence.game === null ? "No Game" : message.author.presence.game.name}`, true)
+        .addField('Created At', message.author.createdAt)
+        .addField('Joined At', `${message.member.joinedAt}`, true)
+        .addField('Roles', message.member.roles.filter(r => "<@" + r.id + ">").array().join(' '), true)
 
-      message.channel.send(userinf);
+        message.channel.send(userinf);
 
   }else{
 
@@ -33,7 +33,7 @@ exports.run = async (bot, message, args) => {
       .addField('Joined At', `${memberInfo.joinedAt}`, true)
       .addField('Currently', `${memberInfo.user.presence.status.toUpperCase()}`, true)
       .addField('Game', `${memberInfo.user.presence.game === null ? "No Game" : memberInfo.user.presence.game.name}`, true)
-      .addField('Roles', memberInfo.roles.filter(r => "<@" + r.id + ">").join(' '), true)
+      .addField('Roles', memberInfo.roles.filter(r => "<@" + r.id + ">").array().join(' '), true)
 
       message.channel.send(userinfoo);
   }
