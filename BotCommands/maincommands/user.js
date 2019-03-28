@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
         .addField('Currently', `${message.author.presence.status.toUpperCase()}`, true)
         .addField('Game', `${message.author.presence.game === null ? "No Game" : message.author.presence.game.name}`, true)
         .addField('Created At', message.author.createdAt)
-        .addField('Joined At', `${moment(message.member.joinedAt).format('MM.DD.YY')}`, true)
+        .addField('Joined At', `${message.member.joinedAt}`, true)
         .addField('Roles', `${message.member.roles.filter(r => r.name).size}`, true)
 
 
@@ -31,7 +31,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("Full Username:", `${memberInfo.user.username}#${memberInfo.user.discriminator}`)
         .addField("ID:", memberInfo.id)
         .addField("Created At:", memberInfo.user.createdAt)
-        .addField('Joined At', `${moment(memberInfo.user.joinedAt).format('MM.DD.YY')}`, true)
+        .addField('Joined At', `${memberInfo.user.joinedAt}`, true)
         .addField('Currently', `${memberInfo.user.presence.status.toUpperCase()}`, true)
         .addField('Game', `${memberInfo.user.presence.game === null ? "No Game" : memberInfo.user.presence.game.name}`, true)
 
