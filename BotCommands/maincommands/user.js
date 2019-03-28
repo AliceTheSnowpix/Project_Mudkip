@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
       .addField('Game', `${message.author.presence.game === null ? "No Game" : message.author.presence.game.name}`, true)
       .addField('Created At', message.author.createdAt)
       .addField('Joined At', `${message.member.joinedAt}`, true)
-      .addField('Roles', message.member.roles.filterArray(r => "<@" + r.id + ">").join(' '), true)
+      .addField('Roles', message.member.roles.filter(r => "<@" + r.id + ">").join(' '), true)
 
       message.channel.send(userinf);
 
@@ -32,7 +32,7 @@ module.exports.run = async (bot, message, args) => {
       .addField('Joined At', `${memberInfo.joinedAt}`, true)
       .addField('Currently', `${memberInfo.user.presence.status.toUpperCase()}`, true)
       .addField('Game', `${memberInfo.user.presence.game === null ? "No Game" : memberInfo.user.presence.game.name}`, true)
-      .addField('Roles', memberInfo.roles.filterArray(r => "<@" + r.id + ">").join(' '), true)
+      .addField('Roles', memberInfo.roles.filter(r => "<@" + r.id + ">").join(' '), true)
 
       message.channel.send(userinfoo);
   }
