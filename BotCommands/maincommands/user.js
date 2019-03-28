@@ -1,14 +1,15 @@
 const Discord = module.require('discord.js');
 
-module.exports.run = async (bot, message, args) => {
+exports.run = async (bot, message, args) => {
   let memberInfo = message.mentions.members.first();
+  let role = message.member.highestRole;
 
   if(!memberInfo){
        let userinf = new Discord.RichEmbed()
       .setAuthor(message.author.username)
       .setThumbnail(message.author.avatarURL)
       .setDescription("This is the user's info!")
-      .setColor(0x00FF00)
+      .setColor(role.hexColor)
       .addField("Full Username:", `${message.author.username}#${message.author.discriminator}`)
       .addField("ID:", message.author.id)
       .addField('Currently', `${message.author.presence.status.toUpperCase()}`, true)
@@ -25,7 +26,7 @@ module.exports.run = async (bot, message, args) => {
       .setAuthor(memberInfo.displayName)
       .setThumbnail(memberInfo.user.avatarURL)
       .setDescription("This is the user's info!")
-      .setColor(0x00FF00)
+      .setColor(role.hexColor)
       .addField("Full Username:", `${memberInfo.user.username}#${memberInfo.user.discriminator}`)
       .addField("ID:", memberInfo.id)
       .addField("Created At:", memberInfo.user.createdAt)
@@ -42,6 +43,6 @@ exports.config = {
   aliases: [ 'userinfo', 'user-info' ]
 };
 
-module.exports.help = {
+exports.help = {
     name: "user"
 }
