@@ -26,7 +26,7 @@ module.exports.run = async (bot,message,args) => {
         .setThumbnail(message.guild.iconURL ? message.guild.iconURL : me.user.displayAvatarURL)
         .addField("Server Name", message.guild.name)
         .addField("Created By", message.guild.owner)
-        .addField("Joined At", message.member.guild.joinedAt)
+        .addField("Joined At", message.guild.member.joinedAt)
         .addField("Total Members", message.guild.memberCount)
         .addField("Created On", message.guild.createdAt)
         .addField("ID:", message.guild.id)
