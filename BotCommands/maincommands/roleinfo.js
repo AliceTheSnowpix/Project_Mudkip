@@ -17,7 +17,7 @@ let role = message.mentions.roles.first() || message.guild.roles.get(args[0]) ||
 };
 
 exports.config = {
-    aliases: [  ]
+    aliases: [ 'role', 'role-info' ]
 };
 
 exports.help = {
