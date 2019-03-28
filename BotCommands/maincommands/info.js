@@ -50,7 +50,7 @@ module.exports.run = async (bot,message,args) => {
 }
 
 exports.config = {
-    aliases: [  ]
+    aliases: [ 'botinfo', 'bot-info' ]
 };
 
 module.exports.help = {
