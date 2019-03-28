@@ -29,9 +29,10 @@ module.exports.run = async (bot, message, args) => {
       .addField("Full Username:", `${memberInfo.user.username}#${memberInfo.user.discriminator}`)
       .addField("ID:", memberInfo.id)
       .addField("Created At:", memberInfo.user.createdAt)
-      .addField('Joined At', `${memberInfo.user.joinedAt}`, true)
+      .addField('Joined At', `${memberInfo.joinedAt}`, true)
       .addField('Currently', `${memberInfo.user.presence.status.toUpperCase()}`, true)
       .addField('Game', `${memberInfo.user.presence.game === null ? "No Game" : memberInfo.user.presence.game.name}`, true)
+      .addField('Roles', memberInfo.roles.filterArray(r => "<@" + r.id + ">").join(' '), true)
 
       message.channel.send(userinfoo);
   }
