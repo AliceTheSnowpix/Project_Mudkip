@@ -78,7 +78,7 @@ bot.on("message", async message => {
 });
 
 bot.on('guildMemberAdd', member => {
-  if (!bot.guilds.get('543906288820682752')){
+  if (member.guild.id !== '543906288820682752') {
    return 
   } else {
     member.guild.channels.get('559536623621111818').send('**' + member.user.username + '**, has joined the server!'); 
