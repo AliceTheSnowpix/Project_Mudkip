@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
-exports.run = async (bot, message, args) => {
+
+exports.run = async(bot, message, args) => {
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Sorry you cant use this command because you do not have the manage messages permission");
   
     let Mute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]))
@@ -27,15 +28,15 @@ exports.run = async (bot, message, args) => {
                 ]
             })
          })
-    } else {
+    }else{
         message.channel.replacePermissionOverwrites({ 
             overwrites: [ 
                 {
                     id: `${Mute.id}`, 
                     denied: ['SEND_MESSAGES']
-                }]
-            })
-        };
+                }
+            ]
+        });
     }
     
     let mutechan = message.guild.channels.find(b => b.name === "modlogs");
