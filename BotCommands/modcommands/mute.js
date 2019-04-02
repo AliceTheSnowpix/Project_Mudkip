@@ -13,12 +13,12 @@ exports.run = async(bot, message, args) => {
     
     if(!Mute) return message.reply(errorEmbed)
     let arg = message.content.toLowerCase() 
-    let mreason = args.join(" ").split([arg, Mute]);
+    let mreason = args.join(" ").split(arg).join('').split(Mute);
     if(Mute.hasPermission("MANAGE_MESSAGES")) return message.reply("Can't mute them!");   
 
     if(arg === `;mute server ${Mute}`) {
-        message.guild.channels.forEach(channel=> {
-            channel.overwritePermissions(Mute,{
+        message.guild.channels.forEach(channel => {
+            channel.overwritePermissions(Mute.id,{
                 SEND_MESSAGES: false
             });
          });
