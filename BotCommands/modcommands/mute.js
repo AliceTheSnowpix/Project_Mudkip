@@ -18,15 +18,11 @@ exports.run = async(bot, message, args) => {
 
     if(arg === `;mute server ${Mute}`) {
         message.guild.channels.forEach(channel=> {
-            channel.replacePermissionOverwrites({ 
-                overwrites: [ 
-                    {
-                        id: `${Mute.id}`, 
-                        denied: ['SEND_MESSAGES']
-                    }
-                ]
-            })
-         })
+            channel.overwritePermissions(UserResovable,{
+                VIEW_CHANNEL: true,
+                SEND_MESSAGES: false
+            });
+         });
         
         let mutechan = message.guild.channels.find(b => b.name === "modlogs");
         if(!mutechan) return message.channel.send("Could not find modlogs channel");
@@ -58,13 +54,10 @@ exports.run = async(bot, message, args) => {
       }
         
     }else{
-        message.channel.replacePermissionOverwrites({ 
-            overwrites: [ 
-                {
-                    id: `${Mute.id}`, 
-                    denied: ['SEND_MESSAGES']
-                }
-            ]
+        message.channel.overwritePermissions(UserResovable,{
+                VIEW_CHANNEL: true,
+                SEND_MESSAGES: false
+            });
         });
     
         let mutechan = message.guild.channels.find(b => b.name === "modlogs");
