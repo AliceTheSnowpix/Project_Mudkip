@@ -18,7 +18,7 @@ exports.run = async(bot, message, args) => {
 
     if(arg === `;mute server ${Mute}`) {
         message.guild.channels.forEach(channel=> {
-            channel.overwritePermissions(UserResovable,{
+            channel.overwritePermissions(Mute,{
                 VIEW_CHANNEL: true,
                 SEND_MESSAGES: false
             });
@@ -54,10 +54,9 @@ exports.run = async(bot, message, args) => {
       }
         
     }else{
-        message.channel.overwritePermissions(UserResovable,{
-                VIEW_CHANNEL: true,
-                SEND_MESSAGES: false
-            });
+        message.channel.overwritePermissions(Mute,{
+            VIEW_CHANNEL: true,
+            SEND_MESSAGES: false
         });
     
         let mutechan = message.guild.channels.find(b => b.name === "modlogs");
