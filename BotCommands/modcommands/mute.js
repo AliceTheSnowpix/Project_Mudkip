@@ -18,28 +18,24 @@ exports.run = async (bot, message, args) => {
 
     if(arg === `;mute server ${Mute}`) {
         message.guild.channels.forEach(channel=> {
-            channel.replacePermissionOverwrites(
-                { 
-                    overwrites: [ 
-                        {
-                            id: `${Mute.id}`, 
-                            denied: ['SEND_MESSAGES']
-                        }
-                    ]
-                }
-            });
-        });
-    } else {
-        message.channel.replacePermissionOverwrites(
-            { 
+            channel.replacePermissionOverwrites({ 
                 overwrites: [ 
                     {
                         id: `${Mute.id}`, 
                         denied: ['SEND_MESSAGES']
                     }
                 ]
-            }
-        });
+            })
+         })
+    } else {
+        message.channel.replacePermissionOverwrites({ 
+            overwrites: [ 
+                {
+                    id: `${Mute.id}`, 
+                    denied: ['SEND_MESSAGES']
+                }]
+            })
+        };
     }
     
     let mutechan = message.guild.channels.find(b => b.name === "modlogs");
