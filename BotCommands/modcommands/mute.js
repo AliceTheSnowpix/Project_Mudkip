@@ -7,12 +7,12 @@ exports.run = async(bot, message, args) => {
     
     let errorEmbed = new Discord.RichEmbed()
     .setTitle('Incorect Command Usage')
-    .setColor('MAGENTA')
+    .setColor('PURPLE')
     .addField('Command usage', ';mute <member name / mention>')
     .addField('Server mute usage', ';mute server <member name / mention>')
     
     if(!Mute) return message.reply(errorEmbed)
-    let mreason = args.join(" ").slice(22);
+    let mreason = args[1].join(" ");
     if(Mute.hasPermission("MANAGE_MESSAGES")) return message.reply("Can't mute them!");
 
     let arg = message.content.toLowerCase()    
@@ -28,6 +28,36 @@ exports.run = async(bot, message, args) => {
                 ]
             })
          })
+        
+        let mutechan = message.guild.channels.find(b => b.name === "modlogs");
+        if(!mutechan) return message.channel.send("Could not find modlogs channel");
+        if(!mreason) {
+            
+        let muteembed2 = new Discord.RichEmbed()
+        .setAuthor(message.author.username)
+        .setColor('PURPLE')
+        .setThumbnail(Mute.user.avatarURL)
+        .setTimestamp(message.createdAt)
+        .setDescription(`<@${Mute.id}> has been muted in all channels`)
+        .addField("There was no reason given", "test")
+
+        message.delete().catch(O_o=>{});
+        mutechan.send(muteembed2);
+
+      }else{
+        let muteembed = new Discord.RichEmbed()
+        .setAuthor(`${message.author.username}`)
+        .setColor('PURPLE')
+        .setThumbnail(Mute.user.avatarURL)
+        .setTimestamp(message.createdAt)
+        .setDescription(`<@${Mute.id}> has been muted in all channels`)
+        .addField("Reason", mreason)
+
+        message.delete().catch(O_o=>{});
+        mutechan.send(muteembed);
+        return;
+      }
+        
     }else{
         message.channel.replacePermissionOverwrites({ 
             overwrites: [ 
@@ -37,36 +67,36 @@ exports.run = async(bot, message, args) => {
                 }
             ]
         });
-    }
     
-    let mutechan = message.guild.channels.find(b => b.name === "modlogs");
-    if(!mutechan) return message.channel.send("Could not find modlogs channel");
-    if(!mreason){
+        let mutechan = message.guild.channels.find(b => b.name === "modlogs");
+        if(!mutechan) return message.channel.send("Could not find modlogs channel");
+        if(!mreason){
 
-    let muteembed2 = new Discord.RichEmbed()
-    .setAuthor(message.author.username)
-    .setColor('PURPLE')
-    .setThumbnail(Mute.user.avatarURL)
-    .setTimestamp(message.createdAt)
-    .setDescription(`<@${Mute.id}> has been muted`)
-    .addField("There was no reason given", "test")
+        let muteembed2 = new Discord.RichEmbed()
+        .setAuthor(message.author.username)
+        .setColor('PURPLE')
+        .setThumbnail(Mute.user.avatarURL)
+        .setTimestamp(message.createdAt)
+        .setDescription(`<@${Mute.id}> has been muted`)
+        .addField("There was no reason given", "test")
 
-    message.delete().catch(O_o=>{});
-    mutechan.send(muteembed2);
+        message.delete().catch(O_o=>{});
+        mutechan.send(muteembed2);
 
-  }else{
-    let muteembed = new Discord.RichEmbed()
-    .setAuthor(`<@${message.author.username}>`)
-    .setColor('PURPLE')
-    .setThumbnail(Mute.user.avatarURL)
-    .setTimestamp(message.createdAt)
-    .setDescription(`<@${Mute.id}> has been muted`)
-    .addField("Reason", mreason)
+      }else{
+        let muteembed = new Discord.RichEmbed()
+        .setAuthor(`${message.author.username}`)
+        .setColor('PURPLE')
+        .setThumbnail(Mute.user.avatarURL)
+        .setTimestamp(message.createdAt)
+        .setDescription(`<@${Mute.id}> has been muted`)
+        .addField("Reason", mreason)
 
-    message.delete().catch(O_o=>{});
-    mutechan.send(muteembed);
-    return;
-  }
+        message.delete().catch(O_o=>{});
+        mutechan.send(muteembed);
+        return;
+      }
+   }
 }
 
 exports.config = {
