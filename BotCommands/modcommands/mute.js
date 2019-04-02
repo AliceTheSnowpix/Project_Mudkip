@@ -12,10 +12,9 @@ exports.run = async(bot, message, args) => {
     .addField('Server mute usage', ';mute server <member name / mention>')
     
     if(!Mute) return message.reply(errorEmbed)
-    let mreason = args.join(" ").split(Mute);
-    if(Mute.hasPermission("MANAGE_MESSAGES")) return message.reply("Can't mute them!");
-
-    let arg = message.content.toLowerCase()    
+    let arg = message.content.toLowerCase() 
+    let mreason = args.join(" ").split([arg, Mute]);
+    if(Mute.hasPermission("MANAGE_MESSAGES")) return message.reply("Can't mute them!");   
 
     if(arg === `;mute server ${Mute}`) {
         message.guild.channels.forEach(channel=> {
