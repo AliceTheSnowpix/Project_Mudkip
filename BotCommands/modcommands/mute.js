@@ -17,6 +17,7 @@ exports.run = async(bot, message, args) => {
     if(Mute.hasPermission("MANAGE_MESSAGES")) return message.reply("Can't mute them!");   
 
     if(arg === `;mute server ${Mute}`) {
+        let mreasonS = args.join(" ").split('server' + Mute);
         message.guild.channels.forEach(channel => {
             channel.overwritePermissions(message.guild.members.get(Mute.id),{
                 SEND_MESSAGES: false
@@ -25,7 +26,7 @@ exports.run = async(bot, message, args) => {
         
         let mutechan = message.guild.channels.find(b => b.name === "modlogs");
         if(!mutechan) return message.channel.send("Could not find modlogs channel");
-        if(!mreason) {
+        if(!mreasonS) {
             
         let muteembed2 = new Discord.RichEmbed()
         .setAuthor(message.author.username)
@@ -45,7 +46,7 @@ exports.run = async(bot, message, args) => {
         .setThumbnail(Mute.user.avatarURL)
         .setTimestamp(message.createdAt)
         .setDescription(`<@${Mute.id}> has been muted in all channels`)
-        .addField("Reason", mreason)
+        .addField("Reason", mreasonS)
 
         message.delete().catch(O_o=>{});
         mutechan.send(muteembed);
@@ -53,7 +54,7 @@ exports.run = async(bot, message, args) => {
       }
         
     }else{
-        message.channel.overwritePermissions(Mute,{
+        message.channel.overwritePermissions(message.guild.members.get(Mute.id),{
             SEND_MESSAGES: false
         });
     
