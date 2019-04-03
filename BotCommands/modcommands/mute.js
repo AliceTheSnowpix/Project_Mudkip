@@ -18,7 +18,7 @@ exports.run = async(bot, message, args) => {
 
     if(arg === `;mute server ${Mute}`) {
         message.guild.channels.forEach(channel => {
-            channel.overwritePermissions(Mute.id,{
+            channel.overwritePermissions(message.guild.members.get(Mute.id),{
                 SEND_MESSAGES: false
             });
          });
