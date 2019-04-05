@@ -1,4 +1,4 @@
-# PROJECT CHIKEN - The Discord Bot Made by clorox_bleach#0001 From Discord
+# PROJECT CHIKEN - The Discord Bot
 
 [![Chiken Logo](https://cdn.discordapp.com/attachments/481178520718934026/563101678404894765/21-Proud.png)](https://discord.gg/fGQTVek'chiken')
 
