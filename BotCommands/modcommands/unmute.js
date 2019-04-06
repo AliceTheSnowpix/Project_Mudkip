@@ -1,66 +1,57 @@
 const Discord = require('discord.js');
 
-exports.run = async (bot, message, args) => {
-    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Sorry you cant do that try again when mod");
-    if(args[0] == "help"){
-        message.reply("Usage: ;tempmute <user>");
-        return;
-    }
+exports.run = async(bot, message, args) => {
+    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Sorry you cant use this command because you do not have the manage messages permission");
   
     let Mute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!Mute) return message.reply("You need to give me someone to unmute or the person you said me is incorrect");
+    
+    let errorEmbed = new Discord.RichEmbed()
+    .setTitle('Incorect Command Usage')
+    .setColor('PURPLE')
+    .addField('Command usage', ';unmute <member name / mention> <reason optional>')
+    
+    if(!Mute) return message.reply(errorEmbed);
+    let arg = message.content.toLowerCase(); 
     let mreason = args.join(" ").slice(22);
-    if(Mute.hasPermission("MANAGE_MESSAGES")) return message.reply("Can't mute them!");
-    let muterole = message.guild.roles.find(a => a.name === "muted");
-    //start of create role
-    if(!muterole){
-      try{
-        muterole = await message.guild.createRole({
-          name: "muted",
-          color: "#000000",
-          permissions:[]
-        })
-        message.guild.channels.forEach(async (channel, id) => {
-          await channel.overwritePermissions(muterole, {
-            SEND_MESSAGES: false,
-            ADD_REACTIONS: false
-          });
+    
+    if(Mute.hasPermission("MANAGE_MESSAGES")) return message.reply("Can't unmute them!"); 
+    
+     message.guild.channels.forEach(channel => {
+        channel.overwritePermissions(message.guild.members.get(Mute.id),{
+            SEND_MESSAGES: true
         });
-      }catch(e){
-        console.log(e.stack);
-      }
-    }
-    if(!Mute.roles.has(muterole.id)) return message.reply("That person is not muted")
-    await(Mute.removeRole(muterole.id));
-    let unmutechan = message.guild.channels.find(b => b.name === "modlogs");
-    if(!unmutechan) return message.channel.send("Could not find modlogs channel");
-
+     });
+    
+    let mutechan = message.guild.channels.find(b => b.name === "modlogs");
+    if(!mutechan) return message.channel.send("Could not find modlogs channel");
     if(!mreason){
 
-      let unmuteembed2 = new Discord.RichEmbed()
-      .setAuthor(message.author.username)
-      .setColor('PURPLE')
-      .setThumbnail(Mute.user.avatarURL)
-      .setTimestamp(message.createdAt)
-      .setDescription(`<@${Mute.id}> has been unmuted`)
-      .addField("There was no reason given", "So maybe next time a reason will be given")
-
-      message.delete().catch(O_o=>{});
-      unmutechan.send(unmuteembed2);
-
-    }else{
-    let unmuteembed = new Discord.RichEmbed()
-    .setAuthor(`<@${message.author.username}>`)
+    let muteembed2 = new Discord.RichEmbed()
+    .setAuthor('Unmuted by' + message.author.username)
+    .addField('Unmuted in', message.channel.name)
     .setColor('PURPLE')
     .setThumbnail(Mute.user.avatarURL)
     .setTimestamp(message.createdAt)
     .setDescription(`<@${Mute.id}> has been unmuted`)
-    .addField("Reason", mreason);
+    .addField("There was no reason given", `so I don't know why <@${Mute.id}> was unmuted`)
 
     message.delete().catch(O_o=>{});
-    unmutechan.send(unmuteembed);
+    mutechan.send(muteembed2);
+
+  }else{
+    let muteembed = new Discord.RichEmbed()
+    .setAuthor('Muted by' + message.author.username)
+    .addField('Muted in', message.channel.name)
+    .setColor('PURPLE')
+    .setThumbnail(Mute.user.avatarURL)
+    .setTimestamp(message.createdAt)
+    .setDescription(`<@${Mute.id}> has been unmuted`)
+    .addField("Reason for unmute", mreason)
+
+    message.delete().catch(O_o=>{});
+    mutechan.send(muteembed);
     return;
-    }
+  }
 }
 
 exports.config = {
@@ -69,4 +60,4 @@ exports.config = {
 
 exports.help = {
     name: 'unmute'
-}
+};
