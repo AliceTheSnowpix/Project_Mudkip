@@ -2,9 +2,6 @@ const discord = require('discord.js');
 
 exports.run = async(bot, message, args) => {
 //#region help
-    const escapeRegex = str => str.replace(/[.*+?^{}()|[\]\\]/g, '\\$&');
-    const prefix = new RegExp(`^<@!?${bot.user.id}> |^${escapeRegex(';')}`);
-
     let arg = message.content.toLowerCase()
     
         if (arg === ';help' || arg === '<@460159835544092674> help') {
