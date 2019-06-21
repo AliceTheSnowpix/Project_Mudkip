@@ -3,7 +3,6 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const bot = new Discord.Client()
 const active = new Map();
-const app = express();
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
