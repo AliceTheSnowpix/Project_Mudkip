@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const bot = new Discord.Client()
 const active = new Map();
+const app = express();
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
@@ -41,6 +42,14 @@ bot.on('ready', () => {
     null
   ];
   console.log(`${bot.user.username} is now ready for action`);
+  /*bot.user.setPresence(
+    {
+      game: {
+        name: "my owner is live",
+        type: "STREAMING",
+        url: "https://twitch.tv/clorox_bleach6"
+      }
+    });*/
   setInterval(() => {
     const index = Math.floor(Math.random() * (activities_list.length - 1))
     bot.user.setActivity(activities_list[index], {type: "LISTENING"});
@@ -53,25 +62,22 @@ bot.on("message", async message => {
   let ops = {
     active: active
   };
-  let prefix = ';'
+  
   let bannedUsers = [];
   let dmembed = new Discord.RichEmbed()
     .setColor('RANDOM')
     .setTitle(message.author.username)
     .setAuthor(message.author.id)
     .setDescription(message.content)
-  if (!message.content.startsWith(prefix) && message.channel.type === 'dm'){
+  const escapeRegex = str => str.replace(/[.*+?^{}()|[\]\\]/g, '\\$&');
+  const prefix = new RegExp(`^<@!?${bot.user.id}> |^${escapeRegex(';')}`).exec(message.content);
+  if (!prefix && message.channel.type === 'dm') {
     bot.users.get('293148538886553602').send(dmembed)
-  }else if (!message.content.startsWith(prefix)) return;
-  let command = message.content.split(" ")[0].slice(prefix.length);
-  let args = message.content.split(" ").slice(1);
-  let cmd;
-  if (bot.commands.has(command)) {
-    cmd = bot.commands.get(command);
-  } else if (bot.aliases.has(command)) {
-    cmd = bot.commands.get(bot.aliases.get(command));
-  }
-
+  } else if (!prefix) return;
+  let messageArray = message.content.split(" ");
+  let command = messageArray[0]
+  const args = message.content.slice(prefix[0].length).trim().split(/ +/g);
+  let cmd = bot.commands.get(args.shift().toLowerCase()) || bot.commands.get(bot.aliases.get(command.slice(prefix[0].length).toLowerCase()));
   if (cmd) {
     cmd.run(bot, message, args, ops);
   }
