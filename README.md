@@ -1,11 +1,19 @@
 # PROJECT CHIKEN - The Discord Bot
 
-[![Chiken Logo](./Chicken_logo.png)](https://discord.gg/fGQTVek'chiken')
+[![Chiken Logo](https://cdn.glitch.com/bf162dca-e30f-44b1-9940-575d843abfa7%2Fdownload.png?v=1561042284807)](https://discord.gg/fGQTVek)
 
+* Project_chicken is a bot for discord made by me(clorox_bleach#0001) this is a multipurpose bot that has over 150 commands
 
+__the command categories are:__
 
-
-* This is for project chicken hosting on heroku! 
+1. main
+2. mod
+3. fun
+4. economy
+5. image
+6. music 
+7. and song
+* To see the command list use the ;help command
 
 * If you find any bugs or you have a suggestion use this [link](https://discord.gg/fGQTVek) to join the support server
 
