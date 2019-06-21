@@ -2,9 +2,12 @@ const discord = require('discord.js');
 
 exports.run = async(bot, message, args) => {
 //#region help
+    const escapeRegex = str => str.replace(/[.*+?^{}()|[\]\\]/g, '\\$&');
+    const prefix = new RegExp(`^<@!?${bot.user.id}> |^${escapeRegex(';')}`);
+
     let arg = message.content.toLowerCase()
     
-        if (arg === ';help') {
+        if (arg === ';help' || arg === '<@460159835544092674> help') {
         let pages = ['Help Menu', 'General Info', 'Trobleshooting']
         let page = 1;
         const helpembed = new discord.RichEmbed()
@@ -77,7 +80,7 @@ exports.run = async(bot, message, args) => {
         })
 //#endregion
 //#region main
-    }else if (arg === ';help main') {
+    }else if (arg === ';help main' || arg === '<@460159835544092674> help main') {
         let pages = ['Main Help Menu', 'Main Commands Descriptions']
         let page = 1;
         const mainembed = new discord.RichEmbed()
@@ -136,7 +139,7 @@ exports.run = async(bot, message, args) => {
         })
 //#endregion
 //#region mod
-    }else if (arg === ';help mod') {
+    }else if (arg === ';help mod' || arg === '<@460159835544092674> help mod') {
             let pages = ['Moderation Help Menu', 'Moderation Commands Descriptions']
             let page = 1;
             const modembed = new discord.RichEmbed()
@@ -195,7 +198,7 @@ exports.run = async(bot, message, args) => {
             })
 //#endregion
 //#region fun
-    }else if (arg === ';help fun') {
+    }else if (arg === ';help fun' || arg === '<@460159835544092674> help fun') {
         let pages = ['Fun Help Menu', 'Fun Commands Descriptions']
         let page = 1;
         const funembed = new discord.RichEmbed()
@@ -254,7 +257,7 @@ exports.run = async(bot, message, args) => {
         })
 //#endregion
 //#region economy
-    }else if (arg === ';help economy') {
+    }else if (arg === ';help economy' || arg === '<@460159835544092674> help economy') {
         let pages = ['Economy Help Menu', 'Economy Commands Descriptions']
         let page = 1;
         const ecoembed = new discord.RichEmbed()
@@ -313,7 +316,7 @@ exports.run = async(bot, message, args) => {
         })
 //#endregion
 //#region image
-    }else if (arg === ';help image') {
+    }else if (arg === ';help image' || arg === '<@460159835544092674> help image') {
         let pages = ['Image Help Menu', 'Image Commands Descriptions']
         let page = 1;
         const imageembed = new discord.RichEmbed()
@@ -372,7 +375,7 @@ exports.run = async(bot, message, args) => {
         })
 //#endregion
 //#region music
-    }else if (arg === ';help music') {
+    }else if (arg === ';help music' || arg === '<@460159835544092674> help music') {
         let pages = ['Music Help Menu', 'Music Commands Descriptions']
         let page = 1;
         const musicembed = new discord.RichEmbed()
@@ -431,7 +434,7 @@ exports.run = async(bot, message, args) => {
         })
 //#endregion
 //#region songs
-    }else if (arg === ';help songs') {
+    }else if (arg === ';help songs' || arg === '<@460159835544092674> help songs') {
         let pages = ['Song list 1', 'Song list 2', 'Song list 3']
         let page = 1;
         const songembed1 = new discord.RichEmbed()
@@ -510,5 +513,5 @@ exports.config = {
 }
 
 exports.help = {
-    name: 'help'
+    name: 'help',
 }
