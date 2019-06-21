@@ -4,8 +4,6 @@ const Discord = require('discord.js')
 exports.run = async (bot, message, args) => {
     let patUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!patUser) return message.channel.send("Could not find that user make sure you typed it in right and try again.");
-
-  try {
     let options = {
       url: 'http://api.giphy.com/v1/gifs/search',
       qs: {
@@ -27,11 +25,6 @@ let patembed = new Discord.RichEmbed()
 .setImage(response.data[Math.floor(Math.random() * response.data.length)].images.original.url)
     
       message.channel.send(patembed)
-    
-    }catch{(e) => {
-            bot.log.error(e);
-      };
-    }
 }
 
 exports.config = {
