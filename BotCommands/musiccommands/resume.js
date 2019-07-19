@@ -1,20 +1,13 @@
-exports.run = async(bot, message, args, ops) => {
-    let fetched = ops.active.get(message.guild.id);
-
-    if (!fetched) {
-        return message.reply("There is no music currently playing");
-    }
-    else if (message.guild.me.voiceChannelID !== message.member.voiceChannelID) {
-        return message.reply("Sorry you are not in the same voice channel as me");
-    }
-    else if (fetched.dispatcher.resumed) {
-        return message.reply("The music is already playing");
-    }
-    let queue = fetched.queue;
-    let resume = queue[0];
-
-    fetched.dispatcher.resume()
-    message.channel.send(`The song has been resumed`)
+exports.run = async(bot, message, args) => {
+  const queue = bot.queue;
+		const serverQueue = queue.get(message.guild.id);
+		if (serverQueue && !serverQueue.playing) {
+			serverQueue.playing = true;
+			serverQueue.connection.dispatcher.resume();
+			return message.channel.send('Resuming the music');
+		}
+		return message.channel.send('There is nothing to resume');
+	
 }
 
 exports.config = {
