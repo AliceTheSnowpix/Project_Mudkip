@@ -43,4 +43,3 @@ jobs:
 
       # run tests!
       - run: yarn start
-      - run: yarn show
