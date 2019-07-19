@@ -15,14 +15,7 @@ jobs:
       # - image: circleci/mongo:3.4.4
 
     working_directory: ~/repo
-    
-    # ffmpeg installation
-    - run:
-        sudo apt-get install software-properties-common
-        sudo add-apt-repository ppa:mc3man/trusty-media -y
-        sudo apt-get update
-        sudo apt-get install ffmpeg
-    
+ 
     steps:
       - checkout
 
@@ -33,6 +26,13 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+       # ffmpeg installation
+      - run: sudo apt-get install software-properties-common
+      - run: sudo add-apt-repository ppa:mc3man/trusty-media -y
+      - run: sudo apt-get update
+      - run: sudo apt-get install ffmpeg
+      
+      
       - run: yarn install
 
       - save_cache:
