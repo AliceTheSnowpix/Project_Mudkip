@@ -34,7 +34,7 @@ jobs:
       
       
       - run: yarn install
-      - run: yarn add --global pm2
+      - run: yarn global add pm2
 
       - save_cache:
           paths:
