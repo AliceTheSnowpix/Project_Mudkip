@@ -1,39 +1,38 @@
-exports.run = async(bot, message, args, ops) => {
-    let fetched = ops.active.get(message.guild.id);
+exports.run = async(bot, message, args) => {
+	const queue = bot.queue;
+	const serverQueue = queue.get(message.guild.id);
 
-    if (!fetched) {
-        return message.reply("There is no music currently playing");
+	
+		if (!message.member.voiceChannel) return message.channel.send('Please connect to the same voice channel as me to use this command.');
+		if (!serverQueue) return message.channel.send('There is nothing to skip');
+
+		if (message.member.voiceChannel.members.size === 2) {
+		  message.channel.send('Song skipped');
+			await serverQueue.connection.dispatcher.destroy();
+			return;
+		}
+    let voters = []
+    let skipnumber = 0
+    
+    if(message.member.voiceChannel.size === 3) {
+      skipnumber += 1;
+      voters += message.author.id;
+      message.channel.send(`${message.author.username} has voted to skip the current song ${skipnumber}/2 votes needed to skip`)
     }
-    else if (message.guild.me.voiceChannelID !== message.member.voiceChannelID) {
-        return message.reply("Sorry you are not in the same voice channel as me");
-    }
-
-    let usercount = message.member.voiceChannel.members.size;
-
-    let required = Math.ceil(usercount/2);
-
-    if (!fetched.queue[0].voteSkips) 
-    return fetched.queue[0].voteSkips = [];
-
-    if (fetched.queue[0].voteSkips.includes(message.member.id))
-        return message.reply(`Sorry You already vote to skip this song ${fetched.queue[0].voteSkips.length}/${required} votes required to skip`);
-        
-    fetched.queue[0].voteSkips.push(message.member.id);
-
-    ops.active.set(message.guild.id, fetched);
-
-    if (fetched.queue[0].voteSkips.length >= required) {
-        message.channel.send("The Song was skipped");
-        return fetched.dispatcher.emit('end')
-    }
-
-    message.reply(`You have voted to skip the song ${fetched.queue[0].voteSkips.length}/${required} votes required to skip`);
+      if(voters.forEach(voter => {
+        voter === message.author.id;
+      })) return message.channel.send('you have already voted');
+      if(skipnumber === 2) {
+        message.channel.send('song skiped')
+        await serverQueue.connection.dispatcher.destroy();
+        return;
+      }
 }
 
 exports.config = {
-    aliases: [ 'skip', 'vs', 'v' ]
+    aliases: [ 'voteskip', 's' ]
 };
 
 exports.help = {
-    name: 'voteskip',
+    name: 'skip',
 }
