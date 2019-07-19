@@ -8,7 +8,6 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.16.0
-      - image: jrottenberg/ffmpeg:3.3
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -16,7 +15,14 @@ jobs:
       # - image: circleci/mongo:3.4.4
 
     working_directory: ~/repo
-
+    
+    # ffmpeg installation
+    - run:
+        sudo apt-get install software-properties-common
+        sudo add-apt-repository ppa:mc3man/trusty-media -y
+        sudo apt-get update
+        sudo apt-get install ffmpeg
+    
     steps:
       - checkout
 
