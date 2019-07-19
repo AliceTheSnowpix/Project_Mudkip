@@ -5,7 +5,8 @@
   "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "pm2 start bot.js"
+    "start": "pm2 start bot.js",
+    "list": "pm2 list"
   },
   "engines": {
     "node": "8.x",
