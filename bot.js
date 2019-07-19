@@ -5,6 +5,8 @@ const bot = new Discord.Client()
 const active = new Map();
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
+bot.queue = new Map();
+bot.skipvote = new Map();
 
 bot.logger = require("./Modules/logger.js");
 require("./Modules/functions.js")(bot);
