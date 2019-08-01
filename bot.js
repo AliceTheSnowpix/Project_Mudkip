@@ -2,8 +2,6 @@ process.on('unhandledRejection', console.error)
 const Discord = require('discord.js');
 const fs = require('fs');
 const bot = new Discord.Client()
-const express = require('express');
-const app = express();
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 bot.queue = new Map();
@@ -50,16 +48,3 @@ require('dotenv').config();
 let token = process.env.TOKEN;
 
 bot.login(token);
-
-try {
-  app.use(express.static('public'));
-  app.get('/', function(request, response) {
-    response.sendFile(__dirname + '/public/index.html');
-  });
-  
-  const listener = app.listen(3000, function() {
-    console.log('Your app is listening on port ' + listener.address().port);
-  });
-} catch (error) {
-  console.log(error) 
-}
