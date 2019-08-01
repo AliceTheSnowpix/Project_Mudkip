@@ -26,6 +26,15 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+<<<<<<< HEAD
+=======
+       # ffmpeg installation
+      - run: sudo apt-get install software-properties-common
+      - run: sudo apt-get update
+      - run: sudo apt-get install graphicsmagick
+      - run: sudo apt-get install ffmpeg
+      
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
       - run: yarn install
 
       - save_cache:
@@ -34,4 +43,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
+<<<<<<< HEAD
       - run: yarn start
+=======
+      - run: watch -n 500 date
+      - run: yarn start
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d

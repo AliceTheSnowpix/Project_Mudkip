@@ -11,6 +11,11 @@ exports.config = {
 }
 
 exports.help = {
+<<<<<<< HEAD
   name: 'forceskip',
   aliases: ['s']
 }
+=======
+  name: 'forceskip'
+}
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d

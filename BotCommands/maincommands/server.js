@@ -1,7 +1,11 @@
 const Discord = require('discord.js');
 
 exports.run = async (bot, message, args) => {
+<<<<<<< HEAD
     if(message.channel.type === 'dm') return message.channel.send('This command only works in server.');
+=======
+
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
     let serverembed = new Discord.RichEmbed()
 
     let verifLevels = ["None", "Low", "Medium", "(╯°□°）╯︵  ┻━┻", "┻━┻ミヽ(ಠ益ಠ)ノ彡┻━┻"];
@@ -45,6 +49,10 @@ exports.config = {
 };
 
 exports.help = {
+<<<<<<< HEAD
   name: "server",
   aliases: [ 'serverinfo', 'server-info' ]
+=======
+    name: "server"
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
 }

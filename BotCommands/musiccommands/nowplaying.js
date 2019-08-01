@@ -12,6 +12,11 @@ exports.config = {
 };
 
 exports.help = {
+<<<<<<< HEAD
   name: 'nowplaying',
   aliases: ['np']
 }
+=======
+    name: 'nowplaying'
+}
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 exports.run = async(bot, message, args,) => {
+=======
+exports.run = (bot, message, args,) => {
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
     const Discord = require('discord.js')
     const request = require("request")
     const cheerio = require('cheerio');
@@ -58,4 +62,8 @@ exports.config = {
 
 exports.help = {
     name: 'google'
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d

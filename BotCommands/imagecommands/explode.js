@@ -10,7 +10,11 @@ exports.run = async (bot, message, args) => { // eslint-disable-line no-unused-v
   });
   if (image !== undefined) {
     message.channel.startTyping();
+<<<<<<< HEAD
     gm(request(image)).implode([-1]).strip().stream((error, stdout) => {
+=======
+    gm(request(image)).implode([-2]).strip().stream((error, stdout) => {
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
       if (error) throw new Error(error);
       message.channel.stopTyping();
       message.channel.send({

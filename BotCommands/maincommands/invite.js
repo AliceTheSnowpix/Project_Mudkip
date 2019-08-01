@@ -14,7 +14,12 @@ exports.config = {
     aliases: [  ]
 };
 
+<<<<<<< HEAD
 exports.help = {
   name: "invite",
   aliases: ['inv']
+=======
+module.exports.help = {
+    name: "invite"
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
 }

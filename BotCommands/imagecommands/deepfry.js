@@ -27,7 +27,12 @@ exports.config = {
     aliases: [ 'df' ]
 };
 
+<<<<<<< HEAD
 exports.help = {
   name: "deepfry",
   aliases: ['df']
+=======
+module.exports.help = {
+    name: "deepfry"
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
 }

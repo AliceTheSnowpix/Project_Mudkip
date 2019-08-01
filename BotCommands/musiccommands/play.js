@@ -4,12 +4,17 @@ require('moment-duration-format');
 const { Util } = require('discord.js');
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
+<<<<<<< HEAD
 const db = require('quick.db');
 require('dotenv').config();
 const youtube = new YouTube(process.env.YOUTUBE);
 const songloop = new db.table('SONGLOOP');
 const queueloop = new db.table('QUEUELOOP');
 const noloop = new db.table('NOLOOP');
+=======
+require('dotenv').config();
+const youtube = new YouTube(process.env.YOUTUBE);
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
 
 exports.run = async(bot, message, args) => {
   const queue = bot.queue;
@@ -23,12 +28,15 @@ exports.run = async(bot, message, args) => {
   
   async function play(guild, song) {
 		const serverQueue = await queue.get(message.guild.id);
+<<<<<<< HEAD
     let sloop = await songloop.fetch(`song_${message.guild.id}`);
     let qloop = await queueloop.fetch(`queue_${message.guild.id}`);
     let off = await noloop.fetch(`noloop_${message.guild.id}`);
     if (sloop === null) songloop.set(`song_${message.guild.id}`, false);
     if (qloop === null) queueloop.set(`queue_${message.guild.id}`, false);
     if (off === null) noloop.set(`noloop_${message.guild.id}`, false);
+=======
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
 		if (!song) {
 			await voiceChannel.leave();
 			await queue.delete(message.guild.id);
@@ -40,6 +48,7 @@ exports.run = async(bot, message, args) => {
     });
 		const dispatcher = await serverQueue.connection.playStream(stream)
 			.on('end', async reason => {
+<<<<<<< HEAD
         if (sloop === true) {
           serverQueue.songs.push(serverQueue.songs[0]);
           serverQueue.songs.pop();
@@ -50,6 +59,14 @@ exports.run = async(bot, message, args) => {
 			})
 			.on('error', error => console.error(error));
   
+=======
+				if (reason === 'Stream is not generating quickly enough.');
+				serverQueue.songs.shift('Stream is not generating quickly enough');
+			  await play(guild, serverQueue.songs[0]);
+			})
+			.on('error', error => console.error(error));
+
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
 		const duration = song.duration;
 		const published = song.publishedat;
 		const embed = new discord.RichEmbed()
@@ -216,7 +233,17 @@ exports.run = async(bot, message, args) => {
   handleVideo(video, false);
 }
 
+<<<<<<< HEAD
 exports.help = {
   name: 'play',
   aliases: ['p']
 }
+=======
+exports.config = {
+  aliases: [ 'p' ]
+};
+
+exports.help = {
+  name: 'play'
+}
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d

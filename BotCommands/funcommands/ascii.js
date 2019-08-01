@@ -18,6 +18,13 @@ exports.run = async(bot, message, args) => {
     });
 }
 
+<<<<<<< HEAD
+=======
+exports.config = {
+    aliases: [  ]
+};
+
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
 exports.help = {
     name: 'ascii'
 }

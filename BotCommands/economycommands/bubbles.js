@@ -26,10 +26,22 @@ if(!userbub){
     .addField(`has popped`, `${memberbubbles} bubbles`)
 
     message.channel.send(membubebed)
+<<<<<<< HEAD
   }
 }
 
 exports.help = {
   name: 'bubbles',
   aliases: ['bubs']
+=======
+}
+}
+
+exports.config = {
+    aliases: [ 'bubs' ]
+};
+
+exports.help = {
+    name: 'bubbles'
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
 }

@@ -18,7 +18,16 @@ exports.run = async (bot, message, args) => {
 
 };
 
+<<<<<<< HEAD
 exports.help = {
   name: 'achievement',
   aliases: ['achiev']
+=======
+exports.config = {
+  aliases: [ 'achiev', 'get' ]
+};
+
+exports.help = {
+  name: 'achievement'
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
 };

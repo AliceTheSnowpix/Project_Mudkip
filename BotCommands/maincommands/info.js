@@ -66,6 +66,11 @@ exports.config = {
 };
 
 exports.help = {
+<<<<<<< HEAD
   name: "info",
   aliases: [ 'botinfo', 'bot-info' ]
 }
+=======
+  name: "info"   
+}
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
