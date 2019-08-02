@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 exports.run = async (bot, message, args) => {
+=======
+<<<<<<< HEAD
+exports.run = async (bot, message, args) => {
+=======
+module.exports.run = async (bot, message, args) => {
+>>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
+>>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097
     if(args[0] == "help"){
         message.reply("Usage: ;number <lowest number> <highest number>");
         return;

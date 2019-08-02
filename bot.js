@@ -2,6 +2,10 @@ process.on('unhandledRejection', console.error)
 const Discord = require('discord.js');
 const fs = require('fs');
 const bot = new Discord.Client()
+<<<<<<< HEAD
+=======
+const active = new Map();
+>>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 bot.queue = new Map();
