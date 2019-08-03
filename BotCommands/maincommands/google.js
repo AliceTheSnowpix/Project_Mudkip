@@ -1,12 +1,4 @@
-<<<<<<< HEAD
 exports.run = async(bot, message, args,) => {
-=======
-<<<<<<< HEAD
-exports.run = async(bot, message, args,) => {
-=======
-exports.run = (bot, message, args,) => {
->>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
->>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097
     const Discord = require('discord.js')
     const request = require("request")
     const cheerio = require('cheerio');
@@ -54,24 +46,8 @@ exports.run = (bot, message, args,) => {
                 .setColor('RANDOM')
   
                 message.channel.send(googembed)
-      }))
-      //.catch(message.channel.send("Shade `Error` - An error occured. Your search returned too many results or did not return any.!")
-      .catch(console.log)
-      //.then(m => m.react("❎"));
+      })).catch(console.error)
   }
-
-exports.config = {
-    aliases: [  ]
-};
-
 exports.help = {
     name: 'google'
-<<<<<<< HEAD
 }
-=======
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
->>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097

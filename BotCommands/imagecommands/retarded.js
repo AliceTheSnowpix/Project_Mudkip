@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097
 const Jimp = require('jimp');
 
 exports.run =  async(bot, message, args) => {
@@ -30,56 +26,9 @@ exports.run =  async(bot, message, args) => {
             message.channel.stopTyping();
         });
     });
-};
-
-exports.config = {
-    aliases: [ 'dogsay' ]
 };
   
 exports.help = {
   name: "retarded",
   aliases: ['dogsay']
-<<<<<<< HEAD
 };
-=======
-};
-=======
-const Jimp = require('jimp');
-
-exports.run =  async(bot, message, args) => {
-    message.channel.startTyping();
-    var imgPath = "./BotCommands/assets/images/dog.png";
-    var img;
-    var text = "hello there :^D";
-
-    // TODO remove default message
-    if(args.length >= 1){
-        //args.shift();
-        text = args.join(" ");
-    }
-
-    Jimp.read(imgPath).then((image) => {
-        img = image;
-        return Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
-    }).then((font) => {
-        img.print(font, 350, 25, text, 280).write("./BotCommands/assets/images/img01.png", () => {
-            message.channel.send({
-                files: [{
-                    attachment: "./BotCommands/assets/images/img01.png",
-                    name: "dog.png"
-                }]
-            });
-            message.channel.stopTyping();
-        });
-    });
-};
-
-exports.config = {
-    aliases: [ 'dogsay' ]
-  };
-  
-  exports.help = {
-      name: "retarded",
-  };
->>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
->>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097

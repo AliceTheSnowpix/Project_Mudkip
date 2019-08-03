@@ -1,8 +1,4 @@
 const discord = require('discord.js');
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097
 const db = require('quick.db');
 const prefixes = new db.table('PREFIXES');
 
@@ -17,17 +13,6 @@ exports.run = async(bot, message, args) => {
   let arg = message.content.slice(prefix.length).split(' ').slice(1, 2).join(' ');
     
         if (!arg) {
-<<<<<<< HEAD
-=======
-=======
-
-exports.run = async(bot, message, args) => {
-//#region help
-    let arg = message.content.toLowerCase()
-    
-        if (arg === ';help' || arg === '<@460159835544092674> help') {
->>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
->>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097
         let pages = ['Help Menu', 'General Info', 'Trobleshooting']
         let page = 1;
         const helpembed = new discord.RichEmbed()
@@ -100,15 +85,7 @@ exports.run = async(bot, message, args) => {
         })
 //#endregion
 //#region main
-<<<<<<< HEAD
     }else if (arg === 'main') {
-=======
-<<<<<<< HEAD
-    }else if (arg === 'main') {
-=======
-    }else if (arg === ';help main' || arg === '<@460159835544092674> help main') {
->>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
->>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097
         let pages = ['Main Help Menu', 'Main Commands Descriptions']
         let page = 1;
         const mainembed = new discord.RichEmbed()
@@ -167,15 +144,7 @@ exports.run = async(bot, message, args) => {
         })
 //#endregion
 //#region mod
-<<<<<<< HEAD
     }else if (arg === 'mod') {
-=======
-<<<<<<< HEAD
-    }else if (arg === 'mod') {
-=======
-    }else if (arg === ';help mod' || arg === '<@460159835544092674> help mod') {
->>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
->>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097
             let pages = ['Moderation Help Menu', 'Moderation Commands Descriptions']
             let page = 1;
             const modembed = new discord.RichEmbed()
@@ -234,15 +203,7 @@ exports.run = async(bot, message, args) => {
             })
 //#endregion
 //#region fun
-<<<<<<< HEAD
     }else if (arg === 'fun') {
-=======
-<<<<<<< HEAD
-    }else if (arg === 'fun') {
-=======
-    }else if (arg === ';help fun' || arg === '<@460159835544092674> help fun') {
->>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
->>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097
         let pages = ['Fun Help Menu', 'Fun Commands Descriptions']
         let page = 1;
         const funembed = new discord.RichEmbed()
@@ -301,15 +262,7 @@ exports.run = async(bot, message, args) => {
         })
 //#endregion
 //#region economy
-<<<<<<< HEAD
     }else if (arg === 'economy') {
-=======
-<<<<<<< HEAD
-    }else if (arg === 'economy') {
-=======
-    }else if (arg === ';help economy' || arg === '<@460159835544092674> help economy') {
->>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
->>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097
         let pages = ['Economy Help Menu', 'Economy Commands Descriptions']
         let page = 1;
         const ecoembed = new discord.RichEmbed()
@@ -368,15 +321,7 @@ exports.run = async(bot, message, args) => {
         })
 //#endregion
 //#region image
-<<<<<<< HEAD
     }else if (arg === 'image') {
-=======
-<<<<<<< HEAD
-    }else if (arg === 'image') {
-=======
-    }else if (arg === ';help image' || arg === '<@460159835544092674> help image') {
->>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
->>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097
         let pages = ['Image Help Menu', 'Image Commands Descriptions']
         let page = 1;
         const imageembed = new discord.RichEmbed()
@@ -435,15 +380,7 @@ exports.run = async(bot, message, args) => {
         })
 //#endregion
 //#region music
-<<<<<<< HEAD
     }else if (arg === 'music') {
-=======
-<<<<<<< HEAD
-    }else if (arg === 'music') {
-=======
-    }else if (arg === ';help music' || arg === '<@460159835544092674> help music') {
->>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
->>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097
         let pages = ['Music Help Menu', 'Music Commands Descriptions']
         let page = 1;
         const musicembed = new discord.RichEmbed()
@@ -502,15 +439,7 @@ exports.run = async(bot, message, args) => {
         })
 //#endregion
 //#region songs
-<<<<<<< HEAD
     }else if (arg === 'songs') {
-=======
-<<<<<<< HEAD
-    }else if (arg === 'songs') {
-=======
-    }else if (arg === ';help songs' || arg === '<@460159835544092674> help songs') {
->>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
->>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097
         let pages = ['Song list 1', 'Song list 2', 'Song list 3']
         let page = 1;
         const songembed1 = new discord.RichEmbed()
@@ -584,9 +513,6 @@ exports.run = async(bot, message, args) => {
 //})
 }
 //#endregion
-exports.config = {
-    aliases: [ ]
-}
 
 exports.help = {
     name: 'help',

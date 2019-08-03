@@ -1,14 +1,7 @@
 const Discord = require('discord.js');
 
-module.exports.run = async (bot, message, args) => {
-<<<<<<< HEAD
+exports.run = async (bot, message, args) => {
     if(message.channel.type === 'dm') return message.channel.send('This command only works in server.');
-=======
-<<<<<<< HEAD
-    if(message.channel.type === 'dm') return message.channel.send('This command only works in server.');
-=======
->>>>>>> 779372288cd06adf21a119e075ee5e547d47f19d
->>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097
     let roles = message.guild.roles.filter(r => r.position !== 0).map(r => `${r.name} - ${r.id}`).map((r, i) => `${i + 1}. ${r}`);
   
     let noOfPages = roles.length / 25;
@@ -25,10 +18,6 @@ module.exports.run = async (bot, message, args) => {
 
 }
 
-module.exports.config = {
-    aliases: []
-  };
-
-module.exports.help = {
+exports.help = {
     name: "roles",
 }

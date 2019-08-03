@@ -217,13 +217,6 @@ exports.run = async(bot, message, args) => {
         }
     }
 
-<<<<<<< HEAD
-=======
-exports.config = {
-    aliases: []   
-}
-
->>>>>>> a8a758acb5f7a35ce41be20563fc51553fc40097
 exports.help = {
     name: 'buy'
  }

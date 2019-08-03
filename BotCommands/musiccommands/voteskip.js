@@ -29,10 +29,6 @@ exports.run = async(bot, message, args) => {
       }
 }
 
-exports.config = {
-    aliases: [ 'voteskip', 's' ]
-};
-
 exports.help = {
     name: 'skip',
 }
