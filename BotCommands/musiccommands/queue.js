@@ -7,13 +7,13 @@ exports.run = async(bot, message, args) => {
 	const nowplaying = serverQueue.songs[0].title;
 	const songqueue = serverQueue.songs[0].title;
 	const queueEmbed = new discord.RichEmbed()
-		.setColor('#009696')
+	.setColor('#009696')
     .setTitle(`Current song: ${nowplaying}`)
-		.setDescription(`${serverQueue.songs.slice(1, 16).map(song => `**${serverQueue.songs.indexOf(song)}** ${song.title}`).join('\n')}`)
-  message.channel.send(queueEmbed).then(msg => {
-    if (serverQueue.songs.length > 15) {
-		  const reaction1 = msg.react('◀');
-		  const reaction2 = msg.react('▶');
+	.setDescription(`${serverQueue.songs.slice(1, 16).map(song => `**${serverQueue.songs.indexOf(song)}** ${song.title}`).join('\n')}`)
+  	message.channel.send(queueEmbed).then(async msg => {
+    	if (serverQueue.songs.length > 15) {
+		  const reaction1 = await msg.react('614293189825789972');
+		  const reaction2 = await msg.react('614293189720801290');
 		  let first = 1;
 		  let second = 16;
 
@@ -24,26 +24,26 @@ exports.run = async(bot, message, args) => {
 			  const reactionadd = serverQueue.songs.slice(first + 15, second + 15).length;
 			  const reactionremove = serverQueue.songs.slice(first - 15, second - 15).length;
 
-			  if (r.emoji.name === '▶' && reactionadd !== 0) {
-				  r.remove(message.author.id);
-				  first += 15;
-				  second += 15;
+			  if (r.emoji.name === 'Arrow_Right' && reactionadd !== 0) {
+				  	r.remove(message.author.id);
+				  	first += 15;
+					second += 15;
           
-				   const newEmbed = new discord.RichEmbed()
-					.setColor('#009696')
-					.setTitle(`Current song: ${nowplaying}`)
-				  .setDescription(`${serverQueue.songs.slice(first, second).map(song => `**${serverQueue.songs.indexOf(song)}** ${song.title}`).join('\n')}`);
-          msg.edit(newEmbed);
-			  } else if (r.emoji.name === '◀' && reactionremove !== 0) {
+					const newEmbed = new discord.RichEmbed()
+				   	.setColor('#009696')
+				   	.setTitle(`Current song: ${nowplaying}`)
+					.setDescription(`${serverQueue.songs.slice(first, second).map(song => `**${serverQueue.songs.indexOf(song)}** ${song.title}`).join('\n')}`);
+          	msg.edit(newEmbed);
+			  } else if (r.emoji.name === 'Arrow_Left' && reactionremove !== 0) {
 				  r.remove(message.author.id);
 				  first -= 15;
 				  second -= 15;
 
-				  const newEmbed = new discord.RichEmbed()
-					.setColor('#009696')
-          .setTitle(`Current song: ${nowplaying}`)
-				  .setDescription(`${serverQueue.songs.slice(first, second).map(song => `**${serverQueue.songs.indexOf(song)}** ${song.title}`).join('\n')}`);
-				  msg.edit(newEmbed);
+				const newEmbed = new discord.RichEmbed()
+				.setColor('#009696')
+				.setTitle(`Current song: ${nowplaying}`)
+				.setDescription(`${serverQueue.songs.slice(first, second).map(song => `**${serverQueue.songs.indexOf(song)}** ${song.title}`).join('\n')}`);
+				msg.edit(newEmbed);
 			  }
 		  });
 	    collector.on('end', () => {

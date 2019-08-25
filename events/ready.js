@@ -1,7 +1,7 @@
-const db = require('quick.db');
-const prefixes = new db.table('PREFIXES');
-
 module.exports = bot => {
+    bot.guilds.forEach(guild => {
+        guild.fetchMembers();
+    });
   const activities_list = [
     `;help commands`,
     `${bot.users.size} users`,

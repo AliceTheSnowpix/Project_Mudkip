@@ -1,9 +1,10 @@
 const Discord = require("discord.js");
 const ms = require("ms");
+const db = require('quick.db');
+const logchannel = new db.table('LOGCHANNEL');
+const modrole = new db.table('MODROLE');
 
-module.exports.run = async (bot, message, args) => {
-
-
+exports.run = async (bot, message, args) => {
   if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Sorry you cant do that try again when mod");
   if(args[0] == "help"){
       message.reply("Usage: ;tempmute <user> <time>");
@@ -14,7 +15,6 @@ module.exports.run = async (bot, message, args) => {
   if(!toMute) return message.reply("You need to give me someone to mute or the person you said me is incorrect");
   if(toMute.hasPermission("MANAGE_MESSAGES")) return message.reply("Can't mute them!");
   let muterole = message.guild.roles.find(`name`, "muted");
-  //start of create role
   if(!muterole){
     try{
       muterole = await message.guild.createRole({
@@ -32,7 +32,6 @@ module.exports.run = async (bot, message, args) => {
       console.log(e.stack);
     }
   }
-  //end of create role
   let mutetime = args[1];
   if(!mutetime) return message.reply("Please give me a time");
 
@@ -43,15 +42,8 @@ module.exports.run = async (bot, message, args) => {
     toMute.removeRole(muterole.id);
     message.channel.send(`<@${toMute.id}> has been unmuted!`);
   }, ms(mutetime));
-
-
-//end of module
 }
 
-exports.config = {
-  aliases: [  ]
-};
-
-module.exports.help = {
+exports.help = {
   name: "tempmute"
 }

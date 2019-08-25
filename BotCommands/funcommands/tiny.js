@@ -1,15 +1,14 @@
 const mappings = (function (object) {
     let output = [];
-
     for (let key in object) {
         output.push({
             regex: new RegExp(key, 'ig'),
             replacement: object[key]
         });
     }
-
     return output;
-})({
+});
+({
     a: '\u1D00',
     b: '\u0299',
     c: '\u1D04',
@@ -38,23 +37,13 @@ const mappings = (function (object) {
     z: '\u1D22'
 });
 
-exports.run = async (bot, msg, args) => {
+exports.run = async (bot, message, args) => {
     if (args.length < 1) {
-        return msg.reply('**You must provide some text to shrink!**');
+        return message.reply('**You must provide some text to shrink!**');
     }
-  if(!msg.guild.member(bot.user).hasPermission("MANAGE_MESSAGES")){
-    return msg.reply(":x: " + "| i need the \"MANAGE_MESSAGES\" permission!").catch(console.error);
-  }
-
     let output = args.join(' ');
     mappings.forEach(replacer => output = output.replace(replacer.regex, replacer.replacement));
-
-    await msg.delete().catch();
-    msg.channel.send(output);
-};
-
-exports.config = {
-    aliases: [  ]
+    message.channel.send(output);
 };
 
 exports.help = {

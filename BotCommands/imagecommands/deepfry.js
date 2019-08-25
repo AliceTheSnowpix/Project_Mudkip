@@ -3,16 +3,14 @@ const gm = require("@tohru/gm").subClass({
   imageMagick: true
 });
 
-exports.run = async (bot, message, args) => { // eslint-disable-line no-unused-vars
+exports.run = async (bot, message, args) => {
   const image = await bot.getImage(message).catch(error => {
     message.reply("you need to provide an image to deep fry!");
     console.log(error);
   });
   if (image !== undefined) {
-    message.channel.startTyping();
     gm(request(image)).colorspace("RGB").out("-brightness-contrast", "30x50").setFormat("jpg").quality(1).stream((error, stdout) => {
       if (error) throw new Error(error);
-      message.channel.stopTyping();
       message.channel.send({
         files: [{
           attachment: stdout,
@@ -21,9 +19,9 @@ exports.run = async (bot, message, args) => { // eslint-disable-line no-unused-v
       });
     });
   }
-};
+}
 
 exports.help = {
   name: "deepfry",
   aliases: ['df']
-};
+}

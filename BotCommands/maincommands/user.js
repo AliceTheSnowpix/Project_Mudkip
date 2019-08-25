@@ -1,7 +1,6 @@
-const Discord = require('discord.js');
-
 exports.run = async (bot, message, args) => {
-  if(message.channel.type === 'dm') {
+  const Discord = bot.discord;
+  if (message.channel.type === 'dm') {
     let userEmbed = new Discord.RichEmbed()
     .setAuthor(message.author.username)
     .setThumbnail(message.author.avatarURL)
@@ -16,7 +15,7 @@ exports.run = async (bot, message, args) => {
   }
   let memberInfo = message.mentions.members.first();
 
-  if(!memberInfo){
+  if (!memberInfo) {
     let role = message.member.highestRole;
     let userinfo = new Discord.RichEmbed()
     .setAuthor(message.author.username)
@@ -31,10 +30,9 @@ exports.run = async (bot, message, args) => {
     .addField('Joined Discord At:', message.author.createdAt, true)
     .addField('Joined Server At:', message.member.joinedAt, true)
     .addField('Roles:', message.member.roles.filter(r => "<@" + r.id + ">").array().join(' | '), true)
-
     message.channel.send(userinfo);
 
-  }else{
+  } else {
     let role = memberInfo.highestRole;
     let memberinfo = new Discord.RichEmbed()
     .setAuthor(memberInfo.displayName)
@@ -49,7 +47,6 @@ exports.run = async (bot, message, args) => {
     .addField("Joined Discord At:", memberInfo.user.createdAt, true)
     .addField('Joined Server At:', memberInfo.joinedAt, true)
     .addField('Roles:', memberInfo.roles.filter(r => "<@" + r.id + ">").array().join(' | '), true)
-
     message.channel.send(memberinfo);
   }
 }

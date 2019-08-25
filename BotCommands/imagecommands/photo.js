@@ -1,15 +1,13 @@
-const Discord = require('discord.js');
+const fetch = require('snekfetch');
 
-const cooldown = new Set();
-exports.run = function (client, message) {
-    const fetch = require('snekfetch');
+exports.run = function (bot, message) {
+    const Discord = bot.discord;
     fetch.get('http://www.splashbase.co/api/v1/images/random').then(photo => {
         const embed = new Discord.RichEmbed()
         .setColor('#01FF6D')
         .setTitle("Random Photo :frame_photo:")
-    .setImage(`${photo.body.url}`);
-        message.channel.send({embed})
-    .catch(e => logger.error(e));
+        .setImage(`${photo.body.url}`);
+        message.channel.send(embed)
     }).catch(err => {
         if (err) {
             message.channel.send('OOPS... something went wrong');
@@ -17,9 +15,6 @@ exports.run = function (client, message) {
     });
 };
 
-exports.config = {
-    aliases: [  ]
-};
-module.exports.help = {
+exports.help = {
     name: 'photo'
 };

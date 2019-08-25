@@ -1,7 +1,7 @@
 const ownerID = '293148538886553602'
 exports.run = async (bot, message) => {
     if (message.author.id != ownerID) return message.channel.send("Bot Owner Only");
-    let Table = require(`cli-table`);
+    let Table = require('cli-table');
     let table = new Table({
         head: [
             `ID`,

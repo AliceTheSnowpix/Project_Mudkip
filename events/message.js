@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const db = require('quick.db');
+const fs = require('fs')
 const blacklist = [];
 
 module.exports = async(bot, message) => {
@@ -36,7 +37,7 @@ module.exports = async(bot, message) => {
     if (!message.content.toLowerCase().startsWith(prefix1.toLowerCase())) return;
     const args = message.content.slice(prefix1.length).trim().split(/ +/g);
     let cmd = args.shift().toLowerCase();
-    let command = bot.commands.get(cmd)
+    let command = bot.commands.get(cmd);
     let aliase = bot.aliases.get(cmd);
     if (command) command.run(bot, message, args);
     if (aliase) aliase.run(bot, message, args);

@@ -11,13 +11,12 @@ const modrole = new db.table('MODROLE');
 
 exports.run = async(bot, message, args) => {
   if (message.channel.type === 'dm') return message.channel.send('This commamd only works in servers.');
-  if(!message.member.hasPermission('ADMINISTRATOR') || !bot.users.get('293148538886553602').id) return message.reply('You need to have administrator permission in order to use this command')
+  if(message.author.id !== '293148538886553602' && !message.member.hasPermission('ADMINISTRATOR')) return message.reply('You need to have administrator permission in order to use this command')
   let prefix = await prefixes.fetch(`prefix_${message.guild.id}`);
   if (!prefix) {
     prefixes.set(`prefix_${message.guild.id}`, ';');
     prefix = ';';
   }
-  
   let cmd = message.content.slice(prefix.length).toLowerCase().split(' ').slice(1, 2).join(' ');
   if (!cmd || cmd === 'help') {
     let helpembed = new discord.RichEmbed()
@@ -45,13 +44,9 @@ exports.run = async(bot, message, args) => {
       prefixes.set(`prefix_${message.guild.id}`, ';');
       return message.channel.send('The prefix has been reset to my default prefix')
     }
-    prefixes.fetch(`prefix_${message.guild.id}`).then(i => {
-      if (i === null || i === NaN) {
-        prefixes.set(`prefix_${message.guild.id}`, args[1])
-      } else {
-        prefixes.set(`prefix_${message.guild.id}`, args[1])
-      }
-    });
+    const prefix = await prefixes.fetch(`prefix_${message.guild.id}`);
+    if (!prefix || prefix === null || prefix === undefined) prefixes.set(`prefix_${message.guild.id}`, args[1]);
+    else prefixes.set(`prefix_${message.guild.id}`, args[1]);
     message.channel.send(`I have changed my prefix to ${args[1]}`)
   }
   
@@ -87,13 +82,13 @@ exports.run = async(bot, message, args) => {
   if (cmd === 'logchannel') {
     let channel = message.mentions.channels.first() || message.guild.channels.find(c => c.name.toLowerCase().includes(message.content.slice(prefix.length).slice(2)) && c.type == "text");
     let defaultchannel = message.guild.channels.find(b => b.name === "modlogs");
-    if (!channel || !defaultchannel) {
+    if (!channel && !defaultchannel) {
       logchannel.set(`logchannel_${message.guild.id}`, 'not set ');
       return message.channel.send('Please specify the channel you want for moderation messages or create a channel called modlogs.')
     }
     
-    const mc = logchannel.fetch(`logchannel_${message.guild.id}`);
-    if (!mc) logchannel.set(`logchannel_${message.guild.id}`, channel.id);
+    const lc = logchannel.fetch(`logchannel_${message.guild.id}`);
+    if (!lc) logchannel.set(`logchannel_${message.guild.id}`, channel.id);
     else logchannel.set(`logchannel_${message.guild.id}`, channel.id);
     message.channel.send(`The log channel has been set to <#${channel.id}>`)
   }
@@ -104,10 +99,9 @@ exports.run = async(bot, message, args) => {
       return message.channel.send('Please specify what you want the welcome message to be.');
     }
     
-    welcomemessage.fetch(`welcomemessage_${message.guild.id}`).then(i => {
-      if (i === null || i === NaN) welcomemessage.set(`welcomemessage_${message.guild.id}`, args.slice(1).join(' '));
-      else welcomemessage.set(`welcomemessage_${message.guild.id}`, args.slice(1).join(' '))
-    });
+    const wm = await welcomemessage.fetch(`welcomemessage_${message.guild.id}`)
+    if (wm === null || wm === undefined) welcomemessage.set(`welcomemessage_${message.guild.id}`, args.slice(1).join(' '));
+    else welcomemessage.set(`welcomemessage_${message.guild.id}`, args.slice(1).join(' '))
     message.channel.send(`The welcome message has been set to ${args.slice(1).join(' ')}`)
   }
   
@@ -117,10 +111,9 @@ exports.run = async(bot, message, args) => {
       return message.channel.send('Please specify what you want the leave message to be');
     }
     
-    leavemessage.fetch(`leavemessage_${message.guild.id}`).then(i => {
-      if (i === null || i === NaN) leavemessage.set(`leavemessage_${message.guild.id}`, args.slice(1).join(' '));
-      else leavemessage.set(`leavemessage_${message.guild.id}`, args.slice(1).join(' '));
-    });
+    const lm = await leavemessage.fetch(`leavemessage_${message.guild.id}`)
+    if (lm === null || lm === undefined) leavemessage.set(`leavemessage_${message.guild.id}`, args.slice(1).join(' '));
+    else leavemessage.set(`leavemessage_${message.guild.id}`, args.slice(1).join(' '));
     message.channel.send(`The leave message has been set to ${args.slice(1).join(' ')}`)
   }
   
@@ -148,7 +141,7 @@ exports.run = async(bot, message, args) => {
   
   if (cmd === 'modrole') {
     let role = args.slice(1).join(' ');
-    let gRole = message.guild.roles.find(a => a.name === role);
+    let gRole = message.guild.roles.find(a => a.name.toLowerCase() === role);
     let permissions = ['MANAGE_MESSAGES', 'BAN_MEMBERS', 'KICK_MEMBERS', 'MANAGE_ROLES']
     if (!role) {
       modrole.set(`modrole_${message.guild.id}`, 'not set');

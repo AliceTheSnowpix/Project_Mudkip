@@ -1,9 +1,9 @@
 const db = require('quick.db');
-const logchannel = new db.table('LOGCHANNEL');
 const modrole = new db.table('MODROLE');
 
 exports.run = async (bot, message, args) => {
-  if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Sorry you cam't use this command because you do not have the Mannage Messages permission.");    
+  let mr = modrole.fetch(`modrole${message.guild.id}`);
+  if(!message.member.hasPermission("MANAGE_MESSAGES") && message.member.roles.has(mr)) return message.channel.send("Sorry you cam't use this command because you do not have the Mannage Messages permission.");    
   if(!message.guild.member(bot.user).hasPermission("MANAGE_MESSAGES")){
     return message.reply(":x: " + "| I need the \"MANAGE_MESSAGES\" permission!").catch(console.error);
   }

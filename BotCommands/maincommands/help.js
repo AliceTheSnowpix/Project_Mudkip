@@ -1,8 +1,16 @@
-const discord = require('discord.js');
-const db = require('quick.db');
-const prefixes = new db.table('PREFIXES');
-
 exports.run = async(bot, message, args) => {
+  const discord = bot.discord;
+  const db = bot.db;
+  const prefixes = new db.table('PREFIXES');
+  let economycommands = ['bubble', 'bubbles', 'buy', 'daily', 'inventory', 'leaderboard', 'pay', 'shop', 'work'];
+  let games = ['betflip', 'slots'];
+  let funcommands = ['8ball', 'achievement', 'ascii', 'bingo', 'blocktext', 'card', 'catify', 'clap', 'coin', 'copypaste', 'cowsay', 'destroy', 'diceroll', 'fliptext', 'joke', 'kms', 'mock', 'quote', 'retro', 'robotify', 'rip', 'rps', 'space', 'thisorthat', 'tiny', 'wouldyourather'];
+  let imagecommands = ['brazzers', 'bunny', 'cat', 'deepfry', 'dog', 'duck', 'explode', 'funky', 'implode', 'invert', 'magik', 'meme', 'owl', 'penguin', 'photo', 'potato', 'rainbow', 'retarded'];
+  let gifcommands = ['cookie', 'cuddle', 'gif', 'hug', 'pat', 'punch', 'slap', 'tickle'];
+  let maincommands = ['advice', 'autouser', 'calc', 'color', 'help', 'info', 'invite', 'join', 'lmgtfy', 'numbers', 'numfact', 'rate', 'report', 'roleinfo', 'roles', 'say', 'server', 'shorten', 'swatch', 'time', 'tts', 'uptime', 'user', 'videoinfo', 'weather'];
+  let modcommands = ['addrole', 'ban', 'clear', 'kick', 'mute', 'poll', 'removerole', 'settings', 'tempmute', 'unban', 'unmute'];
+  let musiccommands = ['forceskip', 'loop', 'nowplaying', 'pause', 'play', 'queue', 'resume', 'shuffle', 'stop', 'summon', 'voteskip'];
+  let songcommands = ['alien', 'alive', 'apricotjam', 'bad', 'bellyache', 'bored', 'break', 'broken', 'broken2', 'burn', 'copycat', 'cosmic', 'crown', 'damn', 'dirty', 'ending', 'enemies', 'entropy', 'fakelove', 'firefles', 'friends', 'friendship', 'galaxy', 'god', 'happysong', 'hostahe', 'idwbya', 'japanese', 'lovely', 'lush', 'middle', 'motto', 'my', 'myboy', 'nights', 'ocean', 'off', 'og', 'panic', 'pumpedup', 'ripsong', 'rocksong', 'sadsong', 'shine', 'side', 'six', 'ski', 'smoothie', 'snow', 'something', 'spaceship', 'starting', 'story', 'summertime', 'sun', 'sunshine', 'surf', 'team', 'tennis', 'trials', 'warpstar', 'why'];
 //#region help
   let prefix = await prefixes.fetch(`prefix_${message.guild.id}`);
   if (!prefix) {
@@ -10,29 +18,28 @@ exports.run = async(bot, message, args) => {
     prefix = ';';
   }
   
-  let arg = message.content.slice(prefix.length).split(' ').slice(1, 2).join(' ');
-    
+  let arg = message.content.slice(prefix.length).split(' ').slice(1, 2).join(' ').toLowerCase();
         if (!arg) {
         let pages = ['Help Menu', 'General Info', 'Trobleshooting']
         let page = 1;
         const helpembed = new discord.RichEmbed()
         .setColor('#FF00EC')
-        .setDescription('If you want to see the commands from a category type ;help <category name>\n **Here are the following categories**\n Main\n Mod\n Fun\n Economy\n Image\n Music\n Songs')
+        .setDescription(`If you want to see the commands from a category type ${prefix}help <category name>\n **Here are the following categories**\n Main\n Mod\n Fun\n Economy\n Image\n Music\n Songs`)
         .setFooter(`Page ${page} of ${pages.length}`) 
         .setTitle(pages[page-1])
 
          message.channel.send(helpembed).then(msg => { 
     
-            msg.react('⏪').then( r => { 
-                msg.react('⏩') 
+            msg.react('614293189825789972').then( r => { 
+                msg.react('614293189720801290') 
             
-                const backwardsFilter = (reaction, user) => reaction.emoji.name === '⏪' && user.id === message.author.id;
-                const forwardsFilter = (reaction, user) => reaction.emoji.name === '⏩' && user.id === message.author.id; 
+                const backwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Left' && user.id === message.author.id;
+                const forwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Right' && user.id === message.author.id; 
                 
                 const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 }); 
                 const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
                 backwards.on('collect', r => { 
-                if (page === pages.length) return
+                    r.remove(message.author.id);
                     page--; 
                     if (page === 1){
                         let helpembed = new discord.RichEmbed()
@@ -41,41 +48,41 @@ exports.run = async(bot, message, args) => {
                         .setFooter(`Page ${page} of ${pages.length}`) 
                         .setTitle(pages[page-1])
                         msg.edit(helpembed)
-                    }else if (page === 2) {
+                    } else if (page === 2) {
                         let infoembed = new discord.RichEmbed()
                             .setTitle(pages[page-1])
                             .setDescription('Project_chicken is a bot made by clorox_bleach#0001 using the discord.js framework.\n If you want to add the bot to your server use [this link](https://discordapp.com/oauth2/authorize?client_id=460159835544092674&scope=bot&permissions=301263990),\n To join the bot\'s support server use [this link](https://discord.gg/fGQTVek).\n All but the song category has 2 pages the first page has all the commands in a list, the second page has the discriptions for the commands.\n If you have any issuse with the bot or you want to request a song for a song command let my owner know.')
                             .setFooter(`Page ${page} of ${pages.length}`)
                             .setColor('#FF00EC')
                             msg.edit(infoembed)
-                    }else if (page === 3) {
+                    } else if (page === 3) {
                         let issueembed = new discord.RichEmbed()
                             .setTitle(pages[page-1])
                             .setDescription('If somethng is not working try checking to see if I have all of these permissions,\n manage roles\n manage server\n manage messages\n manage channels\n ban members\n kick members\n add reactions\n connect\n speak\n read messages\n attach files\n send messages\n embeded links.\n If I do have all those permissions and things are not working contact my owner about the issue')
                             .setFooter(`Page ${page} of ${pages.length}`)
                             .setColor('#FF00EC')
                             msg.edit(issueembed)
-                    }else if (page === 0) {
+                    } else if (page === 0) {
                         page = 1
                     }
                 })
                 forwards.on('collect', r => { 
-                    if (page === pages.length) return
-                        page++; 
-                        if (page === 2){
-                            let infoembed = new discord.RichEmbed()
-                            .setTitle(pages[page-1])
-                            .setDescription('Project_chicken is a bot made by clorox_bleach#0001 using the discord.js framework.\n If you want to add the bot to your server use [this link](https://discordapp.com/oauth2/authorize?client_id=460159835544092674&scope=bot&permissions=301263990),\n To join the bot\'s support server use [this link](https://discord.gg/fGQTVek).\n All but the song category has 2 pages the first page has all the commands in a list, the second page has the discriptions for the commands.\n If you have any issuse with the bot or you want to request a song for a song command let my owner know.')
-                            .setFooter(`Page ${page} of ${pages.length}`)
-                            .setColor('#FF00EC')
-                            msg.edit(infoembed)
-                        }else if (page === 3) {
-                            let issueembed = new discord.RichEmbed()
-                                .setTitle(pages[page-1])
-                                .setDescription('If somethng is not working try checking to see if I have all of these permissions,\n manage roles\n manage server\n manage messages\n manage channels\n ban members\n kick members\n add reactions\n connect\n speak\n read messages\n attach files\n send messages\n embeded links.\n If I do have all those permissions and things are not working contact my owner about the issue')
-                                .setFooter(`Page ${page} of ${pages.length}`)
-                                .setColor('#FF00EC')
-                                msg.edit(issueembed)
+                    r.remove(message.author.id);
+                    page++; 
+                    if (page === 2){
+                        let infoembed = new discord.RichEmbed()
+                        .setTitle(pages[page-1])
+                        .setDescription('Project_chicken is a bot made by clorox_bleach#0001 using the discord.js framework.\n If you want to add the bot to your server use [this link](https://discordapp.com/oauth2/authorize?client_id=460159835544092674&scope=bot&permissions=301263990),\n To join the bot\'s support server use [this link](https://discord.gg/fGQTVek).\n All but the song category has 2 pages the first page has all the commands in a list, the second page has the discriptions for the commands.\n If you have any issuse with the bot or you want to request a song for a song command let my owner know.')
+                        .setFooter(`Page ${page} of ${pages.length}`)
+                        .setColor('#FF00EC')
+                        msg.edit(infoembed)
+                    }else if (page === 3) {
+                        let issueembed = new discord.RichEmbed()
+                        .setTitle(pages[page-1])
+                        .setDescription('If somethng is not working try checking to see if I have all of these permissions,\n manage roles\n manage server\n manage messages\n manage channels\n ban members\n kick members\n add reactions\n connect\n speak\n read messages\n attach files\n send messages\n embeded links.\n If I do have all those permissions and things are not working contact my owner about the issue')
+                        .setFooter(`Page ${page} of ${pages.length}`)
+                        .setColor('#FF00EC')
+                        msg.edit(issueembed)
                     }else if (page === 4) {
                         page = 3
                     }
@@ -91,27 +98,27 @@ exports.run = async(bot, message, args) => {
         const mainembed = new discord.RichEmbed()
         .setColor('#FF00EC')
         .setTitle(pages[page-1])
-        .setDescription(';autouser\n ;calc\n ;color \n ;google\n ;help\n ;info\n ;invite\n ;join\n ;lmgtfy\n ;numbers\n ;numfact\n ;rate\n ;report\n ;roles\n ;roleinfo\n ;say\n ;server\n ;shorten\n ;swatch\n ;time\n ;tts\n ;uptime\n ;user\n ;videoinfo\n ;weather')
+        .setDescription(`${prefix}${maincommands.join(`\n ${prefix}`)}`)
         .setFooter(`Page ${page} of ${pages.length}`)
         
         message.channel.send(mainembed).then(msg => { 
    
-            msg.react('⏪').then( r => { 
-              msg.react('⏩') 
+            msg.react('614293189825789972').then( r => { 
+              msg.react('614293189720801290') 
             
-              const backwardsFilter = (reaction, user) => reaction.emoji.name === '⏪' && user.id === message.author.id;
-              const forwardsFilter = (reaction, user) => reaction.emoji.name === '⏩' && user.id === message.author.id; 
+              const backwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Left' && user.id === message.author.id;
+              const forwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Right' && user.id === message.author.id; 
              
               const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 }); 
               const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
 
               backwards.on('collect', r => { 
-                if (page === pages.length) return
+                 r.remove(message.author.id);
                     page--; 
                     if (page === 1){
                         let mainembed = new discord.RichEmbed()
                         .setColor('#FF00EC')
-                        .setDescription(';autouser\n ;calc\n ;color \n ;google\n ;help\n ;info\n ;invite\n ;join\n ;lmgtfy\n ;numbers\n ;numfact\n ;rate\n ;report\n ;roles\n ;roleinfo\n ;say\n ;server\n ;shorten\n ;swatch\n ;time\n ;tts\n ;uptime\n ;user\n ;videoinfo\n ;weather')
+                        .setDescription(`${prefix}${maincommands.join(`\n ${prefix}`)}`)
                         .setFooter(`Page ${page} of ${pages.length}`) 
                         .setTitle(pages[page-1])
                         msg.edit(mainembed)
@@ -127,7 +134,7 @@ exports.run = async(bot, message, args) => {
                     }
                 })
                 forwards.on('collect', r => { 
-                    if (page === pages.length) return
+                   r.remove(message.author.id);
                         page++; 
                         if (page === 2){
                             let infoembed = new discord.RichEmbed()
@@ -150,27 +157,27 @@ exports.run = async(bot, message, args) => {
             const modembed = new discord.RichEmbed()
             .setColor('#FF00EC')
             .setTitle(pages[page-1])
-            .setDescription(';addrole\n ;ban\n ;clear\n ;kick\n ;mute\n ;poll\n ;removerole\n ;tempmute\n ;unmute\n ;unban')
+            .setDescription(`${prefix}${modcommands.join(`\n ${prefix}`)}`)
             .setFooter(`Page ${page} of ${pages.length}`)
             
             message.channel.send(modembed).then(msg => { 
        
-                msg.react('⏪').then( r => { 
-                  msg.react('⏩') 
+                msg.react('614293189825789972').then( r => { 
+                  msg.react('614293189720801290') 
                 
-                  const backwardsFilter = (reaction, user) => reaction.emoji.name === '⏪' && user.id === message.author.id;
-                  const forwardsFilter = (reaction, user) => reaction.emoji.name === '⏩' && user.id === message.author.id; 
+                  const backwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Left' && user.id === message.author.id;
+                  const forwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Right' && user.id === message.author.id; 
                  
                   const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 }); 
                   const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
     
                   backwards.on('collect', r => { 
-                    if (page === pages.length) return
+                     r.remove(message.author.id);
                         page--; 
                         if (page === 1){
                             let modembed = new discord.RichEmbed()
                             .setColor('#FF00EC')
-                            .setDescription(';addrole\n ;ban\n ;clear\n ;kick\n ;mute\n ;poll\n ;removerole\n ;tempmute\n ;unmute\n ;unban')
+                            .setDescription(`${prefix}${modcommands.join(`\n ${prefix}`)}`)
                             .setFooter(`Page ${page} of ${pages.length}`) 
                             .setTitle(pages[page-1])
                             msg.edit(modembed)
@@ -186,7 +193,7 @@ exports.run = async(bot, message, args) => {
                         }
                     })
                     forwards.on('collect', r => { 
-                        if (page === pages.length) return
+                       r.remove(message.author.id);
                             page++; 
                             if (page === 2){
                                 let infoembed = new discord.RichEmbed()
@@ -209,27 +216,27 @@ exports.run = async(bot, message, args) => {
         const funembed = new discord.RichEmbed()
         .setColor('#FF00EC')
         .setTitle(pages[page-1])
-        .setDescription(';8ball\n ;achievement\n ;advice\n ;ascii\n ;bingo\n ;blocktext\n ;card\n ;clap\n ;coin\n ;cookie\n ;copypaste\n ;cowsay\n ;destroy\n ;diceroll\n ;fliptext\n ;joke\n ;kms\n ;magik\n ;mock\n ;pat\n ;punch\n ;quote\n ;retro\n ;rip\n ;rps\n ;slap\n ;space\n ;thisorthat\n ;tiny\n ;wouldyourather')
+        .setDescription(`${prefix}${funcommands.join(`\n ${prefix}`)}`)
         .setFooter(`Page ${page} of ${pages.length}`)
         
         message.channel.send(funembed).then(msg => { 
    
-            msg.react('⏪').then( r => { 
-              msg.react('⏩') 
+            msg.react('614293189825789972').then( r => { 
+              msg.react('614293189720801290') 
             
-              const backwardsFilter = (reaction, user) => reaction.emoji.name === '⏪' && user.id === message.author.id;
-              const forwardsFilter = (reaction, user) => reaction.emoji.name === '⏩' && user.id === message.author.id; 
+              const backwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Left' && user.id === message.author.id;
+              const forwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Right' && user.id === message.author.id; 
              
               const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 }); 
               const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
 
               backwards.on('collect', r => { 
-                if (page === pages.length) return
+                 r.remove(message.author.id);
                     page--; 
                     if (page === 1){
                         let funembed = new discord.RichEmbed()
                         .setColor('#FF00EC')
-                        .setDescription(';8ball\n ;achievement\n ;advice\n ;ascii\n ;bingo\n ;blocktext\n ;card\n ;clap\n ;coin\n ;cookie\n ;copypaste\n ;cowsay\n ;destroy\n ;diceroll\n ;fliptext\n ;joke\n ;kms\n ;magik\n ;mock\n ;pat\n ;punch\n ;quote\n ;retro\n ;rip\n ;rps\n ;slap\n ;space\n ;thisorthat\n ;tiny\n ;wouldyourather')
+                        .setDescription(`${prefix}${funcommands.join(`\n ${prefix}`)}`)
                         .setFooter(`Page ${page} of ${pages.length}`) 
                         .setTitle(pages[page-1])
                         msg.edit(funembed)
@@ -245,7 +252,7 @@ exports.run = async(bot, message, args) => {
                     }
                 })
                 forwards.on('collect', r => { 
-                    if (page === pages.length) return
+                   r.remove(message.author.id);
                         page++; 
                         if (page === 2){
                             let infoembed = new discord.RichEmbed()
@@ -268,27 +275,29 @@ exports.run = async(bot, message, args) => {
         const ecoembed = new discord.RichEmbed()
         .setColor('#FF00EC')
         .setTitle(pages[page-1])
-        .setDescription(';bubble\n ;bubbles\n ;buy\n ;pay\n ;shop')
+        .addField('Economy Commands', `${prefix + economycommands.join(`\n ${prefix}`)}`)
+        .addField('Game Commands', `${prefix + games.join(`\n ${prefix}`)}`)
         .setFooter(`Page ${page} of ${pages.length}`)
         
         message.channel.send(ecoembed).then(msg => { 
    
-            msg.react('⏪').then( r => { 
-              msg.react('⏩') 
+            msg.react('614293189825789972').then( r => { 
+              msg.react('614293189720801290') 
             
-              const backwardsFilter = (reaction, user) => reaction.emoji.name === '⏪' && user.id === message.author.id;
-              const forwardsFilter = (reaction, user) => reaction.emoji.name === '⏩' && user.id === message.author.id; 
+              const backwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Left' && user.id === message.author.id;
+              const forwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Right' && user.id === message.author.id; 
              
               const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 }); 
               const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
 
               backwards.on('collect', r => { 
-                if (page === pages.length) return
+                 r.remove(message.author.id);
                     page--; 
                     if (page === 1){
                         let ecoembed = new discord.RichEmbed()
                         .setColor('#FF00EC')
-                        .setDescription(';bubble\n ;bubbles\n ;buy\n ;pay\n ;shop')
+                        .addField('Economy Commands', `${prefix + economycommands.join(`\n ${prefix}`)}`)
+                        .addField('Game Commands', `${prefix + games.join(`\n ${prefix}`)}`)
                         .setFooter(`Page ${page} of ${pages.length}`) 
                         .setTitle(pages[page-1])
                         msg.edit(ecoembed)
@@ -304,7 +313,7 @@ exports.run = async(bot, message, args) => {
                     }
                 })
                 forwards.on('collect', r => { 
-                    if (page === pages.length) return
+                   r.remove(message.author.id);
                         page++; 
                         if (page === 2){
                             let infoembed = new discord.RichEmbed()
@@ -327,27 +336,29 @@ exports.run = async(bot, message, args) => {
         const imageembed = new discord.RichEmbed()
         .setColor('#FF00EC')
         .setTitle(pages[page-1])
-        .setDescription(';brazzers\n ;bunny\n ;cat\n ;dog\n ;duck\n ;funky\n ;dog\n ;meme\n ;owl\n ;penguin\n ;photo\n ;rainbow\n ;retarded')
+        .addField('Image Commands', `${prefix}${imagecommands.join(`\n ${prefix}`)}`)
+        .addField('Gif Commands', `${prefix}${gifcommands.join(`\n ${prefix}`)}`)
         .setFooter(`Page ${page} of ${pages.length}`)
         
         message.channel.send(imageembed).then(msg => { 
    
-            msg.react('⏪').then( r => { 
-              msg.react('⏩') 
+            msg.react('614293189825789972').then( r => { 
+              msg.react('614293189720801290') 
             
-              const backwardsFilter = (reaction, user) => reaction.emoji.name === '⏪' && user.id === message.author.id;
-              const forwardsFilter = (reaction, user) => reaction.emoji.name === '⏩' && user.id === message.author.id; 
+              const backwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Left' && user.id === message.author.id;
+              const forwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Right' && user.id === message.author.id; 
              
               const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 }); 
               const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
 
               backwards.on('collect', r => { 
-                if (page === pages.length) return
+                r.remove(message.author.id);
                     page--; 
                     if (page === 1){
                         let imageembed = new discord.RichEmbed()
                         .setColor('#FF00EC')
-                        .setDescription(';brazzers\n ;bunny\n ;cat\n ;dog\n ;duck\n ;funky\n ;dog\n ;meme\n ;owl\n ;penguin\n ;photo\n ;rainbow\n ;retarded')
+                        .addField('Image Commands', `${prefix}${imagecommands.join(`\n ${prefix}`)}`)
+                        .addField('Gif Commands', `${prefix}${gifcommands.join(`\n ${prefix}`)}`)
                         .setFooter(`Page ${page} of ${pages.length}`) 
                         .setTitle(pages[page-1])
                         msg.edit(imageembed)
@@ -363,7 +374,7 @@ exports.run = async(bot, message, args) => {
                     }
                 })
                 forwards.on('collect', r => { 
-                    if (page === pages.length) return
+                  r.remove(message.author.id);
                         page++; 
                         if (page === 2){
                             let infoembed = new discord.RichEmbed()
@@ -386,27 +397,27 @@ exports.run = async(bot, message, args) => {
         const musicembed = new discord.RichEmbed()
         .setColor('#FF00EC')
         .setTitle(pages[page-1])
-        .setDescription(';pause\n ;play\n ;queue\n ;resume\n ;search\n ;stop\n ;summon\n ;voteskip')
+        .setDescription(`${prefix}${musiccommands.join(`\n ${prefix}`)}`)
         .setFooter(`Page ${page} of ${pages.length}`)
         
         message.channel.send(musicembed).then(msg => { 
    
-            msg.react('⏪').then( r => { 
-              msg.react('⏩') 
+            msg.react('614293189825789972').then( r => { 
+              msg.react('614293189720801290') 
             
-              const backwardsFilter = (reaction, user) => reaction.emoji.name === '⏪' && user.id === message.author.id;
-              const forwardsFilter = (reaction, user) => reaction.emoji.name === '⏩' && user.id === message.author.id; 
+              const backwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Left' && user.id === message.author.id;
+              const forwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Right' && user.id === message.author.id; 
              
               const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 }); 
               const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
 
-              backwards.on('collect', r => { 
-                if (page === pages.length) return
+              backwards.on('collect', r => {
+                r.remove(message.author.id);
                     page--; 
                     if (page === 1){
                         let musicembed = new discord.RichEmbed()
                         .setColor('#FF00EC')
-                        .setDescription(';pause\n ;play\n ;queue\n ;resume\n ;search\n ;stop\n ;summon\n ;voteskip')
+                        .setDescription(`${prefix}${musiccommands.join(`\n ${prefix}`)}`)
                         .setFooter(`Page ${page} of ${pages.length}`) 
                         .setTitle(pages[page-1])
                         msg.edit(musicembed)
@@ -421,8 +432,8 @@ exports.run = async(bot, message, args) => {
                         page = 1
                     }
                 })
-                forwards.on('collect', r => { 
-                    if (page === pages.length) return
+                forwards.on('collect', r => {
+                  r.remove(message.author.id);
                         page++; 
                         if (page === 2){
                             let infoembed = new discord.RichEmbed()
@@ -445,40 +456,40 @@ exports.run = async(bot, message, args) => {
         const songembed1 = new discord.RichEmbed()
         .setColor('#FF00EC')
         .setTitle(pages[page-1])
-        .setDescription(';alien\n ;alive\n ;bad\n ;bellyache\n ;bored\n ;break\n ;broken\n ;broken2\n ;burn\n ;copycat\n ;cosmic\n ;crown\n ;damn\n ;dirty\n ;ending\n ;enemies\n ;entropy\n ;fakelove\n ;fireflies\n ;friends\n ;friendship')
+        .setDescription(`${prefix}${songcommands.slice(0, 21).join(`\n ${prefix}`)}`)
         .setFooter(`Page ${page} of ${pages.length}`)
         
         message.channel.send(songembed1).then(msg => { 
    
-            msg.react('⏪').then( r => { 
-              msg.react('⏩') 
+            msg.react('614293189825789972').then( r => { 
+              msg.react('614293189720801290') 
             
-              const backwardsFilter = (reaction, user) => reaction.emoji.name === '⏪' && user.id === message.author.id;
-              const forwardsFilter = (reaction, user) => reaction.emoji.name === '⏩' && user.id === message.author.id; 
+              const backwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Left' && user.id === message.author.id;
+              const forwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Right' && user.id === message.author.id; 
              
               const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 }); 
               const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
               backwards.on('collect', r => { 
-                if (page === pages.length) return
+                r.remove(message.author.id);
                     page--; 
                     if (page === 1){
                         let songembed1 = new discord.RichEmbed()
                         .setColor('#FF00EC')
                         .setTitle(pages[page-1])
-                        .setDescription(';alien\n ;alive\n ;bad\n ;bellyache\n ;bored\n ;break\n ;broken\n ;broken2\n ;burn\n ;copycat\n ;cosmic\n ;crown\n ;damn\n ;dirty\n ;ending\n ;enemies\n ;entropy\n ;fakelove\n ;fireflies\n ;friends\n ;friendship')
+                        .setDescription(`${prefix}${songcommands.slice(0, 21).join(`\n ${prefix}`)}`)
                         .setFooter(`Page ${page} of ${pages.length}`)
                         msg.edit(songembed1)
                     }else if (page === 2) {
                         let songembed2 = new discord.RichEmbed()
                             .setTitle(pages[page-1])
-                            .setDescription(';god\n ;happysong\n ;hostage\n ;idwbya\n ;japanese\n ;lovely\n ;lush\n ;middle\n ;motto\n ;my\n ;myboy\n ;nights\n ;ocean\n ;off\n ;og\n ;panic\n ;pumpedup\n ;ripsong\n ;rocksong\n ;sadsong')
+                            .setDescription(`${prefix}${songcommands.slice(21, 42).join(`\n ${prefix}`)}`)
                             .setFooter(`Page ${page} of ${pages.length}`)
                             .setColor('#FF00EC')
                             msg.edit(songembed2)
                     }else if (page === 3){
                         let songembed3 = new discord.RichEmbed()
                             .setTitle(pages[page-1])
-                            .setDescription(';side\n ;six\n ;ski\n ;smoothie\n ;snow\n ;something\n ;spaceship\n ;starting\n ;story\n ;summertime\n ;sun\n ;sunshine\n ;surf\n ;team\n ;tennis\n ;trials\n ;warpstar\n ;why')
+                            .setDescription(`${prefix}${songcommands.slice(42, 60).join(`\n ${prefix}`)}`)
                             .setFooter(`Page ${page} of ${pages.length}`)
                             .setColor('#FF00EC')
                             msg.edit(songembed3)
@@ -487,19 +498,19 @@ exports.run = async(bot, message, args) => {
                     }
                 })
                 forwards.on('collect', r => { 
-                    if (page === pages.length) return
+                  r.remove(message.author.id);
                         page++; 
                         if (page === 2){
                             let songembed2 = new discord.RichEmbed()
                             .setTitle(pages[page-1])
-                            .setDescription(';god\n ;happysong\n ;hostage\n ;idwbya\n ;japanese\n ;lovely\n ;lush\n ;middle\n ;motto\n ;my\n ;myboy\n ;nights\n ;ocean\n ;off\n ;og\n ;panic\n ;pumpedup\n ;ripsong\n ;rocksong\n ;sadsong')
+                            .setDescription(`${prefix}${songcommands.slice(21, 42).join(`\n ${prefix}`)}`)
                             .setFooter(`Page ${page} of ${pages.length}`)
                             .setColor('#FF00EC')
                             msg.edit(songembed2)
                     }else if (page === 3){
                         let songembed3 = new discord.RichEmbed()
                             .setTitle(pages[page-1])
-                            .setDescription(';side\n ;six\n ;ski\n ;smoothie\n ;snow\n ;something\n ;spaceship\n ;starting\n ;story\n ;summertime\n ;sun\n ;sunshine\n ;surf\n ;team\n ;tennis\n ;trials\n ;warpstar\n ;why')
+                            .setDescription(`${prefix}${songcommands.slice(42, 62).join(`\n ${prefix}`)}`)
                             .setFooter(`Page ${page} of ${pages.length}`)
                             .setColor('#FF00EC')
                             msg.edit(songembed3)
@@ -510,7 +521,6 @@ exports.run = async(bot, message, args) => {
             })
         })
     }
-//})
 }
 //#endregion
 

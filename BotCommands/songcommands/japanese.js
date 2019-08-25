@@ -1,4 +1,4 @@
-module.exports.run = async (bot,message,args) => {
+exports.run = async (bot,message,args) => {
     var voiceChannel = message.member.voiceChannel;
 
     if (!voiceChannel.permissionsFor(message.guild.member(bot.user)).has("CONNECT")) {
@@ -24,6 +24,6 @@ exports.config = {
     aliases: [  ]
 };
 
-module.exports.help = {
+exports.help = {
     name: "japanese"
 }

@@ -26,5 +26,6 @@ exports.config = {
 };
 
 exports.help = {
-    name: "apricotjam"
+  name: "apricotjam",
+  aliases: ['apricot']
 }

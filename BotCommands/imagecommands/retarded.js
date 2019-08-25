@@ -1,14 +1,11 @@
 const Jimp = require('jimp');
 
 exports.run =  async(bot, message, args) => {
-    message.channel.startTyping();
     var imgPath = "./BotCommands/assets/images/dog.png";
     var img;
     var text = "hello there :^D";
 
-    // TODO remove default message
     if(args.length >= 1){
-        //args.shift();
         text = args.join(" ");
     }
 
@@ -23,7 +20,6 @@ exports.run =  async(bot, message, args) => {
                     name: "dog.png"
                 }]
             });
-            message.channel.stopTyping();
         });
     });
 };

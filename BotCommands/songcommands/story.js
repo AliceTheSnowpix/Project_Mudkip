@@ -1,5 +1,5 @@
 exports.run = async (bot,message,args) => {
-    var voiceChannel = message.member.voiceChannel;
+    let voiceChannel = message.member.voiceChannel;
 
     if (!voiceChannel) {
         return message.reply("Sorry You are not connected to a voice channel");
@@ -12,18 +12,13 @@ exports.run = async (bot,message,args) => {
     }
 
     await message.channel.send("Song Loading Please Wait")
-voiceChannel.join().then(connection =>
-{
+    voiceChannel.join().then(connection => {
     const dispatcher = connection.playStream('https://cdn.glitch.com/3266dedb-0ed2-42c3-a45d-8cb0a8559df0%2Fstory.mp3?1544922698157');
-    dispatcher.on('end', end => {
-        voiceChannel.leave();
-    })
+        dispatcher.on('end', end => {
+            voiceChannel.leave();
+        });
     }).catch(err => console.log(err));
 }
-
-exports.config = {
-    aliases: [  ]
-};
 
 exports.help = {
     name: "story"

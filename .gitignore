@@ -1,5 +1,4 @@
 .env
 shard.js
-.lesshst
 BotCommands/ownercommands/webhook.js
 public/

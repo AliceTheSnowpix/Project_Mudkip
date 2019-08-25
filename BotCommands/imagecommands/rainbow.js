@@ -1,25 +1,23 @@
 const snek = require('snekfetch');
-const fsn = require('fs-nextra');
+const fsn = require('fs-extra');
 const request = require("request");
 const gm = require("gm").subClass({
     imageMagick: true
 });
   
 exports.run = async (bot, message, args) => {
-    if (!message.guild.member(bot.user).hasPermission('ATTACH_FILES')) return message.reply('Sorry, i dont have the perms to do this cmd i need ATTACH_FILES. :x:')
-    if (!message.guild.member(message.mentions.users.first())){
+  if (!message.guild.member(bot.user).hasPermission('ATTACH_FILES')) return message.reply('Sorry, i dont have the perms to do this cmd i need ATTACH_FILES. :x:')
+  if (!message.guild.member(message.mentions.users.first())) {
     const image = await bot.getImage(message).catch(error => {
       message.reply("you need to provide an image to add a rainbow to");
       console.log(error);
     });
     if (image !== undefined) {
-      message.channel.startTyping();
       const rainbow = "./BotCommands/assets/images/rainbow.png";
       gm(request(image)).size((error, size) => {
         if (error) throw new Error(error);
         gm(request(image)).composite(rainbow).gravity("NorthEast").resize(null, size.height).strip().stream((error, stdout) => {
           if (error) throw new Error(error);
-          message.channel.stopTyping();
           message.channel.send({
             files: [{
               attachment: stdout,
@@ -42,7 +40,7 @@ exports.run = async (bot, message, args) => {
       .addImage(body, 0, 0, 250, 250)
       .addImage(plate, 0, 0, 250, 250)
       .toBuffer();
-      }
+    }
     try {
       const person = message.mentions.users.first().avatarURL;
       const result = await getSlapped(person);

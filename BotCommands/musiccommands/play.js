@@ -22,24 +22,24 @@ exports.run = async(bot, message, args) => {
 	if (!voiceChannel) return message.channel.send('Please connect to a voice channel before using this command');
   
   async function play(guild, song) {
-		const serverQueue = await queue.get(message.guild.id);
-    let sloop = await songloop.fetch(`song_${message.guild.id}`);
-    let qloop = await queueloop.fetch(`queue_${message.guild.id}`);
-    let off = await noloop.fetch(`noloop_${message.guild.id}`);
-    if (sloop === null) songloop.set(`song_${message.guild.id}`, false);
-    if (qloop === null) queueloop.set(`queue_${message.guild.id}`, false);
-    if (off === null) noloop.set(`noloop_${message.guild.id}`, false);
-		if (!song) {
-			await voiceChannel.leave();
-			await queue.delete(message.guild.id);
-			return;
+	const serverQueue = await queue.get(message.guild.id);
+	let sloop = await songloop.fetch(`song_${message.guild.id}`);
+	let qloop = await queueloop.fetch(`queue_${message.guild.id}`);
+	let off = await noloop.fetch(`noloop_${message.guild.id}`);
+	if (sloop === null) songloop.set(`song_${message.guild.id}`, false);
+	if (qloop === null) queueloop.set(`queue_${message.guild.id}`, false);
+	if (off === null) noloop.set(`noloop_${message.guild.id}`, false);
+	if (!song) {
+		await voiceChannel.leave();
+		await queue.delete(message.guild.id);
+		return;
     }
     
     const stream = await ytdl(song.url, {
       filter: 'audioonly'
     });
 		const dispatcher = await serverQueue.connection.playStream(stream)
-			.on('end', async reason => {
+		.on('end', async reason => {
         if (sloop === true) {
           serverQueue.songs.push(serverQueue.songs[0]);
           serverQueue.songs.pop();

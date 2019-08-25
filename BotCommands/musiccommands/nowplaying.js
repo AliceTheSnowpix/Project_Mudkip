@@ -7,6 +7,10 @@ exports.run = async(bot, message, args) => {
 		return message.channel.send(nowplaying);
 }
 
+exports.config = {
+    aliases: [ 'np' ]
+};
+
 exports.help = {
   name: 'nowplaying',
   aliases: ['np']

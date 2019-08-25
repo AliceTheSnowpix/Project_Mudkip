@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
     return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
   else
       return text;
-}try {
+} try {
       const code = args.join(" ");
       let evaled = eval(code);
       let rawEvaled = evaled;
@@ -24,9 +24,8 @@ module.exports.run = async (bot, message, args) => {
       .addField(":outbox_tray: Output", `\`\`\`js\n${clean(evaled).replace(bot.token, "Are you retarded?")}\n\`\`\``)
       .addField('Type', `\`\`\`xl\n${(typeof rawEvaled).substr(0, 1).toUpperCase() + (typeof rawEvaled).substr(1)}\n\`\`\``)
       .setColor('GREEN');
-      message.channel.send({embed});
+      message.channel.send(embed);
     } catch (err) {
-      
       message.channel.send(`\`ERROR\` \`\`\`js\n${clean(err)}\n\`\`\``);
     }
 }

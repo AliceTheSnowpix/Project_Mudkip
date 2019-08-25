@@ -1,13 +1,12 @@
 exports.run = async (bot, message, args) => {
-    if(args[0] == "help"){
+    if (args[0] == "help" ){
         message.reply("Usage: ;number <lowest number> <highest number>");
         return;
     }
-
     let min = parseInt(args[0]);
     let max = parseInt(args[1]);
 
-    if(min > max){
+    if (min > max) {
         let temp = max;
         max = min;
         min = temp;
@@ -15,13 +14,13 @@ exports.run = async (bot, message, args) => {
 
     var Result = Math.floor(Math.random() * (max - min + 1)) + min;
 
-    if(isNaN(Result)){
+    if (isNaN(Result)) {
         return message.reply("**Please enter a min and a max number**")
-    }else{
+    } else {
         message.channel.send(Result);
     }  
 }
 
-module.exports.help = {
+exports.help = {
 name: "number"
 }

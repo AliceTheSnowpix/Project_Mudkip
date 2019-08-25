@@ -20,18 +20,12 @@ module.exports = bot => {
     .addField(`Welcome To ${member.guild.name}`, `<@${member.user.id}> Please read the rules`)
 
     if (member.guild.id !== '543906288820682752') {
-      welcomechannel.fetch(`welcomechannel_${member.guild.id}`).then(i => {
-        if (i === null || i === undefined) welcomechannel.set(`welcomechannel_${member.guild.id}`, 'not set')
-      });
-      welcomemessage.fetch(`welcomemessage_${member.guild.id}`).then(i => {
-        if (i === null || i === undefined) welcomemessage.set(`welcomemessage_${member.guild.id}`, 'not set')
-      });
-      autorole.fetch(`autorole_${member.guild.id}`).then(i => {
-        if (i === null || i === undefined) autorole.set(`autorole_${member.guild.id}`, 'not set');
-      });
       const wc = await welcomechannel.fetch(`welcomechannel_${member.guild.id}`);
+      if (wc === null || wc === undefined) welcomechannel.set(`welcomechannel_${member.guild.id}`, 'not set')
       const wm = await welcomemessage.fetch(`welcomemessage_${member.guild.id}`);
+      if (wm === null || wm === undefined) welcomemessage.set(`welcomemessage_${member.guild.id}`, 'not set')
       const ar = await autorole.fetch(`autorole_${member.guild.id}`);
+      if (ar === null || ar === undefined) autorole.set(`autorole_${member.guild.id}`, 'not set')
       const channel = member.guild.channels.get(wc);
       const role = member.guild.roles.get(ar);
       if (!channel) return;
@@ -61,15 +55,10 @@ module.exports = bot => {
     .setDescription(`It's been fun but **__${member.user.username}__** left the server`)
 
     if (member.guild.id !== '543906288820682752') {
-      leavechannel.fetch(`leavechannel_${member.guild.id}`).then(i => {
-        if (i === null || i === undefined) leavechannel.set(`leavechannel_${member.guild.id}`, 'not set');
-      });
-      leavemessage.fetch(`leavemessage_${member.guild.id}`).then(i => {
-        if (i === null || i === undefined) leavemessage.set(`leavemessage_${member.guild.id}`, 'not set');
-      });
-
       const lc = await leavechannel.fetch(`leavechannel_${member.guild.id}`);
+      if (lc === null || lc === undefined) leavechannel.set(`leavechannel_${member.guild.id}`, 'not set')
       const lm = await leavemessage.fetch(`leavemessage_${member.guild.id}`);
+      if (lm === null || lm === undefined) leavemessage.set(`leavemessage_${member.guild.id}`, 'not set')
       const channel = member.guild.channels.get(lc);
       if (!channel) return;
       if (lm === 'not set') channel.send(defaultEmbed);
@@ -77,5 +66,10 @@ module.exports = bot => {
     } else {
       member.guild.channels.get('559536623621111818').send(leaveEmbed); 
     }
+  });
+  
+  bot.on('guildCreate', guild => {
+    if (guild.id !== '608095729864540194') return
+    else return guild.owner.send('Thank you for adding me to your server,')
   });
 }

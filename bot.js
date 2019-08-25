@@ -8,9 +8,12 @@ bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 bot.queue = new Map();
 bot.skipvote = new Map();
+bot.db = require('quick.db');
+bot.discord = require('discord.js')
 bot.logger = require("./Modules/logger.js");
 require("./Modules/functions.js")(bot);
 require("./Modules/logs.js")(bot);
+require('dotenv').config();
 
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
@@ -21,7 +24,7 @@ fs.readdir("./events/", (err, files) => {
   });
 });
 
-let folders = ["songcommands", "musiccommands", "imagecommands", "funcommands", "modcommands", "maincommands", "economycommands", "ownercommands"]
+let folders = ["songcommands", "musiccommands", "imagecommands", "funcommands", "imagecommands/gifcommands", "modcommands", "maincommands", "economycommands", "economycommands/games", "ownercommands"]
 
 folders.forEach(function(folder) {
   fs.readdir(`./BotCommands/${folder}/`, (err, files) => {
@@ -33,10 +36,10 @@ folders.forEach(function(folder) {
         return;
       } 
 
-      jsfile.forEach((f, i) =>{
+      jsfile.forEach((f, i) => {
         let props = require(`./BotCommands/${folder}/${f}`);
         console.log(`${f} Files loaded`);
-        bot.commands.set(props.help.name, props)
+        bot.commands.set(props.help.name, props);
         if (props.help.aliases) {
           props.help.aliases.forEach(alias => {
             bot.aliases.set(alias, props);
@@ -46,15 +49,16 @@ folders.forEach(function(folder) {
   });
 });
 
-require('dotenv').config();
+
 let token = process.env.TOKEN;
 
 bot.login(token);
 
 try {
   app.use(express.static('public'));
-  app.get('/', function(request, response) {
+  app.get('/', function(res, response) {
     response.sendFile(__dirname + '/public/index.html');
+
   });
   
   const listener = app.listen(3000, function() {

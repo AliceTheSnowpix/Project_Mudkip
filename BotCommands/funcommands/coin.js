@@ -1,7 +1,5 @@
-const Discord = require('discord.js');
-
-module.exports.run = async (bot, message, args) => {
-
+exports.run = async (bot, message, args) => {
+    const Discord = bot.dsicord;
     let replies = ["Heads", "Tails"];
     let result = Math.floor((Math.random() * replies.length));
 
@@ -9,15 +7,9 @@ module.exports.run = async (bot, message, args) => {
     .setAuthor(message.author.tag)
     .setColor("#1401FF")
     .addField("Fliped", replies[result]);
-
-    message.channel.send(flipembed)
-
+    message.channel.send(flipembed);
 }
 
-exports.config = {
-    aliases: [  ]
-};
-
-module.exports.help = {
-    name: "flip"
+exports.help = {
+    name: "coinflip"
 }
