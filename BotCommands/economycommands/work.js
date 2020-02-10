@@ -4,7 +4,6 @@ exports.run = async(bot, message, args) => {
     const db = bot.db;
     const discord = bot.discord;
     const workTime = new db.table('WorkTime');
-
     let timer = 1800000;
     let wt = await workTime.fetch(`worktime_${message.author.id}`);
 
