@@ -51,7 +51,7 @@ exports.run = async(bot, message, args) => {
                     } else if (page === 2) {
                         let infoembed = new discord.RichEmbed()
                             .setTitle(pages[page-1])
-                            .setDescription('Project_chicken is a bot made by clorox_bleach#0001 using the discord.js framework.\n If you want to add the bot to your server use [this link](https://discordapp.com/oauth2/authorize?client_id=460159835544092674&scope=bot&permissions=301263990),\n To join the bot\'s support server use [this link](https://discord.gg/fGQTVek).\n All but the song category has 2 pages the first page has all the commands in a list, the second page has the discriptions for the commands.\n If you have any issuse with the bot or you want to request a song for a song command let my owner know.')
+                            .setDescription('Project_chicken is a bot made by Clorox_Mudkip#0001 using the discord.js framework.\n If you want to add the bot to your server use [this link](https://discordapp.com/oauth2/authorize?client_id=460159835544092674&scope=bot&permissions=301263990),\n To join the bot\'s support server use [this link](https://discord.gg/fGQTVek).\n All but the song category has 2 pages the first page has all the commands in a list, the second page has the discriptions for the commands.\n If you have any issuse with the bot or you want to request a song for a song command let my owner know.')
                             .setFooter(`Page ${page} of ${pages.length}`)
                             .setColor('#FF00EC')
                             msg.edit(infoembed)
@@ -72,7 +72,7 @@ exports.run = async(bot, message, args) => {
                     if (page === 2){
                         let infoembed = new discord.RichEmbed()
                         .setTitle(pages[page-1])
-                        .setDescription('Project_chicken is a bot made by clorox_bleach#0001 using the discord.js framework.\n If you want to add the bot to your server use [this link](https://discordapp.com/oauth2/authorize?client_id=460159835544092674&scope=bot&permissions=301263990),\n To join the bot\'s support server use [this link](https://discord.gg/fGQTVek).\n All but the song category has 2 pages the first page has all the commands in a list, the second page has the discriptions for the commands.\n If you have any issuse with the bot or you want to request a song for a song command let my owner know.')
+                        .setDescription('Project_chicken is a bot made by Clorox_Mudkip#0001 using the discord.js framework.\n If you want to add the bot to your server use [this link](https://discordapp.com/oauth2/authorize?client_id=460159835544092674&scope=bot&permissions=301263990),\n To join the bot\'s support server use [this link](https://discord.gg/fGQTVek).\n All but the song category has 2 pages the first page has all the commands in a list, the second page has the discriptions for the commands.\n If you have any issuse with the bot or you want to request a song for a song command let my owner know.')
                         .setFooter(`Page ${page} of ${pages.length}`)
                         .setColor('#FF00EC')
                         msg.edit(infoembed)
