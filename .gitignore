@@ -1,0 +1,7 @@
+.env
+shard.js
+BotCommands/ownercommands/webhook.js
+public/
+node_modules
+npm-debug.log
+package-lock.json
