@@ -38,11 +38,10 @@ exports.run = async (bot,message,args) => {
   let bicon = bot.user.displayAvatarURL;
   if (message.channel.type === 'dm') {
     let botEmbed = new Discord.RichEmbed()
-      .setDescription("I'm a bot for discord created clorox_bleach so if you need any help please contact him, if you want to see all commands do ;help")
-      .setColor('#E8FF00')
+      .setColor('RANDOM')
       .setThumbnail(bicon)
       .addField("Bot Name", bot.user.username)
-      .addField("Created By", "<@293148538886553602>")
+      .addField("Created By", bot.users.get('293148538886553602').tag)
       .addField("Created On", bot.user.createdAt)
       .addField("Total Members", "`" + bot.users.size + "` Total\n`" + totalOnline + "` Online <a:online_loading:532718715045675010>\n`" + totalIdle + "` Idle <a:idle_loading:532710212692475904>\n`" + totalDND + "` Do Not Disturb <a:do_not_disturb_loading:532721835037425668>\n`" + totalOffline + "` Offline <a:oflline_loading:532721755333197854>")
       .addField("Total Channels", "`" + (bot.channels.size - nonGuildChannels)+ "` Total\n`" + totalTextChannels + "` Total Text\n`" + totalVoiceChannels + "` Total Voice")
@@ -66,11 +65,10 @@ exports.run = async (bot,message,args) => {
     }
     
     let botembed = new Discord.RichEmbed()
-      .setDescription("I'm a bot for discord created clorox_bleach so if you need any help please contact him, if you want to see all commands do ;help")
-      .setColor("#E8FF00")
+      .setColor("RANDOM")
       .setThumbnail(bicon)
       .addField("Bot Name", bot.user.username)
-      .addField("Created By", "<@293148538886553602>")
+      .addField("Created By", bot.users.get('293148538886553602').tag)
       .addField("Created On", bot.user.createdAt)
       .addField("Total Members", "`" + bot.users.size + "` Total\n`" + message.guild.memberCount + "` This Server\n`" + totalOnline + "` Online <a:online_loading:532718715045675010>\n`" + guildTotalOnline + "` Online This Server\n`" + totalIdle + "` Idle <a:idle_loading:532710212692475904>\n`" + guildTotalIdle + "` Idle This Server\n`" + totalDND + "` Do Not Disturb <a:do_not_disturb_loading:532721835037425668>\n`" + guildTotalDND + "` Do Not Disturb This Server\n`" + totalOffline + "` Offline <a:oflline_loading:532721755333197854>\n`" + guildTotalOffline + "` Offline This Server")
       .addField("Total Channels", "`" + (bot.channels.size - nonGuildChannels)+ "` Total\n`" + message.guild.channels.size + "` This Server\n`" + totalTextChannels + "` Total Text\n`" + totalVoiceChannels + "` Total Voice")
