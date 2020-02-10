@@ -2,7 +2,7 @@
 
 [![Chiken Logo](https://cdn.glitch.com/bf162dca-e30f-44b1-9940-575d843abfa7%2Fdownload.png?v=1561042284807)](https://discord.gg/fGQTVek)
 
-* Project_chicken is a bot for discord made by me(clorox_bleach#0001) this is a multipurpose bot that has over 150 commands
+* Project_chicken is a bot for discord made by me(Clorox_Mudkip#0001) this is a multipurpose bot that has over 150 commands
 
 __the command categories are:__
 
