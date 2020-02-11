@@ -1,6 +1,6 @@
 const figlet = require('figlet');
 
-exports.run = async(bot, message, args) => {
+exports.run = async(_bot, message, args) => {
     if (!args.join(" ")) return message.reply("**Please Tell Me What text you want me what you want me to asciify**");
     let maxLen = 22;
 

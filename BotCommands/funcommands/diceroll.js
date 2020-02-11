@@ -1,4 +1,4 @@
-exports.run = async (bot, message, args) => {
+exports.run = async (bot, message, _args) => {
     const Discord = bot.discord;
     let replies = ["1", "2", "3", "4", "5", "6"];
     let result = Math.floor((Math.random() * replies.length));

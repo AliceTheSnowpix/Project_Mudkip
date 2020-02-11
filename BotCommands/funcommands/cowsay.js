@@ -1,6 +1,6 @@
 const cowsay = require('cowsay');
 
-exports.run = (bot, message, args) => {
+exports.run = (_bot, message, args) => {
     if (!args.join(' ')) return message.reply('Invalid arguments, what do you want the cow to say?');
     message.channel.send(cowsay.say({
         text: txt,

@@ -5,7 +5,7 @@ exports.run = async (bot, message, args) => {
     let mockEmbed = new Discord.RichEmbed()
     .setColor(`RANDOM`)
     .setDescription(args.map(randomizeCase))
-    .setImage("https://cdn.glitch.com/952eb130-408e-4eda-9f41-b2ad740ad159%2Fmock.jpg?v=1565761021131")
+    .setImage("https://cdn.glitch.com/952eb130-408e-4eda-9f41-b2ad740ad159%2Fmock.jpg?v=1565761021131");
     message.channel.send(mockEmbed);
 }
 
