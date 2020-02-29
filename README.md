@@ -1,8 +1,8 @@
-# PROJECT CHIKEN - The Discord Bot
+# PROJECT MUDKIP - The Discord Bot
 
-[![Chiken Logo](https://cdn.glitch.com/bf162dca-e30f-44b1-9940-575d843abfa7%2Fdownload.png?v=1561042284807)](https://discord.gg/fGQTVek)
+[![Chiken Logo](https://cdn.discordapp.com/attachments/480884424704000000/683102472583118897/external-content.duckduckgo.com.jpg)](https://discord.gg/fGQTVek)
 
-* Project_chicken is a bot for discord made by me(Clorox_Mudkip#0001) this is a multipurpose bot that has over 150 commands
+* Project_Mudkip is a bot for discord made by me(Clorox_Mudkip#0001) this is a multipurpose bot that has over 150 commands
 
 __the command categories are:__
 
@@ -24,5 +24,5 @@ __the command categories are:__
 		width="380" 
 		height="140" 
 		src="https://discordbotlist.com/bots/460159835544092674/widget" 
-		alt="Project chicken stats on Discord Bot List">
+		alt="Project Nudkip stats on Discord Bot List">
 </a>
