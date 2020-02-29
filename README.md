@@ -1,6 +1,7 @@
 # Project Mudkip - The Discord Bot
 
-[![Mudkip Banner](https://imagehost7.online-image-editor.com/oie_upload/images/291721u3p81QB3vI/zOvLMLGvkOlD.png)](https://discord.gg/fGQTVek)
+![Mudkip Banner]([![Mudkip Banner](https://camo.githubusercontent.com/e67b1044afcc93049f8d2a8a5aae37bf1aa79e6c/68747470733a2f2f696d616765686f7374372e6f6e6c696e652d696d6167652d656469746f722e636f6d2f6f69655f75706c6f61642f696d616765732f323931373231753370383151423376492f7a4f764c4d4c47766b4f6c442e706e67)]
+)
 
 * Project_Mudkip is a bot for discord made by me(Clorox_Mudkip#0001) this is a multipurpose bot that has over 150 commands
 
