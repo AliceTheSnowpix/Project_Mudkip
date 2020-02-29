@@ -26,3 +26,6 @@ __the command categories are:__
 		src="https://discordbotlist.com/bots/460159835544092674/widget" 
 		alt="Project Nudkip stats on Discord Bot List">
 </a>
+<a href="https://top.gg/bot/460159835544092674" >
+  <img src="https://top.gg/api/widget/460159835544092674.svg" alt="Project_Mudkip" />
+</a>
