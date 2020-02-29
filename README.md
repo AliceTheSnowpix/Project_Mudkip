@@ -1,6 +1,6 @@
-# PROJECT MUDKIP - The Discord Bot
+# Project Mudkip - The Discord Bot
 
-[![Chiken Logo](https://cdn.discordapp.com/attachments/480884424704000000/683102472583118897/external-content.duckduckgo.com.jpg)](https://discord.gg/fGQTVek)
+[![Mudkip Banner](https://imagehost7.online-image-editor.com/oie_upload/images/291721u3p81QB3vI/zOvLMLGvkOlD.png)](https://discord.gg/fGQTVek)
 
 * Project_Mudkip is a bot for discord made by me(Clorox_Mudkip#0001) this is a multipurpose bot that has over 150 commands
 
