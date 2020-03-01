@@ -1,6 +1,6 @@
-exports.run = async(bot, message, args) => {
-  const queue = bot.queue;
-  let voiceChannel = message.member.voiceChannel;
+exports.run = async(bot, message, _args) => {
+  	const queue = bot.queue;
+  	let voiceChannel = message.member.voiceChannel;
 	const serverQueue = queue.get(message.guild.id);
 	if (!voiceChannel) return message.channel.send('You are not in the same voice channle as me.');
 	if (serverQueue) {

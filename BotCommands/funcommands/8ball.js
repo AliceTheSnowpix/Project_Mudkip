@@ -11,10 +11,10 @@ exports.run = async (bot, message, args) => {
     .setAuthor(message.author.tag)
     .setColor("#1401FF")
     .addField("Question", question)
-    .addField("Answer", replies[result])
+    .addField("Answer", replies[result]);
     message.channel.send(ballembed);
 }
 
-module.exports.help = {
+exports.help = {
     name: '8ball'
 }

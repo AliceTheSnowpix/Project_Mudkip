@@ -1,4 +1,4 @@
-exports.run = async (bot, message, args) => {
+exports.run = async (_bot, message, args) => {
     if (args[0] == "help" ){
         message.reply("Usage: ;number <lowest number> <highest number>");
         return;

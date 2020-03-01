@@ -1,6 +1,6 @@
 const fetch = require('snekfetch');
 
-exports.run = function (bot, message) {
+exports.run = function (bot, message, _args) {
     const Discord = bot.discord;
     fetch.get('http://www.splashbase.co/api/v1/images/random').then(photo => {
         const embed = new Discord.RichEmbed()

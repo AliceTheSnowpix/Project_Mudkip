@@ -1,6 +1,6 @@
 const dotbeat = require("dotbeat");
 
-exports.run = async (bot, message, args) => {
+exports.run = async (bot, message, _args) => {
     const Discord = bot.discord;
     let swembed = new Discord.RichEmbed()
     .setColor('#c464ea')

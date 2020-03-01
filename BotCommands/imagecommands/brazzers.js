@@ -21,8 +21,8 @@ exports.run = async (_bot, message, _args) => {
             const result = await getSlapped(person);
             await message.channel.send({
                 files: [{
-                      attachment: result, 
-                      name: 'brazzers.png' 
+                        attachment: result, 
+                        name: 'brazzers.png' 
                     }] 
                 });
         } catch (error) {
@@ -32,5 +32,5 @@ exports.run = async (_bot, message, _args) => {
 }
 
 exports.help = {
-    name: "brazzers",
+    name: "brazzers"
 };

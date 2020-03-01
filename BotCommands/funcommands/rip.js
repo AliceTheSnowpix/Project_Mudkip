@@ -1,4 +1,4 @@
-exports.run = async(bot, message, args) => {
+exports.run = async(_bot, message, args) => {
     let rpuser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if (!rpuser) return message.channel.send("Could not find that user make sure you typed it in right and try again.");
     message.channel.send(`${rpuser} has died so press f to pay respects.`).then(Message => {

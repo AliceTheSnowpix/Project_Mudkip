@@ -1,6 +1,6 @@
 const Jimp = require('jimp');
 
-exports.run =  async(bot, message, args) => {
+exports.run =  async(_bot, message, args) => {
     var imgPath = "./BotCommands/assets/images/dog.png";
     var img;
     var text = "hello there :^D";
@@ -25,6 +25,6 @@ exports.run =  async(bot, message, args) => {
 };
   
 exports.help = {
-  name: "retarded",
-  aliases: ['dogsay']
+    name: "retarded",
+    aliases: ['dogsay']
 };

@@ -1,6 +1,6 @@
 const quotes = require('../assets/quotes.json')
 
-exports.run = async (bot, message, args) => {
+exports.run = async (bot, message, _args) => {
     const Discord =  bot.discord;
     let quotesembed = new Discord.RichEmbed()
     .setColor("#f99d9d")

@@ -1,6 +1,6 @@
 const moment = require('moment');
 
-exports.run = async (bot, message, args) => {
+exports.run = async (bot, message, _args) => {
     const Discord = bot.discord;
     const users = bot.users.array();
     const channels = bot.channels.array();

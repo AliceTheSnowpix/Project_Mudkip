@@ -1,6 +1,5 @@
-const ownerID = '293148538886553602'
-exports.run = async (bot, message) => {
-    if (message.author.id != ownerID) return message.channel.send("Bot Owner Only");
+exports.run = async (bot, message, _args) => {
+    if (message.author.id != '293148538886553602') return;
     let Table = require('cli-table');
     let table = new Table({
         head: [
@@ -12,22 +11,23 @@ exports.run = async (bot, message) => {
         ], colWidths: [30, 50, 10, 10, 10]
     });
     bot.guilds.map(g =>
-      table.push(
-        [g.id, g.name, g.members.filter(u => !u.user.bot).size, g.members.filter(u => u.user.bot).size, g.members.size]
-      ));
+        table.push(
+            [
+                g.id, g.name, 
+                g.members.filter(u => !u.user.bot).size, 
+                g.members.filter(u => u.user.bot).size, 
+                g.members.size
+            ]
+        )
+    );
     
     require(`snekfetch`)
     .post(`https://hastebin.com/documents`)
     .set(`Content-Type`, `application/raw`)
     .send(table.toString())
-    .then(r =>
-       message.channel.send(`Im inside these servers! http://hastebin.com/` + r.body.key));
+    .then(r => message.channel.send(`Im inside these servers! http://hastebin.com/` + r.body.key));
 };
 
-exports.config = {
-    aliases: [  ]
-};
-
-module.exports.help = {
+exports.help = {
     name: 'serverlist'
 };

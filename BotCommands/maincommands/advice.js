@@ -1,4 +1,4 @@
-exports.run = (bot, message, args) => {
+exports.run = (bot, message, _args) => {
     const discord = bot.discord;
     require('request')('http://api.adviceslip.com/advice', function(error, response, body) {
         if (!error && response.statusCode == 200) {
@@ -14,5 +14,5 @@ exports.run = (bot, message, args) => {
 }
 
 exports.help = {
-  name: "advice"
+    name: "advice"
 }

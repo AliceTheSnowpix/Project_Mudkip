@@ -4,7 +4,7 @@ require('dotenv').config();
 const YouTube = require('simple-youtube-api');
 const youtube = new YouTube(process.env.YOUTUBE);
 
-exports.run = async(bot, message, args) => {
+exports.run = async(bot, message, _args) => {
 	const discord = bot.discord;
 	const Util = bot.discord.Util
 	const db = bot.db;
@@ -40,7 +40,7 @@ exports.run = async(bot, message, args) => {
 		const stream = await ytdl(song.url, {
 			filter: 'audioonly'
 		});
-		const dispatcher = await serverQueue.connection.playStream(stream).on('end', async reason => {
+		const dispatcher = await serverQueue.connection.playStream(stream).on('end', async _reason => {
 			if (sloop === true) {
 				serverQueue.songs.push(serverQueue.songs[0]);
 				serverQueue.songs.pop();
@@ -222,6 +222,6 @@ exports.run = async(bot, message, args) => {
 }
 
 exports.help = {
-  name: 'play',
-  aliases: ['p']
+	name: 'play',
+	aliases: ['p']
 }

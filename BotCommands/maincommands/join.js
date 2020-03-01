@@ -1,4 +1,4 @@
-exports.run = async (bot,message,args) => {
+exports.run = async (bot, message, _args) => {
     const Discord = bot.discord;
     let joinembed = new Discord.RichEmbed()
     .setColor('#9685f7')

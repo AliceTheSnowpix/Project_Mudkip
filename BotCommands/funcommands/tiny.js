@@ -37,7 +37,7 @@ const mappings = (function (object) {
     z: '\u1D22'
 });
 
-exports.run = async (bot, message, args) => {
+exports.run = async (_bot, message, args) => {
     if (args.length < 1) {
         return message.reply('**You must provide some text to shrink!**');
     }

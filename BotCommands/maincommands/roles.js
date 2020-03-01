@@ -1,4 +1,4 @@
-exports.run = async (bot, message, args) => {
+exports.run = async (bot, message, _args) => {
     const discord = bot.discord;
     if(message.channel.type === 'dm') return message.channel.send('This command only works in server.');
     let roles = message.guild.roles.filter(r => r.position !== 0).map(r => `${r.name.toProperCase()} - ${r.id}`).sort();
@@ -9,11 +9,11 @@ exports.run = async (bot, message, args) => {
     let rolesembed = new discord.RichEmbed()
     .setColor("RANDOM")
     .setTitle("Roles")
-    .setFooter(`Page: ${page} of ${Math.floor(noOfPages + 1)}`)
+    .setFooter(`Page: ${page} of ${Math.floor(noOfPages + 1)}`);
 
     paginatedItems.forEach(paginatedItem => {
         rolesembed.addField(`${roles.indexOf(paginatedItem) + 1}.`, paginatedItem);
-    })
+    });
     message.channel.send(rolesembed).then(async msg => {
         if (roles.length > 15) {
             const reaction1 = await msg.react('614293189825789972');
@@ -68,9 +68,8 @@ exports.run = async (bot, message, args) => {
             })
         }
     });
-
 }
 
 exports.help = {
-    name: "roles",
+    name: "roles"
 }

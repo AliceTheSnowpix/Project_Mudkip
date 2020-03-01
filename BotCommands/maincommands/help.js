@@ -1,4 +1,4 @@
-exports.run = async(bot, message, args) => {
+exports.run = async(bot, message, _args) => {
     const discord = bot.discord;
     const db = bot.db;
     const prefixes = new db.table('PREFIXES');
@@ -18,19 +18,18 @@ exports.run = async(bot, message, args) => {
         prefix = ';';
     }
 
-    let cmd = String(message.content.toLowerCase());
+    let cmd = message.content.toLowerCase();
     let arg = String(message.content.slice(prefix.length).split(' ').slice(1, 2).join(' ').toLowerCase());
-        if (!arg || cmd === '<@460159835544092674> help') {
-        let pages = ['Help Menu', 'General Info', 'Trobleshooting']
+    if (!arg || cmd === '<@460159835544092674> help') {
+        let pages = ['Help Menu', 'General Info', 'Trobleshooting'];
         let page = 1;
         const helpembed = new discord.RichEmbed()
         .setColor('#FF00EC')
         .setDescription(`If you want to see the commands from a category type ${prefix}help <category name>\n **Here are the following categories**\n Main\n Mod\n Fun\n Economy\n Image\n Music\n Songs`)
         .setFooter(`Page ${page} of ${pages.length}`) 
-        .setTitle(pages[page-1])
-
+        .setTitle(pages[page-1]);
          message.channel.send(helpembed).then(msg => { 
-            msg.react('614293189825789972').then( r => { 
+            msg.react('614293189825789972').then(r => { 
                 msg.react('614293189720801290');
             
                 const backwardsFilter = (reaction, user) => reaction.emoji.name === 'Arrow_Left' && user.id === message.author.id;
@@ -46,21 +45,21 @@ exports.run = async(bot, message, args) => {
                         .setColor('#FF00EC')
                         .setDescription('If you want to see the commands from a category type ;help <category name>\n **Here are the following categories**\n Main\n Mod\n Fun\n Economy\n Image\n Music\n Songs')
                         .setFooter(`Page ${page} of ${pages.length}`) 
-                        .setTitle(pages[page-1])
+                        .setTitle(pages[page-1]);
                         msg.edit(helpembed);
                     } else if (page === 2) {
                         let infoembed = new discord.RichEmbed()
                         .setTitle(pages[page-1])
                         .setDescription(`${bot.user.username} is a bot made by ${bot.users.get('293148538886553602').tag} using the discord.js framework.\n If you want to add the bot to your server use [this link](https://discordapp.com/oauth2/authorize?client_id=460159835544092674&scope=bot&permissions=301263990),\n To join the bot\'s support server use [this link](https://discord.gg/fGQTVek).\n All but the song category has 2 pages the first page has all the commands in a list, the second page has the discriptions for the commands.\n If you have any issuse with the bot please let my owner know.`)
                         .setFooter(`Page ${page} of ${pages.length}`)
-                        .setColor('#FF00EC')
+                        .setColor('#FF00EC');
                         msg.edit(infoembed);
                     } else if (page === 3) {
                         let issueembed = new discord.RichEmbed()
                         .setTitle(pages[page-1])
                         .setDescription('If somethng is not working try checking to see if I have all of these permissions,\n manage roles\n manage server\n manage messages\n manage channels\n ban members\n kick members\n add reactions\n connect\n speak\n read messages\n attach files\n send messages\n embeded links.\n If I do have all those permissions and things are not working contact my owner about the issue')
                         .setFooter(`Page ${page} of ${pages.length}`)
-                        .setColor('#FF00EC')
+                        .setColor('#FF00EC');
                         msg.edit(issueembed);
                     } else if (page === 0) {
                         page = 3;
@@ -69,7 +68,7 @@ exports.run = async(bot, message, args) => {
                             .setTitle(pages[page-1])
                             .setDescription('If somethng is not working try checking to see if I have all of these permissions,\n manage roles\n manage server\n manage messages\n manage channels\n ban members\n kick members\n add reactions\n connect\n speak\n read messages\n attach files\n send messages\n embeded links.\n If I do have all those permissions and things are not working contact my owner about the issue')
                             .setFooter(`Page ${page} of ${pages.length}`)
-                            .setColor('#FF00EC')
+                            .setColor('#FF00EC');
                             msg.edit(issueembed);
                         }
                     }
@@ -82,14 +81,14 @@ exports.run = async(bot, message, args) => {
                         .setTitle(pages[page-1])
                         .setDescription(`${bot.user.username} is a bot made by ${bot.users.get('293148538886553602').tag} using the discord.js framework.\n If you want to add the bot to your server use [this link](https://discordapp.com/oauth2/authorize?client_id=460159835544092674&scope=bot&permissions=301263990),\n To join the bot\'s support server use [this link](https://discord.gg/fGQTVek).\n All but the song category has 2 pages the first page has all the commands in a list, the second page has the discriptions for the commands.\n If you have any issuse with the bot please let my owner know.`)
                         .setFooter(`Page ${page} of ${pages.length}`)
-                        .setColor('#FF00EC')
+                        .setColor('#FF00EC');
                         msg.edit(infoembed);
                     } else if (page === 3) {
                         let issueembed = new discord.RichEmbed()
                         .setTitle(pages[page-1])
                         .setDescription('If somethng is not working try checking to see if I have all of these permissions,\n manage roles\n manage server\n manage messages\n manage channels\n ban members\n kick members\n add reactions\n connect\n speak\n read messages\n attach files\n send messages\n embeded links.\n If I do have all those permissions and things are not working contact my owner about the issue')
                         .setFooter(`Page ${page} of ${pages.length}`)
-                        .setColor('#FF00EC')
+                        .setColor('#FF00EC');
                         msg.edit(issueembed);
                     } else if (page === 4) {
                         page = 1;
@@ -98,7 +97,7 @@ exports.run = async(bot, message, args) => {
                             .setColor('#FF00EC')
                             .setDescription('If you want to see the commands from a category type ;help <category name>\n **Here are the following categories**\n Main\n Mod\n Fun\n Economy\n Image\n Music\n Songs')
                             .setFooter(`Page ${page} of ${pages.length}`) 
-                            .setTitle(pages[page-1])
+                            .setTitle(pages[page-1]);
                             msg.edit(helpembed);
                         }
                     }

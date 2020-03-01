@@ -1,6 +1,6 @@
 const RetroText = require('retrotext')
 
-exports.run = async (bot, message, args) => {
+exports.run = async (_bot, message, args) => {
     if (args.length !== 0) {
         const [line1, line2, line3] = args.join(" ").split(",").map(elem => elem.trim());
         if (/^[\w\ ]+$/i.test(line1) === false || /^[\w\ ]+$/i.test(line2) === false || /^[\w\ ]+$/i.test(line3) === false) return message.reply("Only alphanumeric characters, spaces, and underscores are allowed!");

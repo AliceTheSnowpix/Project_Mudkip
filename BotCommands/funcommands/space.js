@@ -1,4 +1,4 @@
-exports.run = async (bot, message, args) => {
+exports.run = async (_bot, message, args) => {
     if (args.length < 1) {
         return message.reply('**You must provide text to space out!**');
     }

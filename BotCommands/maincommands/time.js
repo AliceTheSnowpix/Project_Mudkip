@@ -1,4 +1,4 @@
-exports.run = async (bot, message, args) => {
+exports.run = async (bot, message, _args) => {
     const Discord = bot.discord;
     let date = new Date();
     let hour = date.getHours();
@@ -17,7 +17,7 @@ exports.run = async (bot, message, args) => {
     .setTitle("Here Is The Time :clock:")
     .addField("Day Of The Year", month + "/" + day + "/" + year)
     .addField("Time OF The Day", hour + ":" + min + ":" + sec)
-    .setTimestamp(message.createdAt)
+    .setTimestamp(message.createdAt);
     message.channel.send(timeembed);
 }
 
