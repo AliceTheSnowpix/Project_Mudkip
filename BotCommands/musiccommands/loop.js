@@ -9,7 +9,7 @@ exports.run = async (bot, message, _args) => {
     let queue = await queueloop.fetch(`queue_${message.guild.id}`);
     let off = await noloop.fetch(`noloop_${message.guild.id}`);
     
-    let helpembed = new discord.RichEmbed()
+    let helpembed = new discord.MessageEmbed()
     .setTitle('Loop Menu')
     .setColor('RANDOM')
     .setDescription('To loop the current song respond with **__song__**.\nTo loop the queue respond with **__queue__**\nTo turn off looping respond with **__off__**');

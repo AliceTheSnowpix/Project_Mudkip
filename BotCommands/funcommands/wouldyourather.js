@@ -2,7 +2,7 @@ const question = require('../assets/wouldYouRather.json');
 
 exports.run = async (bot, message, _args) => {
     const Discord = bot.discord;
-    let wouldembed = new Discord.RichEmbed()
+    let wouldembed = new Discord.MessageEmbed()
     .setColor("#f99d9d")
     .setDescription(question[Math.floor(Math.random() * question.length)]);
     let wyrChannel = message.guild.channels.find(a => a.name === 'wyr');

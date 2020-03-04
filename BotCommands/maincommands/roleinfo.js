@@ -1,10 +1,10 @@
 exports.run = (bot, message, args) => {
     const Discord = bot.discord;
     if (message.channel.type === 'dm') return message.channel.send('This command only works in server.');
-    let role = message.mentions.roles.first() || message.guild.roles.get(args[0]) || message.guild.roles.find(role => role.name === args.join(' '));
+    let role = message.mentions.roles.first() || message.guild.roles.cache.get(args[0]) || message.guild.roles.cache.find(role => role.name === args.join(' '));
     
     if (!role) role = message.member.highestRole;
-    const roleinfo = new Discord.RichEmbed()
+    const roleinfo = new Discord.MessageEmbed()
     .setColor(role.hexColor)
     .setTitle(`Role: ${role.name}`)
     .addField('Members', role.members.size, true)

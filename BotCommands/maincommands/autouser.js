@@ -7,16 +7,16 @@ exports.run = async(bot, message, args) => {
     let members = [];
     let indexes = [];
 
-    message.guild.members.forEach(function(member) {
+    message.guild.members.cache.forEach(function(member) {
         members.push(member.user.username);
         indexes.push(member.id);
     });
     
     let match = findBestMatch(args.join(' '), members);
     let username = match.bestMatch.target;
-    let member = message.guild.members.get(indexes[members.indexOf(username)]);
+    let member = message.guild.members.cache.get(indexes[members.indexOf(username)]);
     
-    const memberembed = new Discord.RichEmbed()
+    const memberembed = new Discord.MessageEmbed()
     .setColor('RANDOM')
     .setTitle("I Think You Want")
     .setDescription(`<@${member.user.id}>`);

@@ -7,7 +7,7 @@ exports.run = async(bot, message, args) => {
   let paginatedItems = resp.slice(0, 10);
   let total_pages = Math.ceil(resp.length / 10);
 
-  let lbEmbed = new discord.RichEmbed()
+  let lbEmbed = new discord.MessageEmbed()
   .setTitle('Leaderboard')
   .setColor('RANDOM')
   .setFooter(`Page 1 out of ${total_pages}`)
@@ -26,10 +26,10 @@ exports.run = async(bot, message, args) => {
 
   paginatedItems.forEach(paginatedItem => {
     let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-    if (bot.users.get(user) === undefined) {
+    if (bot.users.cache.get(user) === undefined) {
       db.delete(paginatedItem.ID);
     } else {
-      lbEmbed.addField(`${words[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);
+      lbEmbed.addField(`${words[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);
     }
   });
   message.channel.send(lbEmbed).then(async msg => {
@@ -56,16 +56,16 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.RichEmbed()
+            const newEmbed = new discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
             paginatedItems.forEach(paginatedItem => {
               let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              if (bot.users.get(user) === undefined) {
+              if (bot.users.cache.get(user) === undefined) {
                 db.delete(paginatedItem.ID);
               } else {
-                newEmbed.addField(`${words2[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);
+                newEmbed.addField(`${words2[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);
               }
             });
             msg.edit(newEmbed);
@@ -75,16 +75,16 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.RichEmbed()
+            const newEmbed = new discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
             paginatedItems.forEach(paginatedItem => {
               let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              if (bot.users.get(user) === undefined) {
+              if (bot.users.cache.get(user) === undefined) {
                 db.delete(paginatedItem.ID);
               } else {
-                newEmbed.addField(`${words3[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);
+                newEmbed.addField(`${words3[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);
               }
             });
             msg.edit(newEmbed);
@@ -94,16 +94,16 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.RichEmbed()
+            const newEmbed = new discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
             paginatedItems.forEach(paginatedItem => {
               let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              if (bot.users.get(user) === undefined) {
+              if (bot.users.cache.get(user) === undefined) {
                 db.delete(paginatedItem.ID);
               } else {
-                newEmbed.addField(`${words4[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
+                newEmbed.addField(`${words4[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
               }
             });
             msg.edit(newEmbed);
@@ -115,16 +115,16 @@ exports.run = async(bot, message, args) => {
               i = 0;
               paginatedItems = resp.slice(first, second);
               
-              const newEmbed = new discord.RichEmbed()
+              const newEmbed = new discord.MessageEmbed()
               .setColor('RANDOM')
               .setTitle(`LeaderBoard`)
               .setFooter(`Page ${page} out of ${total_pages}`)
               paginatedItems.forEach(paginatedItem => {
                 let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-                if (bot.users.get(user) === undefined) {
+                if (bot.users.cache.get(user) === undefined) {
                   db.delete(paginatedItem.ID);
                 } else {
-                  newEmbed.addField(`${words[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
+                  newEmbed.addField(`${words[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
                 }
               });
               msg.edit(newEmbed);
@@ -135,13 +135,13 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.RichEmbed()
+            const newEmbed = new discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
             paginatedItems.forEach(paginatedItem => {
               let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              newEmbed.addField(`${words5[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
+              newEmbed.addField(`${words5[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
             });
             msg.edit(newEmbed);
           } else if (page === 6) {
@@ -150,13 +150,13 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.RichEmbed()
+            const newEmbed = new discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
             paginatedItems.forEach(paginatedItem => {
               let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              newEmbed.addField(`${words6[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
+              newEmbed.addField(`${words6[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
             });
             msg.edit(newEmbed);
           } else if (page === 7) {
@@ -165,13 +165,13 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.RichEmbed()
+            const newEmbed = new discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
             paginatedItems.forEach(paginatedItem => {
               let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              newEmbed.addField(`${words7[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
+              newEmbed.addField(`${words7[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
             });
             msg.edit(newEmbed);
           } else if (page === 8) {
@@ -182,13 +182,13 @@ exports.run = async(bot, message, args) => {
               i = 0;
               paginatedItems = resp.slice(first, second);
               
-              const newEmbed = new discord.RichEmbed()
+              const newEmbed = new discord.MessageEmbed()
               .setColor('RANDOM')
               .setTitle(`LeaderBoard`)
               .setFooter(`Page ${page} out of ${total_pages}`)
               paginatedItems.forEach(paginatedItem => {
                 let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-                newEmbed.addField(`${words[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);              
+                newEmbed.addField(`${words[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);              
               });
               msg.edit(newEmbed);
             }
@@ -202,13 +202,13 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.RichEmbed()
+            const newEmbed = new discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
             paginatedItems.forEach(paginatedItem => {
               let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              newEmbed.addField(`${words[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
+              newEmbed.addField(`${words[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
             });
             msg.edit(newEmbed);
           } else if (page === 2) {
@@ -217,13 +217,13 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.RichEmbed()
+            const newEmbed = new discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
             paginatedItems.forEach(paginatedItem => {
               let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              newEmbed.addField(`${words2[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
+              newEmbed.addField(`${words2[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
             });
             msg.edit(newEmbed);
           } else if (page === 3) {
@@ -232,13 +232,13 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.RichEmbed()
+            const newEmbed = new discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
             paginatedItems.forEach(paginatedItem => {
               let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              newEmbed.addField(`${words3[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
+              newEmbed.addField(`${words3[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
             });
             msg.edit(newEmbed);
           } else if (page === 4) {
@@ -247,13 +247,13 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.RichEmbed()
+            const newEmbed = new discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
             paginatedItems.forEach(paginatedItem => {
               let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              newEmbed.addField(`${words4[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
+              newEmbed.addField(`${words4[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
             });
             msg.edit(newEmbed);
           } else if (page === 0) {
@@ -264,13 +264,13 @@ exports.run = async(bot, message, args) => {
               i = 0;
               paginatedItems = resp.slice(first, second);
               
-              const newEmbed = new discord.RichEmbed()
+              const newEmbed = new discord.MessageEmbed()
               .setColor('RANDOM')
               .setTitle(`LeaderBoard`)
               .setFooter(`Page ${page} out of ${total_pages}`)
               paginatedItems.forEach(paginatedItem => {
                 let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-                newEmbed.addField(`${words4[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
+                newEmbed.addField(`${words4[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
               });
               msg.edit(newEmbed);
             }
@@ -280,13 +280,13 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.RichEmbed()
+            const newEmbed = new discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
             paginatedItems.forEach(paginatedItem => {
               let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              newEmbed.addField(`${words5[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
+              newEmbed.addField(`${words5[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
             });
             msg.edit(newEmbed);
           } else if (page === 6) {
@@ -295,13 +295,13 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.RichEmbed()
+            const newEmbed = new discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
             paginatedItems.forEach(paginatedItem => {
               let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              newEmbed.addField(`${words6[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
+              newEmbed.addField(`${words6[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
             });
             msg.edit(newEmbed);
           } else if (page === 0) {
@@ -312,13 +312,13 @@ exports.run = async(bot, message, args) => {
               i = 0;
               paginatedItems = resp.slice(first, second);
               
-              const newEmbed = new discord.RichEmbed()
+              const newEmbed = new discord.MessageEmbed()
               .setColor('RANDOM')
               .setTitle(`LeaderBoard`)
               .setFooter(`Page ${page} out of ${total_pages}`)
               paginatedItems.forEach(paginatedItem => {
                 let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-                newEmbed.addField(`${words7[i++]} Place is:`, `${bot.users.get(user).tag} With ${paginatedItem.data} Bubbels.`);              
+                newEmbed.addField(`${words7[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);              
               });
               msg.edit(newEmbed);
             }

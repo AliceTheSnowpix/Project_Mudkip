@@ -3,7 +3,7 @@ const moment = require('moment');
 exports.run = async (bot, message, _args) => {
     const Discord = bot.discord;
     if (message.channel.type === 'dm') {
-        let userEmbed = new Discord.RichEmbed()
+        let userEmbed = new Discord.MessageEmbed()
         .setAuthor(message.author.username)
         .setThumbnail(message.author.avatarURL)
         .setDescription('Here is your user info!')
@@ -18,15 +18,15 @@ exports.run = async (bot, message, _args) => {
 
     let memberInfo = message.mentions.members.first();
     if (!memberInfo) {
-        let role = message.member.highestRole;
-        let userinfo = new Discord.RichEmbed()
+        let role = message.member.roles.highest;
+        let userinfo = new Discord.MessageEmbed()
         .setAuthor(message.author.username)
         .setThumbnail(message.author.avatarURL)
         .setDescription("Here is your user info!")
         .setColor(role.hexColor)
         .addField("Full Username:", `${message.author.username}#${message.author.discriminator}`, true)
         .addField("ID:", message.author.id, true)
-        .addField('Nickname:', message.guild.members.get(message.author.id).displayName === message.author.username ? "No nickname currently." : message.guild.members.get(message.author.id).displayName)
+        .addField('Nickname:', message.guild.members.cache.get(message.author.id).displayName === message.author.username ? "No nickname currently." : message.guild.members.cache.get(message.author.id).displayName)
         .addField('Currently:', message.author.presence.status.toProperCase(), true)
         .addField('Current Activity:', message.author.presence.game === null ? "Nothing at the moment." : message.author.presence.game.name, true)
         .addField('Joined Discord On:', moment(message.author.createdAt).format('MMMM Do YYYY'), true)
@@ -34,8 +34,8 @@ exports.run = async (bot, message, _args) => {
         .addField('Roles:', message.member.roles.filter((r => "<@" + r.id + ">", n => n.name !== '@everyone')).array().join(' | '), true);
         message.channel.send(userinfo);
     } else {
-        let role = memberInfo.highestRole;
-        let memberinfo = new Discord.RichEmbed()
+        let role = memberInfo.roles.highest;
+        let memberinfo = new Discord.MessageEmbed()
         .setAuthor(memberInfo.displayName)
         .setThumbnail(memberInfo.user.avatarURL)
         .setDescription("This is the user's info!")
@@ -47,7 +47,7 @@ exports.run = async (bot, message, _args) => {
         .addField('Current Activity:', memberInfo.user.presence.game === null ? "Nothing at the moment." : memberInfo.user.presence.game.name, true)
         .addField("Joined Discord On:", moment(memberInfo.user.createdAt).format('MMMM Do YYYY'), true)
         .addField('Joined Server On:', moment(memberInfo.joinedAt).format('MMMM Do YYYY'), true)
-        .addField('Roles:', memberInfo.roles.filter((r => "<@" + r.id + ">", n => n.name !== '@everyone')).array().join(' | '), true);
+        .addField('Roles:', memberInfo.roles.cache.filter((r => "<@" + r.id + ">", n => n.name !== '@everyone')).array().join(' | '), true);
         message.channel.send(memberinfo);
     }
 }

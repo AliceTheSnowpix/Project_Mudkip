@@ -52,7 +52,7 @@ exports.run = async (bot, message, _args) => {
         }
     }
     
-    let serverembed = new Discord.RichEmbed()
+    let serverembed = new Discord.MessageEmbed()
     .setTitle('Server Info')
     .setColor("#27FF00")
     .setThumbnail(message.guild.iconURL ? message.guild.iconURL : bot.user.displayAvatarURL)

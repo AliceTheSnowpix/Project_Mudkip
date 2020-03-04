@@ -1,8 +1,6 @@
-const ownerID = '293148538886553602';
-
 exports.run = async(bot, message, args) => {
     const db = bot.db;
-    if (message.author.id != ownerID) return message.channel.send("Bot owner only");
+    if (message.author.id != '293148538886553602') return;
     if (!message.mentions.members.first()) return message.reply("**Please metion the user you want to give bubbles to**");
     let targetMember = message.mentions.members.first();
     let amount = parseInt(args.join(' ').replace(targetMember, ''));

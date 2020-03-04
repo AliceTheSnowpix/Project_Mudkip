@@ -5,7 +5,7 @@ exports.run = async(bot, message, _args) => {
 	if (!serverQueue || serverQueue.songs.length === 0) return message.channel.send('There is currently nothing in the queue.');
 	const nowplaying = serverQueue.songs[0].title;
 	const songqueue = serverQueue.songs[0].title;
-	const queueEmbed = new discord.RichEmbed()
+	const queueEmbed = new discord.MessageEmbed()
 	.setColor('#009696')
     .setTitle(`Current song: ${nowplaying}`)
 	.setDescription(`${serverQueue.songs.slice(1, 16).map(song => `**${serverQueue.songs.indexOf(song)}** ${song.title}`).join('\n')}`);
@@ -26,7 +26,7 @@ exports.run = async(bot, message, _args) => {
 					r.remove(message.author.id);
 				  	first += 15;
 					second += 15;
-					const newEmbed = new discord.RichEmbed()
+					const newEmbed = new discord.MessageEmbed()
 				   	.setColor('#009696')
 				   	.setTitle(`Current song: ${nowplaying}`)
 					.setDescription(`${serverQueue.songs.slice(first, second).map(song => `**${serverQueue.songs.indexOf(song)}** ${song.title}`).join('\n')}`);
@@ -36,7 +36,7 @@ exports.run = async(bot, message, _args) => {
 				  	r.remove(message.author.id);
 				  	first -= 15;
 				  	second -= 15;
-					const newEmbed = new discord.RichEmbed()
+					const newEmbed = new discord.MessageEmbed()
 					.setColor('#009696')
 					.setTitle(`Current song: ${nowplaying}`)
 					.setDescription(`${serverQueue.songs.slice(first, second).map(song => `**${serverQueue.songs.indexOf(song)}** ${song.title}`).join('\n')}`);

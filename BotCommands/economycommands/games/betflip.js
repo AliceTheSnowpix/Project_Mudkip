@@ -7,7 +7,7 @@ exports.run = async (bot, message, args) => {
         prefixes.set(`prefix_${message.guild.id}`, ';');
         prefix = ';';
     }
-    let helpEmbed = new Discord.RichEmbed()
+    let helpEmbed = new Discord.MessageEmbed()
     .setTitle('Command Help')
     .setColor('RANDOM')
     .addField('Command Info', 'Bet to guess will the result be heads or tails')
@@ -25,14 +25,14 @@ exports.run = async (bot, message, args) => {
 
     if (args[1] !== replies[result]) {
         db.subtract(`bubbles_${message.author.id}`, parseInt(bet));
-        let flipembed = new Discord.RichEmbed()
+        let flipembed = new Discord.MessageEmbed()
         .setTitle('BetFlip')
         .setColor("RANDOM")
         .setDescription(`You lost the coin landed on **${replies[result].toProperCase()}**`);
         message.channel.send(flipembed);
     } else {
         db.add(`bubbles_${message.author.id}`, parseInt(bet) * 2);
-        let flipembed = new Discord.RichEmbed()
+        let flipembed = new Discord.MessageEmbed()
         .setTitle('BetFlip')
         .setColor("RANDOM")
         .setDescription(`You won the coin landed on **${replies[result].toProperCase()}** and you gained **${parseInt(bet) * 2}** bubbles`);

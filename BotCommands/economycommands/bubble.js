@@ -20,7 +20,7 @@ exports.run = async(bot, message, args) => {
     if (TotalBubbles === undefined) TotalBubbles = 1;
     db.add(`bubbles_${message.author.id}`, 1);
 
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
     .setAuthor("Pop!", message.author.displayAvatarURL)
     .setThumbnail('https://images-na.ssl-images-amazon.com/images/I/81hVR8PKVDL.png')
     .setColor("#77c9ff")

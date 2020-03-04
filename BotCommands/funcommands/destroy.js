@@ -1,6 +1,6 @@
 exports.run = async (bot, message, args) => {
     const Discord = bot.discord;
-    let delembed = new Discord.RichEmbed()
+    let delembed = new Discord.MessageEmbed()
     .setColor("#f3ff77")
     .setTitle(`${args.length ? args.join(' ') : `${message.author.username}`} is being removed.`)
     .setImage("https://resources.bastionbot.org/images/remove_button.gif");

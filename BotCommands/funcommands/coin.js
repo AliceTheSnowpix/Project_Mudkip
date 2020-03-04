@@ -3,7 +3,7 @@ exports.run = async (bot, message, _args) => {
     let replies = ["Heads", "Tails"];
     let result = Math.floor((Math.random() * replies.length));
 
-    let flipembed = new Discord.RichEmbed()
+    let flipembed = new Discord.MessageEmbed()
     .setAuthor(message.author.tag)
     .setColor("#1401FF")
     .addField("Fliped", replies[result]);

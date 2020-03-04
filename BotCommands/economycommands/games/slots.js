@@ -27,7 +27,7 @@ exports.run = async(bot, message, args) => {
     if (isNaN(custom_fee) || custom_fee <= 0) winnings = normal_fee * results.totalPoints;
     else winnings = custom_fee * results.totalPoints;
     
-    const embed = new discord.RichEmbed()
+    const embed = new discord.MessageEmbed()
     .setColor(6192321)
     .setAuthor("Slots")
     .setDescription(`${results.visualize(false)}\n\n${results.winCount === 0 ? `${message.member.displayName} has lost!\nBetter luck next time!` : `Whoa... ${message.member.displayName} won!`}\n\n${results.winCount === 0 ? "" : `**You have won ${winnings.toLocaleString()} bubbles**`}`)

@@ -21,7 +21,7 @@ exports.run = async(bot, message, args) => {
 
     let cmd = message.content.slice(prefix.length).toLowerCase().split(' ').slice(1, 2).join(' ');
     if (!cmd || cmd === 'help') {
-        let helpembed = new discord.RichEmbed()
+        let helpembed = new discord.MessageEmbed()
         .setTitle('Config Help Menu')
         .setColor('RANDOM')
         .addField('View This Menu:', `${prefix}config help`)
@@ -56,7 +56,7 @@ exports.run = async(bot, message, args) => {
     }
     
     if (cmd === 'welcomechannel') {
-        let channel = message.mentions.channels.first() || message.guild.channels.find(c => c.name.toLowerCase().includes(message.content.slice(prefix.length).slice(2)) && c.type == "text");
+        let channel = message.mentions.channels.first() || message.guild.channels.cache.find(c => c.name.toLowerCase().includes(message.content.slice(prefix.length).slice(2)) && c.type == "text");
         if (!channel) {
             welcomechannel.set(`welcomechannel_${message.guild.id}`, 'not set');
             return message.channel.send('Please specify the channel you want for welcome messages.');
@@ -66,7 +66,7 @@ exports.run = async(bot, message, args) => {
     }
     
     if (cmd === 'leavechannel') {
-        let channel = message.mentions.channels.first() || message.guild.channels.find(c => c.name.toLowerCase().includes(message.content.slice(prefix.length).slice(2)) && c.type == "text");
+        let channel = message.mentions.channels.first() || message.guild.channels.cache.find(c => c.name.toLowerCase().includes(message.content.slice(prefix.length).slice(2)) && c.type == "text");
         if (!channel) {
             leavechannel.set(`leavechannel_${message.guild.id}`, 'not set');
             return message.channel.send('Please specify the channel you want for leave messages.');
@@ -77,7 +77,7 @@ exports.run = async(bot, message, args) => {
     }
     
     if (cmd === 'logchannel') {
-        let channel = message.mentions.channels.first() || message.guild.channels.find(c => c.name.toLowerCase().includes(message.content.slice(prefix.length).slice(2)) && c.type == "text");
+        let channel = message.mentions.channels.first() || message.guild.channels.cache.find(c => c.name.toLowerCase().includes(message.content.slice(prefix.length).slice(2)) && c.type == "text");
         let defaultchannel = message.guild.channels.find(b => b.name === "modlogs");
         if (!channel && !defaultchannel) {
             logchannel.set(`logchannel_${message.guild.id}`, 'not set ');
@@ -110,8 +110,8 @@ exports.run = async(bot, message, args) => {
     
     if (cmd === 'autorole') {
         let role = args.slice(1).join(' ');
-        let gRole = message.guild.roles.find(a => a.name === role);
-        let bRole = message.guild.roles.find(b => b.name === 'project_chicken');
+        let gRole = message.guild.roles.cache.find(a => a.name === role);
+        let bRole = message.guild.roles.cache.find(b => b.name === 'project_chicken');
         if (!role) {
             autorole.set(`autorole_${message.guild.id}`, 'not set');
             return message.channel.send('Please specify the role you want every new member to have');
@@ -131,7 +131,7 @@ exports.run = async(bot, message, args) => {
       
     if (cmd === 'modrole') {
         let role = args.slice(1).join(' ');
-        let gRole = message.guild.roles.find(a => a.name.toLowerCase() === role);
+        let gRole = message.guild.roles.cache.find(a => a.name.toLowerCase() === role);
         let permissions = ['MANAGE_MESSAGES', 'BAN_MEMBERS', 'KICK_MEMBERS', 'MANAGE_ROLES'];
         if (!role) {
             modrole.set(`modrole_${message.guild.id}`, 'not set');
@@ -183,7 +183,7 @@ exports.run = async(bot, message, args) => {
         const ar = await autorole.fetch(`autorole_${message.guild.id}`);
         const mr = await modrole.fetch(`modrole_${message.guild.id}`);
 
-        let listembed = new discord.RichEmbed()
+        let listembed = new discord.MessageEmbed()
         .setTitle('Config List')
         .setColor('RANDOM')
         .addField('Prefix:', prefix)

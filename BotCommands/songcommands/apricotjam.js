@@ -1,6 +1,6 @@
-exports.run = async (bot,message,args) => {
+exports.run = async (bot, message, args) => {
     const ytdl = bot.ytdl;
-    let voiceChannel = message.member.voiceChannel;
+    let voiceChannel = message.member.voice.channel;
 
     if (!voiceChannel) {
         return message.reply("Sorry You are not connected to a voice channel, Please connect to one if you want to use this command");
@@ -13,10 +13,10 @@ exports.run = async (bot,message,args) => {
     }
 
     await message.channel.send("Song Loading Please Wait")
-voiceChannel.join().then(connection =>
-{
-    const dispatcher = connection.playStream(ytdl('https://youtu.be/bo13MVobHds'));
-    dispatcher.on('end', end => {
+    voiceChannel.join().then(connection =>
+    {
+    const dispatcher = connection.play(ytdl('https://youtu.be/bo13MVobHds'));
+    dispatcher.on('finish', end => {
         voiceChannel.leave();
     })
     }).catch(err => console.log(err));

@@ -1,4 +1,4 @@
-const snek = require('snekfetch');
+const fetch = require('node-fetch');
 const fsn = require('fs-extra');
 const request = require("request");
 const gm = require("gm").subClass({
@@ -35,7 +35,7 @@ exports.run = async (bot, message, _args) => {
         const getSlapped = async (person) => {
             const plate = await fsn.readFile('./BotCommands/assets/images/rainbow.png');
             const png = person.replace('.gif', '.png');
-            const { body } = await snek.get(png);
+            const { body } = await fetch(png);
             return new Canvas(250, 250)
             .resetTransformation()
             .addImage(body, 0, 0, 250, 250)

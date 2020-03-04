@@ -15,13 +15,13 @@ exports.run = async(bot, message, args) => {
     const user = args[0];
     bot.unbanReason = reason;
     bot.unbanAuth = message.author;
-    const modlog = message.guild.channels.find(a => a.name === 'modlogs');
-    const channel = message.guild.channels.get(lc);
+    const modlog = message.guild.channels.cache.find(a => a.name === 'modlogs');
+    const channel = message.guild.channels.cache.get(lc);
     if (!modlog && !channel) return message.reply(`Could not find log channel please set the log channel by using the command ${prefix}set logchannel <channel name> or create a channel called modlogs`);
     if (reason.length < 1) return message.reply('You must supply a reason for the unban.');
     if (!user) return message.reply('You need to send the id of the user you want to unban').catch(console.error);
 
-    let unbanEmbed = new discord.RichEmbed()
+    let unbanEmbed = new discord.MessageEmbed()
     .setColor('00AAFF')
     .setTitle("Unban")
     .addField("Unbanned User", `<@${user}> with ID ${user}`)

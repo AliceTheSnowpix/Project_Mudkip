@@ -10,12 +10,12 @@ exports.run = async (bot, message, _args) => {
             `Total`
         ], colWidths: [30, 50, 10, 10, 10]
     });
-    bot.guilds.map(g =>
+    bot.guilds.cache.map(g =>
         table.push(
             [
                 g.id, g.name, 
-                g.members.filter(u => !u.user.bot).size, 
-                g.members.filter(u => u.user.bot).size, 
+                // g.members.cache.filter(u => !u.user.bot).size, 
+                // g.members.cache.filter(u => u.user.bot).size, 
                 g.members.size
             ]
         )

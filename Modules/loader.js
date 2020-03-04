@@ -1,10 +1,10 @@
 const fs = require('fs');
 
 module.exports = (bot) => {
-    fs.readdir("/root/ProjectChicken/events/", (err, files) => {
+    fs.readdir("/root/Project_Mudkip/events/", (err, files) => {
         if (err) return console.error(err);
         files.forEach(file => {
-            const event = require(`/root/ProjectChicken/events/${file}`);
+            const event = require(`/root/Project_Mudkip/events/${file}`);
             let eventName = file.split(".")[0];
             bot.on(eventName, event.bind(null, bot));
         });
@@ -12,7 +12,7 @@ module.exports = (bot) => {
     
     let folders = ["songcommands", "musiccommands", "imagecommands", "funcommands", "imagecommands/gifcommands", "modcommands", "maincommands", "economycommands", "economycommands/games", "ownercommands"];
     folders.forEach(function(folder) {
-        fs.readdir(`/root/ProjectChicken/BotCommands/${folder}/`, (err, files) => {
+        fs.readdir(`/root/Project_Mudkip/BotCommands/${folder}/`, (err, files) => {
             if (err) return console.log(err);
             let jsfile = files.filter(f => f.split(".").pop() === "js")
             if (jsfile.length <= 0) {
@@ -21,7 +21,7 @@ module.exports = (bot) => {
             } 
     
             jsfile.forEach((f, i) => {
-                let props = require(`/root/ProjectChicken/BotCommands/${folder}/${f}`);
+                let props = require(`/root/Project_Mudkip/BotCommands/${folder}/${f}`);
                 console.log(`${f} Files loaded`);
                 bot.commands.set(props.help.name, props);
                 if (props.help.aliases) {

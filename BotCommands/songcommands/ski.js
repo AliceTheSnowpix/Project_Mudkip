@@ -1,5 +1,6 @@
-module.exports.run = async (bot,message,args) => {
-    var voiceChannel = message.member.voiceChannel;
+exports.run = async (bot,message,args) => {
+    const ytdl = bot.ytdl;
+    var voiceChannel = message.member.voice.channel;
 
     if (!voiceChannel.permissionsFor(message.guild.member(bot.user)).has("CONNECT")) {
         return message.channel.send("Sorry I can't join that VC try a diffrent VC and make sure i have the connect permission if you need any help contact my owner").catch(console.error);
@@ -14,17 +15,13 @@ module.exports.run = async (bot,message,args) => {
     
 voiceChannel.join().then(connection =>
 {
-    const dispatcher = connection.playStream('https://cdn.glitch.com/3266dedb-0ed2-42c3-a45d-8cb0a8559df0%2Fski.mp3?1544922191469');
-    dispatcher.on('end', end => {
+    const dispatcher = connection.play(ytdl('https://youtu.be/e_s00Hfo4VA'));
+    dispatcher.on('finish', end => {
         voiceChannel.leave();
     })
     }).catch(err => console.log(err));
 }
 
-exports.config = {
-    aliases: [  ]
-};
-
-module.exports.help = {
+exports.help = {
     name: "ski"
 }

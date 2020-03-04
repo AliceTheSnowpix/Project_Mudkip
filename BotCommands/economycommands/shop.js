@@ -83,7 +83,7 @@ exports.run = async(bot, message, args) => {
       let i9 = await Item9.fetch(`item9_${message.guild.id}`);
       let i10 = await Item10.fetch(`item10_${message.guild.id}`);
       
-      let shopEmbed = new Discord.RichEmbed()
+      let shopEmbed = new Discord.MessageEmbed()
       .setTitle(`**${message.guild.name}** Server Shop`)
       .setColor('RANDOM')
       .setDescription('To buy an item use the command ;buy <shop item name>')
@@ -114,53 +114,53 @@ exports.run = async(bot, message, args) => {
           }
       
       if (n1 === 'not set' || n1 === null || c1 === 'not set' || c1 === null || i1 === 'not set' || i1 === null) shopEmbed;
-      else if (message.guild.roles.get(i1)) shopEmbed.addField(`${n1}`, `<@&${i1}>, you need to pop and pay ${c1} bubbles to buy this item.`);
-      else if (message.guild.channels.get(i1)) shopEmbed.addField(`${n1}`, `<#${i1}>, you need to pop and pay ${c1} bubbles to buy this item.`);
+      else if (message.guild.roles.cache.get(i1)) shopEmbed.addField(`${n1}`, `<@&${i1}>, you need to pop and pay ${c1} bubbles to buy this item.`);
+      else if (message.guild.channels.cache.get(i1)) shopEmbed.addField(`${n1}`, `<#${i1}>, you need to pop and pay ${c1} bubbles to buy this item.`);
       else shopEmbed.addField(`${n1}`, `${i1}, you need to pop and pay ${c1} bubbles to buy this item.`);
       
       if (n2 === 'not set' || n2 === null || c2 === 'not set' || c2 === null || i2 === 'not set' || i2 === null) shopEmbed;
-      else if (message.guild.roles.get(i2)) shopEmbed.addField(`${n2}`, `<@&${i2}>, you need to pop and pay ${c2} bubbles to buy this item.`);
-      else if (message.guild.channels.get(i2)) shopEmbed.addField(`${n2}`, `<#${i2}>, you need to pop and pay ${c2} bubbles to buy this item.`);
+      else if (message.guild.roles.cache.get(i2)) shopEmbed.addField(`${n2}`, `<@&${i2}>, you need to pop and pay ${c2} bubbles to buy this item.`);
+      else if (message.guild.channels.cache.get(i2)) shopEmbed.addField(`${n2}`, `<#${i2}>, you need to pop and pay ${c2} bubbles to buy this item.`);
       else shopEmbed.addField(`${n2}`, `${i2}, you need to pop and pay ${c2} bubbles to buy this item.`);
       
       if (n3 === 'not set' || n3 === null || c3 === 'not set' || c3 === null || i3 === 'not set' || i3 === null) shopEmbed;
-      else if (message.guild.roles.get(i3)) shopEmbed.addField(`${n3}`, `<@&${i3}>, you need to pop and pay ${c3} bubbles to buy this item.`);
-      else if (message.guild.channels.get(i3)) shopEmbed.addField(`${n3}`, `<#${i3}>, you need to pop and pay ${c3} bubbles to buy this item.`);
+      else if (message.guild.roles.cache.get(i3)) shopEmbed.addField(`${n3}`, `<@&${i3}>, you need to pop and pay ${c3} bubbles to buy this item.`);
+      else if (message.guild.channels.cache.get(i3)) shopEmbed.addField(`${n3}`, `<#${i3}>, you need to pop and pay ${c3} bubbles to buy this item.`);
       else shopEmbed.addField(`${n3}`, `${i3}, you need to pop and pay ${c3} bubbles to buy this item.`);
       
       if (n4 === 'not set' || n4 === null || c4 === 'not set' || c4 === null || i4 === 'not set' || i4 === null) shopEmbed;
-      else if (message.guild.roles.get(i4)) shopEmbed.addField(`${n4}`, `<@&${i4}>, you need to pop and pay ${c4} bubbles to buy this item.`);
-      else if (message.guild.channels.get(i4)) shopEmbed.addField(`${n4}`, `<#${i4}>, you need to pop and pay ${c4} bubbles to buy this item.`);
+      else if (message.guild.roles.cache.get(i4)) shopEmbed.addField(`${n4}`, `<@&${i4}>, you need to pop and pay ${c4} bubbles to buy this item.`);
+      else if (message.guild.channels.cache.get(i4)) shopEmbed.addField(`${n4}`, `<#${i4}>, you need to pop and pay ${c4} bubbles to buy this item.`);
       else shopEmbed.addField(`${n4}`, `${i4}, you need to pop and pay ${c4} bubbles to buy this item.`);
 
       if (n5 === 'not set' || n5 === null || c5 === 'not set' || c5 === null || i5 === 'not set' || i5 === null) shopEmbed;
-      else if (message.guild.roles.get(i5)) shopEmbed.addField(`${n5}`, `<@&${i5}>, you need to pop and pay ${c5} bubbles to buy this item.`);
-      else if (message.guild.channels.get(i5)) shopEmbed.addField(`${n5}`, `<#${i5}>, you need to pop and pay ${c5} bubbles to buy this item.`);
+      else if (message.guild.roles.cache.get(i5)) shopEmbed.addField(`${n5}`, `<@&${i5}>, you need to pop and pay ${c5} bubbles to buy this item.`);
+      else if (message.guild.channels.cache.get(i5)) shopEmbed.addField(`${n5}`, `<#${i5}>, you need to pop and pay ${c5} bubbles to buy this item.`);
       else shopEmbed.addField(`${n5}`, `${i5}, you need to pop and pay ${c5} bubbles to buy this item.`);
 
       if (n6 === 'not set' || n6 === null || c6 === 'not set' || c6 === null || i6 === 'not set' || i6 === null) shopEmbed;
-      else if (message.guild.roles.get(i6)) shopEmbed.addField(`${n6}`, `<@&${i6}>, you need to pop and pay ${c6} bubbles to buy this item.`);
-      else if (message.guild.channels.get(i6)) shopEmbed.addField(`${n6}`, `<#${i6}>, you need to pop and pay ${c6} bubbles to buy this item.`);
+      else if (message.guild.roles.cache.get(i6)) shopEmbed.addField(`${n6}`, `<@&${i6}>, you need to pop and pay ${c6} bubbles to buy this item.`);
+      else if (message.guild.channels.cache.get(i6)) shopEmbed.addField(`${n6}`, `<#${i6}>, you need to pop and pay ${c6} bubbles to buy this item.`);
       else shopEmbed.addField(`${n6}`, `${i6}, you need to pop and pay ${c6} bubbles to buy this item.`);
 
       if (n7 === 'not set' || n7 === null || c7 === 'not set' || c7 === null || i7 === 'not set' || i7 === null) shopEmbed;
-      else if (message.guild.roles.get(i7)) shopEmbed.addField(`${n7}`, `<@&${i7}>, you need to pop and pay ${c7} bubbles to buy this item.`);
-      else if (message.guild.channels.get(i7)) shopEmbed.addField(`${n7}`, `<#${i7}>, you need to pop and pay ${c7} bubbles to buy this item.`);
+      else if (message.guild.roles.cache.get(i7)) shopEmbed.addField(`${n7}`, `<@&${i7}>, you need to pop and pay ${c7} bubbles to buy this item.`);
+      else if (message.guild.channels.cache.get(i7)) shopEmbed.addField(`${n7}`, `<#${i7}>, you need to pop and pay ${c7} bubbles to buy this item.`);
       else shopEmbed.addField(`${n7}`, `${i7}, you need to pop and pay ${c7} bubbles to buy this item.`);
 
       if (n8 === 'not set' || n8 === null || c8 === 'not set' || c8 === null || i8 === 'not set' || i8 === null) shopEmbed;
-      else if (message.guild.roles.get(i8)) shopEmbed.addField(`${n8}`, `<@&${i8}>, you need to pop and pay ${c8} bubbles to buy this item.`);
-      else if (message.guild.channels.get(i8)) shopEmbed.addField(`${n8}`, `<#${i8}>, you need to pop and pay ${c8} bubbles to buy this item.`);
+      else if (message.guild.roles.cache.get(i8)) shopEmbed.addField(`${n8}`, `<@&${i8}>, you need to pop and pay ${c8} bubbles to buy this item.`);
+      else if (message.guild.channels.cache.get(i8)) shopEmbed.addField(`${n8}`, `<#${i8}>, you need to pop and pay ${c8} bubbles to buy this item.`);
       else shopEmbed.addField(`${n8}`, `${i8}, you need to pop and pay ${c8} bubbles to buy this item.`);
 
       if (n9 === 'not set' || n9 === null || c9 === 'not set' || c9 === null || i9 === 'not set' || i9 === null) shopEmbed;
-      else if (message.guild.roles.get(i9)) shopEmbed.addField(`${n9}`, `<@&${i9}>, you need to pop and pay ${c9} bubbles to buy this item.`);
-      else if (message.guild.channels.get(i9)) shopEmbed.addField(`${n9}`, `<#${i9}>, you need to pop and pay ${c9} bubbles to buy this item.`);
+      else if (message.guild.roles.cache.get(i9)) shopEmbed.addField(`${n9}`, `<@&${i9}>, you need to pop and pay ${c9} bubbles to buy this item.`);
+      else if (message.guild.channels.cache.get(i9)) shopEmbed.addField(`${n9}`, `<#${i9}>, you need to pop and pay ${c9} bubbles to buy this item.`);
       else shopEmbed.addField(`${n9}`, `${i9}, you need to pop and pay ${c9} bubbles to buy this item.`);
 
       if (n10 === 'not set' || n10 === null || c10 === 'not set' || c10 === null || i10 === 'not set' || i10 === null) shopEmbed;
-      else if (message.guild.roles.get(i10)) shopEmbed.addField(`${n10}`, `<@&${i10}>, you need to pop and pay ${c10} bubbles to buy this item.`);
-      else if (message.guild.channels.get(i10)) shopEmbed.addField(`${n10}`, `<#${i10}>, you need to pop and pay ${c10} bubbles to buy this item.`);
+      else if (message.guild.roles.cache.get(i10)) shopEmbed.addField(`${n10}`, `<@&${i10}>, you need to pop and pay ${c10} bubbles to buy this item.`);
+      else if (message.guild.channels.cache.get(i10)) shopEmbed.addField(`${n10}`, `<#${i10}>, you need to pop and pay ${c10} bubbles to buy this item.`);
       else shopEmbed.addField(`${n10}`, `${i10}, you need to pop and pay ${c10} bubbles to buy this item.`);
       return message.channel.send(shopEmbed)
     }
@@ -267,8 +267,8 @@ exports.run = async(bot, message, args) => {
                 message.channel.send('You did not send a vaild response or you did not respond in time.');
               }
               let role = response.first().content;
-              let findRole = message.guild.roles.find(a => a.name === role);
-              let botRole = message.guild.roles.find(b => b.name === 'project_chicken');
+              let findRole = message.guild.roles.cache.find(a => a.name === role);
+              let botRole = message.guild.roles.cache.find(b => b.name === 'Project_Mudkip');
               
               if (!findRole && !response.first().content.startsWith('<#')) {
                 Item1.set(`item1_${message.guild.id}`, response.first().content)
@@ -290,7 +290,7 @@ exports.run = async(bot, message, args) => {
                 }
               } else if (response.first().content.startsWith('<#')) {
                 let c = response.first().content.slice(2, -1);
-                let channel = message.guild.channels.find(a => a.id === c)
+                let channel = message.guild.channels.cache.find(a => a.id === c)
                 if (channel) {
                   Item1.set(`item1_${message.guild.id}`, channel.id);
                   message.channel.send(`Are you sure you want <#${channel.id}> to be the item`)
@@ -406,8 +406,8 @@ exports.run = async(bot, message, args) => {
                 message.channel.send('You did not send a vaild response or you did not respond in time.');
               }
               let role = response.first().content;
-              let findRole = message.guild.roles.find(a => a.name === role);
-              let botRole = message.guild.roles.find(b => b.name === 'project_chicken')
+              let findRole = message.guild.roles.cache.find(a => a.name === role);
+              let botRole = message.guild.roles.cache.find(b => b.name === 'Project_Mudkip')
               
               if (!findRole && !response.first().content.startsWith('<#')) {
                 Item2.set(`item2_${message.guild.id}`, response.first().content)
@@ -429,7 +429,7 @@ exports.run = async(bot, message, args) => {
                 }
               } else if (response.first().content.startsWith('<#')) {
                 let c = response.first().content.slice(2, -1);
-                let channel = message.guild.channels.find(a => a.id === c)
+                let channel = message.guild.channels.cache.find(a => a.id === c)
                 if (channel) {
                   Item1.set(`item1_${message.guild.id}`, channel.id);
                   message.channel.send(`Are you sure you want <#${channel.id}> to be the item`)
@@ -545,8 +545,8 @@ exports.run = async(bot, message, args) => {
                 message.channel.send('You did not send a vaild response or you did not respond in time.');
               }
               let role = response.first().content;
-              let findRole = message.guild.roles.find(a => a.name === role);
-              let botRole = message.guild.roles.find(b => b.name === 'project_chicken')
+              let findRole = message.guild.roles.cache.find(a => a.name === role);
+              let botRole = message.guild.roles.cache.find(b => b.name === 'Project_Mudkip')
               
               if (!findRole && !response.first().content.startsWith('<#')) {
                 Item3.set(`item3_${message.guild.id}`, response.first().content)
@@ -568,7 +568,7 @@ exports.run = async(bot, message, args) => {
                 }
               } else if (response.first().content.startsWith('<#')) {
                 let c = response.first().content.slice(2, -1);
-                let channel = message.guild.channels.find(a => a.id === c)
+                let channel = message.guild.channels.cache.find(a => a.id === c)
                 if (channel) {
                   Item3.set(`item3_${message.guild.id}`, channel.id);
                   message.channel.send(`Are you sure you want <#${channel.id}> to be the item`)
@@ -684,8 +684,8 @@ exports.run = async(bot, message, args) => {
                 message.channel.send('You did not send a vaild response or you did not respond in time.');
               }
               let role = response.first().content;
-              let findRole = message.guild.roles.find(a => a.name === role);
-              let botRole = message.guild.roles.find(b => b.name === 'project_chicken')
+              let findRole = message.guild.roles.cache.find(a => a.name === role);
+              let botRole = message.guild.roles.cache.find(b => b.name === 'Project_Mudkip')
               
               if (!findRole && !response.first().content.startsWith('<#')) {
                 Item4.set(`item4_${message.guild.id}`, response.first().content)
@@ -707,7 +707,7 @@ exports.run = async(bot, message, args) => {
                 }
               } else if (response.first().content.startsWith('<#')) {
                 let c = response.first().content.slice(2, -1);
-                let channel = message.guild.channels.find(a => a.id === c)
+                let channel = message.guild.channels.cache.find(a => a.id === c)
                 if (channel) {
                   Item4.set(`item4_${message.guild.id}`, channel.id);
                   message.channel.send(`Are you sure you want <#${channel.id}> to be the item`)
@@ -823,8 +823,8 @@ exports.run = async(bot, message, args) => {
                 message.channel.send('You did not send a vaild response or you did not respond in time.');
               }
               let role = response.first().content;
-              let findRole = message.guild.roles.find(a => a.name === role);
-              let botRole = message.guild.roles.find(b => b.name === 'project_chicken')
+              let findRole = message.guild.roles.cache.find(a => a.name === role);
+              let botRole = message.guild.roles.cache.find(b => b.name === 'Project_Mudkip')
 
               if (!findRole && !response.first().content.startsWith('<#')) {
                 Item5.set(`item5_${message.guild.id}`, response.first().content)
@@ -846,7 +846,7 @@ exports.run = async(bot, message, args) => {
                 }
               } else if (response.first().content.startsWith('<#')) {
                 let c = response.first().content.slice(2, -1);
-                let channel = message.guild.channels.find(a => a.id === c)
+                let channel = message.guild.channels.cache.find(a => a.id === c)
                 if (channel) {
                   Item5.set(`item5_${message.guild.id}`, channel.id);
                   message.channel.send(`Are you sure you want <#${channel.id}> to be the item`)
@@ -962,8 +962,8 @@ exports.run = async(bot, message, args) => {
                 message.channel.send('You did not send a vaild response or you did not respond in time.');
               }
               let role = response.first().content;
-              let findRole = message.guild.roles.find(a => a.name === role);
-              let botRole = message.guild.roles.find(b => b.name === 'project_chicken')
+              let findRole = message.guild.roles.cache.find(a => a.name === role);
+              let botRole = message.guild.roles.cache.find(b => b.name === 'Project_Mudkip')
               
               if (!findRole && !response.first().content.startsWith('<#')) {
                 Item6.set(`item6_${message.guild.id}`, response.first().content)
@@ -985,7 +985,7 @@ exports.run = async(bot, message, args) => {
                 }
               } else if (response.first().content.startsWith('<#')) {
                 let c = response.first().content.slice(2, -1);
-                let channel = message.guild.channels.find(a => a.id === c)
+                let channel = message.guild.channels.cache.find(a => a.id === c)
                 if (channel) {
                   Item6.set(`item6_${message.guild.id}`, channel.id);
                   message.channel.send(`Are you sure you want <#${channel.id}> to be the item`)
@@ -1101,8 +1101,8 @@ exports.run = async(bot, message, args) => {
                 message.channel.send('You did not send a vaild response or you did not respond in time.');
               }
               let role = response.first().content;
-              let findRole = message.guild.roles.find(a => a.name === role);
-              let botRole = message.guild.roles.find(b => b.name === 'project_chicken')
+              let findRole = message.guild.roles.cache.find(a => a.name === role);
+              let botRole = message.guild.roles.cache.find(b => b.name === 'Project_Mudkip')
               
               if (!findRole && !response.first().content.startsWith('<#')) {
                 Item7.set(`item7_${message.guild.id}`, response.first().content)
@@ -1124,7 +1124,7 @@ exports.run = async(bot, message, args) => {
                 }
               } else if (response.first().content.startsWith('<#')) {
                 let c = response.first().content.slice(2, -1);
-                let channel = message.guild.channels.find(a => a.id === c)
+                let channel = message.guild.channels.cache.find(a => a.id === c)
                 if (channel) {
                   Item7.set(`item7_${message.guild.id}`, channel.id);
                   message.channel.send(`Are you sure you want <#${channel.id}> to be the item`)
@@ -1240,8 +1240,8 @@ exports.run = async(bot, message, args) => {
                 message.channel.send('You did not send a vaild response or you did not respond in time.');
               }
               let role = response.first().content;
-              let findRole = message.guild.roles.find(a => a.name === role);
-              let botRole = message.guild.roles.find(b => b.name === 'project_chicken')
+              let findRole = message.guild.roles.cache.find(a => a.name === role);
+              let botRole = message.guild.roles.cache.find(b => b.name === 'Project_Mudkip')
               
               if (!findRole && !response.first().content.startsWith('<#')) {
                 Item8.set(`item8_${message.guild.id}`, response.first().content)
@@ -1263,7 +1263,7 @@ exports.run = async(bot, message, args) => {
                 }
               } else if (response.first().content.startsWith('<#')) {
                 let c = response.first().content.slice(2, -1);
-                let channel = message.guild.channels.find(a => a.id === c)
+                let channel = message.guild.channels.cache.find(a => a.id === c)
                 if (channel) {
                   Item8.set(`item8_${message.guild.id}`, channel.id);
                   message.channel.send(`Are you sure you want <#${channel.id}> to be the item`)
@@ -1379,8 +1379,8 @@ exports.run = async(bot, message, args) => {
                 message.channel.send('You did not send a vaild response or you did not respond in time.');
               }
               let role = response.first().content;
-              let findRole = message.guild.roles.find(a => a.name === role);
-              let botRole = message.guild.roles.find(b => b.name === 'project_chicken')
+              let findRole = message.guild.roles.cache.find(a => a.name === role);
+              let botRole = message.guild.roles.cache.find(b => b.name === 'Project_Mudkip')
               
               if (!findRole && !response.first().content.startsWith('<#')) {
                 Item9.set(`item9_${message.guild.id}`, response.first().content)
@@ -1402,7 +1402,7 @@ exports.run = async(bot, message, args) => {
                 }
               } else if (response.first().content.startsWith('<#')) {
                 let c = response.first().content.slice(2, -1);
-                let channel = message.guild.channels.find(a => a.id === c)
+                let channel = message.guild.channels.cache.find(a => a.id === c)
                 if (channel) {
                   Item9.set(`item9_${message.guild.id}`, channel.id);
                   message.channel.send(`Are you sure you want <#${channel.id}> to be the item`)
@@ -1518,8 +1518,8 @@ exports.run = async(bot, message, args) => {
                 message.channel.send('You did not send a vaild response or you did not respond in time.');
               }
               let role = response.first().content;
-              let findRole = message.guild.roles.find(a => a.name === role);
-              let botRole = message.guild.roles.find(b => b.name === 'project_chicken')
+              let findRole = message.guild.roles.cache.find(a => a.name === role);
+              let botRole = message.guild.roles.cache.find(b => b.name === 'Project_Mudkip')
               
               if (!findRole && !response.first().content.startsWith('<#')) {
                 Item10.set(`item10_${message.guild.id}`, response.first().content)
@@ -1541,7 +1541,7 @@ exports.run = async(bot, message, args) => {
                 }
               } else if (response.first().content.startsWith('<#')) {
                 let c = response.first().content.slice(2, -1);
-                let channel = message.guild.channels.find(a => a.id === c)
+                let channel = message.guild.channels.cache.find(a => a.id === c)
                 if (channel) {
                   Item10.set(`item10_${message.guild.id}`, channel.id);
                   message.channel.send(`Are you sure you want <#${channel.id}> to be the item`)
@@ -1866,7 +1866,7 @@ exports.run = async(bot, message, args) => {
       } else if (response.first().content.toLowerCase() !== 'yes') return message.channel.send('The shop will not be reset.')
     }
     if (cmd === 'help' || arg === '<@460159835544092674> shop help') {
-      let helpEmbed = new Discord.RichEmbed()
+      let helpEmbed = new Discord.MessageEmbed()
       .setTitle('**Shop Help Menu**')
       .setColor('RANDOM')
       .addField(`${prefix}shop`, 'This will show you the shop')
@@ -1876,7 +1876,7 @@ exports.run = async(bot, message, args) => {
       message.channel.send(helpEmbed);
     }
   } else {
-    let shopembed = new Discord.RichEmbed()
+    let shopembed = new Discord.MessageEmbed()
     .setColor('RANDOM')
     .setTitle('here are all shop items')
     .setDescription('To buy an item use the commad ;buy <shop item number>')

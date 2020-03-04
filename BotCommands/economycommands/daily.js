@@ -29,57 +29,57 @@ exports.run = async(bot, message, args) => {
         message.channel.send(`You already got your daily bubbles you need to wait **${timeObj.hours} hours ${timeObj.minutes} minutes ${timeObj.seconds} seconds** `);
 
     } else { 
-        if (bot.guilds.get('456629010890227714').members.get(message.author.id).roles.find(a => a.name === "the bubble popper overlord")) {
+        if (bot.guilds.cache.get('456629010890227714').members.cache.get(message.author.id).roles.cache.find(a => a.name === "the bubble popper overlord")) {
             message.channel.send(`You got your ${amount} daily bubbles`);
             lastdaily.set(`lastdaily_${message.author.id}`, Date.now());
             db.add(`bubbles_${message.author.id}`, 105);
             
-        } else if (bot.guilds.get('456629010890227714').members.get(message.author.id).roles.find(b => b.name === "the bubble popping king")) {
+        } else if (bot.guilds.cache.get('456629010890227714').members.cache.get(message.author.id).roles.cache.find(b => b.name === "the bubble popping king")) {
             message.channel.send(`you got your ${amount2} daily bubbles`);
             lastdaily.set(`lastdaily_${message.author.id}`, Date.now());
             db.add(`bubbles_${message.author.id}`, 95);
 
-        } else if (bot.guilds.get('456629010890227714').members.get(message.author.id).roles.find(c => c.name === "insane bubble popper")) {
+        } else if (bot.guilds.cache.get('456629010890227714').members.cache.get(message.author.id).roles.cache.find(c => c.name === "insane bubble popper")) {
             message.channel.send(`you got your ${amount3} daily bubbles`);
             lastdaily.set(`lastdaily_${message.author.id}`, Date.now());
             db.add(`bubbles_${message.author.id}`, 85);
 
-        } else if (bot.guilds.get('456629010890227714').members.get(message.author.id).roles.find(d => d.name === "awesome bubble popper")) {
+        } else if (bot.guilds.cache.get('456629010890227714').members.cache.get(message.author.id).roles.cache.find(d => d.name === "awesome bubble popper")) {
             message.channel.send(`you got your ${amount4} daily bubbles`);
             lastdaily.set(`lastdaily_${message.author.id}`, Date.now());
             db.add(`bubbles_${message.author.id}`, 75);
 
-        } else if (bot.guilds.get('456629010890227714').members.get(message.author.id).roles.find(e => e.name === "super bubble popper")) {
+        } else if (bot.guilds.cache.get('456629010890227714').members.cache.get(message.author.id).roles.cache.find(e => e.name === "super bubble popper")) {
             message.channel.send(`you got your ${amount5} daily bubbles`);
             lastdaily.set(`lastdaily_${message.author.id}`, Date.now());
             db.add(`bubbles_${message.author.id}`, 65);
 
-        } else if (bot.guilds.get('456629010890227714').members.get(message.author.id).roles.find(f => f.name === "master bubble popper")) {
+        } else if (bot.guilds.cache.get('456629010890227714').members.cache.get(message.author.id).roles.cache.find(f => f.name === "master bubble popper")) {
             message.channel.send(`you got your ${amount6} daily bubbles`);
             lastdaily.set(`lastdaily_${message.author.id}`, Date.now());
             db.add(`bubbles_${message.author.id}`, 55);
 
-        } else if (bot.guilds.get('456629010890227714').members.get(message.author.id).roles.find(g => g.name === "expert bubble popper")) {
+        } else if (bot.guilds.cache.get('456629010890227714').members.cache.get(message.author.id).roles.cache.find(g => g.name === "expert bubble popper")) {
             message.channel.send(`you got your ${amount7} daily bubbles`);
             lastdaily.set(`lastdaily_${message.author.id}`, Date.now());
             db.add(`bubbles_${message.author.id}`, 45);
 
-        } else if (bot.guilds.get('456629010890227714').members.get(message.author.id).roles.find(h => h.name === "average bubble popper")) {
+        } else if (bot.guilds.cache.get('456629010890227714').members.cache.get(message.author.id).roles.cache.find(h => h.name === "average bubble popper")) {
             message.channel.send(`you got your ${amount8} daily bubbles`);
             lastdaily.set(`lastdaily_${message.author.id}`, Date.now());
             db.add(`bubbles_${message.author.id}`, 35);
 
-        } else if (bot.guilds.get('456629010890227714').members.get(message.author.id).roles.find(i => i.name === "moderate bubble popper")) {
+        } else if (bot.guilds.cache.get('456629010890227714').members.cache.get(message.author.id).roles.cache.find(i => i.name === "moderate bubble popper")) {
             message.channel.send(`you got your ${amount9} daily bubbles`);
             lastdaily.set(`lastdaily_${message.author.id}`, Date.now());
             db.add(`bubbles_${message.author.id}`, 25);
 
-        } else if (bot.guilds.get('456629010890227714').members.get(message.author.id).roles.find(j => j.name === "new bubble popper")) {
+        } else if (bot.guilds.cache.get('456629010890227714').members.cache.get(message.author.id).roles.cache.find(j => j.name === "new bubble popper")) {
             message.channel.send(`you got your ${amount10} daily bubbles`);
             lastdaily.set(`lastdaily_${message.author.id}`, Date.now());
             db.add(`bubbles_${message.author.id}`, 15);
             
-        } else if (bot.guilds.get('456629010890227714').members.get(message.author.id)) {
+        } else if (bot.guilds.cache.get('456629010890227714').members.cache.get(message.author.id)) {
             message.channel.send(`you got your ${amount11} daily bubbles`);
             lastdaily.set(`lastdaily_${message.author.id}`, Date.now());
             db.add(`bubbles_${message.author.id}`, 10);

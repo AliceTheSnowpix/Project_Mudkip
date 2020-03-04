@@ -3,7 +3,7 @@ exports.run = async(bot, message, args) => {
     if (!message.member.hasPermission('ADMINISTRATOR')) return message.reply('Sorry you cant do this right now. Try again when you have the administrator permission');
     if (!args[0]) return message.reply('You need to give me something so I can make a poll');
 
-    let pollembed = new Discord.RichEmbed()
+    let pollembed = new Discord.MessageEmbed()
     .setColor('RANDOM')
     .setFooter('React to vote')
     .setDescription(args.join(' '))

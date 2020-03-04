@@ -14,7 +14,7 @@ exports.run = async(bot, message, _args) => {
     let voters = []
     let skipnumber = 0
     
-    if(message.member.voiceChannel.size === 3) {
+    if(message.member.voice.channel.size === 3) {
         skipnumber += 1;
         voters += message.author.id;
         message.channel.send(`${message.author.username} has voted to skip the current song ${skipnumber}/2 votes needed to skip`)

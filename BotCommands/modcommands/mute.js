@@ -13,9 +13,9 @@ exports.run = async(bot, message, args) => {
     
     let mr = await modrole.fetch(`modrole_${message.guild.id}`);
     let lc = await logchannel.fetch(`logchannel_${message.guild.id}`);
-    if (!message.member.hasPermission("MANAGE_MESSAGES") && !message.member.roles.has(mr)) return message.reply("Sorry you cant use this command because you do not have the manage messages permission");
-    let Mute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    let errorEmbed = new Discord.RichEmbed()
+    if (!message.member.hasPermission("MANAGE_MESSAGES") && !message.member.roles.cache.has(mr)) return message.reply("Sorry you cant use this command because you do not have the manage messages permission");
+    let Mute = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
+    let errorEmbed = new Discord.MessageEmbed()
     .setTitle('Incorect Command Usage')
     .setColor('PURPLE')
     .addField('Command usage', `${prefix}mute <member name/mention> (reason)`);
@@ -23,18 +23,18 @@ exports.run = async(bot, message, args) => {
     if (!Mute) return message.reply(errorEmbed);
     let mreason = args.join(" ").slice(22);
 
-    if (Mute.hasPermission("MANAGE_MESSAGES") || Mute.roles.has(mr)) return message.reply("Can't mute them!"); 
+    if (Mute.hasPermission("MANAGE_MESSAGES") || Mute.roles.cache.has(mr)) return message.reply("Can't mute them!"); 
     message.guild.channels.forEach(channel => {
-        channel.overwritePermissions(message.guild.members.get(Mute.id), {
+        channel.overwritePermissions(message.guild.members.cache.get(Mute.id), {
             SEND_MESSAGES: false
         });
     });
 
-    let mutechan = message.guild.channels.find(b => b.name === "modlogs");
-    let channel = message.guild.channels.get(lc);
+    let mutechan = message.guild.channels.cache.find(b => b.name === "modlogs");
+    let channel = message.guild.channels.cache.get(lc);
     if (!mutechan && !channel) return message.channel.send(`Could not find log channel please set the log channel by using the command ${prefix}set logchannel <channel name> or create a channel called modlogs`);
     if (!mreason) {
-        let muteembed = new Discord.RichEmbed()
+        let muteembed = new Discord.MessageEmbed()
         .setAuthor('Muted by' + message.author.username)
         .addField('Muted in', message.channel.name)
         .setColor('PURPLE')
@@ -48,7 +48,7 @@ exports.run = async(bot, message, args) => {
         else if (channel) return channel.send(muteembed);
         
     } else {
-        let muteembed = new Discord.RichEmbed()
+        let muteembed = new Discord.MessageEmbed()
         .setAuthor('Muted by' + message.author.username)
         .addField('Muted in', message.channel.name)
         .setColor('PURPLE')

@@ -1,5 +1,5 @@
 exports.run = async(bot, message, _args) => {    
-    var voiceChannel = message.member.voiceChannel;
+    var voiceChannel = message.member.voice.channel;
     if (!message.member.voiceChannel) {
         return message.reply("Sorry You are not connected to a voice channel");
     }

@@ -7,7 +7,7 @@ exports.run = async (bot, message, args) => {
     let result = Math.floor((Math.random() * replies.length));
     let question = args.slice(0).join(' ');
 
-    let ballembed = new Discord.RichEmbed()
+    let ballembed = new Discord.MessageEmbed()
     .setAuthor(message.author.tag)
     .setColor("#1401FF")
     .addField("Question", question)

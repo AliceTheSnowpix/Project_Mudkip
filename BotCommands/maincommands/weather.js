@@ -11,7 +11,7 @@ exports.run = async (bot, message, args) => {
 
         var current = result[0].current;
         var location = result[0].location; 
-        const wembed = new Discord.RichEmbed()
+        const wembed = new Discord.MessageEmbed()
         .setDescription(`**${current.skytext}**`) 
         .setAuthor(`Weather for ${current.observationpoint}`)
         .setThumbnail(current.imageUrl)

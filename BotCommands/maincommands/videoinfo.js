@@ -7,7 +7,7 @@ exports.run = async(bot, message, args) => {
     if (!validate) return message.reply("Please send a **vaild** url");
 
     let info = await ytdl.getInfo(args[0]);
-    let maininfoembed = new discord.RichEmbed()
+    let maininfoembed = new discord.MessageEmbed()
     .setColor('RANDOM')
     .setTitle(info.title)
     .setThumbnail(info.thumbnail_url)
@@ -17,7 +17,7 @@ exports.run = async(bot, message, args) => {
     .addField('View Count', `${info.player_response.videoDetails.view_count}`)
     .addField('KeyWords', `${info.player_response.videoDetails.keywords}`);
 
-    let description = new discord.RichEmbed()
+    let description = new discord.MessageEmbed()
     .setColor('RANDOM')
     .setImage(info.thumbnail_url)
     .setDescription(info.description);

@@ -15,7 +15,7 @@ exports.run = async(bot, message, args) => {
         workTime.set(`worktime_${message.author.id}`, Date.now());
         db.add(`bubbles_${message.author.id}`, workAmount);
 
-        let workEmbed = new discord.RichEmbed()
+        let workEmbed = new discord.MessageEmbed()
         .setTitle('Work Results')
         .setColor('RANDOM')
         .setDescription(`While you were working you got ${workAmount} bubbles.`)

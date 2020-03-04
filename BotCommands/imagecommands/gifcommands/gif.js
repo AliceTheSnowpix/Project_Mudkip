@@ -17,7 +17,7 @@ exports.run = async (bot, message, args) => {
         
         let response = await request(options);
         if (response.data.length);
-        let gifembed = new Discord.RichEmbed()
+        let gifembed = new Discord.MessageEmbed()
         .setColor("#01FF6D")
         .setTitle("Here Is A Random Gif")
         .setImage(response.data[Math.floor(Math.random()* response.data.length)].images.original.url)
@@ -38,7 +38,7 @@ exports.run = async (bot, message, args) => {
     
     let response = await request(options);
     if (response.data.length);
-    let gifembed = new Discord.RichEmbed()
+    let gifembed = new Discord.MessageEmbed()
     .setColor("#01FF6D")
     .setTitle("Here Is A Gif")
     .setImage(response.data[Math.floor(Math.random()* response.data.length)].images.original.url)

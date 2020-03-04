@@ -50,98 +50,98 @@ exports.run = async(bot, message, args) => {
   if (message.guild.id === '456629010890227714') {
     if (input === '1' || arg === '<@460159835544092674> 1') {
       let cost = 10;
-      if(Member.roles.has('481129804347867165')) return message.reply("you already have this item");
+      if(Member.roles.cache.has('481129804347867165')) return message.reply("you already have this item");
       if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**");
       db.subtract(`bubbles_${message.author.id}`, cost);
-      Member.addRole('481129804347867165');
+      Member.roles.add('481129804347867165');
       message.reply(`I have gave you the <@&481129804347867165> role and removed ${cost} bubbles`);
     }
 
     if (input === '2' || arg === '<@460159835544092674> 2') {
       let cost = 25;
-      if(Member.roles.has('481581654167781392')) return message.reply("you already have this item");
+      if(Member.roles.cache.has('481581654167781392')) return message.reply("you already have this item");
       if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**");
       db.subtract(`bubbles_${message.author.id}`, cost);
-      Member.addRole('481581654167781392');
+      Member.roles.add('481581654167781392');
       message.reply(`I have gave you the <@&481581654167781392> role and removed ${cost} bubbles`);
     }
 
     if (input === '3' || arg === '<@460159835544092674> 3') {
       let cost = 50;
-      if(Member.roles.has('481609753651576842')) return message.reply("you already have this item");
+      if(Member.roles.cache.has('481609753651576842')) return message.reply("you already have this item");
       if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**");
       db.subtract(`bubbles_${message.author.id}`, cost);
-      Member.addRole('481609753651576842');
+      Member.roles.add('481609753651576842');
       message.reply(`I have gave you the <@&481609753651576842> role and removed ${cost} bubbles`);
     }
 
     if (input === '4' || arg === '<@460159835544092674> 4') {
       let cost = 100;
-      if(Member.roles.has('481609899206508545')) return message.reply("you already have this item");
+      if(Member.roles.cache.has('481609899206508545')) return message.reply("you already have this item");
       if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**");
       db.subtract(`bubbles_${message.author.id}`, cost);
-      Member.addRole('481609899206508545');
+      Member.roles.add('481609899206508545');
       message.reply(`I have gave you the <@&481609899206508545> role and removed ${cost} bubbles`);
     }
 
     if (input === '5' || arg === '<@460159835544092674> 5') {
       let cost = 200;
-      if(Member.roles.has('481610167083991071')) return message.reply("you already have this item");
+      if(Member.roles.cache.has('481610167083991071')) return message.reply("you already have this item");
       if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**");
       db.subtract(`bubbles_${message.author.id}`, cost);
-      Member.addRole('481610167083991071');
+      Member.roles.add('481610167083991071');
       message.reply(`I have gave you the <@&481610167083991071> role and removed ${cost} bubbles`);
     }
 
     if (input === '6' || arg === '<@460159835544092674> 6') {
       let cost = 300;
-      if(Member.roles.has('481614285416431617')) return message.reply("you already have this item");
+      if(Member.roles.cache.has('481614285416431617')) return message.reply("you already have this item");
       if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**");
       db.subtract(`bubbles_${message.author.id}`, cost);
-      Member.addRole('481614285416431617');
+      Member.roles.add('481614285416431617');
       message.reply(`I have gave you the <@&481614285416431617> role and removed ${cost} bubbles`);
     }
 
     if (input === '7' || arg === '<@460159835544092674> 7') {
       let cost = 400;
-      if(Member.roles.has('481615302459785216')) return message.reply("you already have this item");
+      if(Member.roles.cache.has('481615302459785216')) return message.reply("you already have this item");
       if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**");
       db.subtract(`bubbles_${message.author.id}`, cost);
-      Member.addRole('481615302459785216');
+      Member.roles.add('481615302459785216');
       message.reply(`I have gave you the <@&481615302459785216> role and removed ${cost} bubbles`);
     }
     
     if (input === '8' || arg === '<@460159835544092674> 8') {
       let cost = 500;
-      if(Member.roles.has('481613362099126273')) return message.reply("you already have this item");
+      if(Member.roles.cache.has('481613362099126273')) return message.reply("you already have this item");
       if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**");
       db.subtract(`bubbles_${message.author.id}`, cost);
-      Member.addRole('481613362099126273');
+      Member.roles.add('481613362099126273');
       message.reply(`I have gave you the <@&481613362099126273> role and removed ${cost} bubbles`);
     }
     
     if (input === '9' || arg === '<@460159835544092674> 9') {
       let cost = 1000;
-      if(Member.roles.has('481616059930247169')) return message.reply("you already have this item");
+      if(Member.roles.cache.has('481616059930247169')) return message.reply("you already have this item");
       if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**");
       db.subtract(`bubbles_${message.author.id}`, cost);
-      Member.addRole('481616059930247169');
+      Member.roles.add('481616059930247169');
       message.reply(`I have gave you the <@&481616059930247169> role and removed ${cost} bubbles`);
     }
     
     if (input === '10' || arg === '<@460159835544092674> 10') {
       let cost = 5000;
-      if(Member.roles.has('481615070930010122')) return message.reply("you already have this item");
+      if(Member.roles.cache.has('481615070930010122')) return message.reply("you already have this item");
       if (cost > selfbubbles) return message.reply("**Sorry you do not have enough bubbles to buy that item**");
       db.subtract(`bubbles_${message.author.id}`, cost);
-      Member.addRole('481615070930010122');
+      Member.roles.add('481615070930010122');
       message.reply(`I have gave you the <@&481615070930010122> role and removed ${cost} bubbles`);
     }
     
     if (input === '11' || arg === '<@460159835544092674> 11') {
       let cost = 10000;
-      let getchannel = message.guild.channels.get('483550966965075968');
-      if(getchannel.permissionsFor(Member).has('SEND_MESSAGES')) return message.reply('**you already have that item');
+      let getchannel = message.guild.channels.cache.cache.get('483550966965075968');
+      if(getchannel.permissionsFor(Member).cache.has('SEND_MESSAGES')) return message.reply('**you already have that item');
       if(cost > selfbubbles) return message.reply('**Sorry you do not have enough bubbles to buy that')
       db.subtract(`bubbles_${message.author.id}`, cost);
       getchannel.overwritePermissions(Member, {SEND_MESSAGES:true, READ_MESSAGES:true});
@@ -150,8 +150,8 @@ exports.run = async(bot, message, args) => {
     
     if (input === '12' || arg === '<@460159835544092674> 12')  {
       let cost = 5;
-      let getchannel = message.guild.channels.get('483551789254311937');
-      if(getchannel.permissionsFor(Member).has('SEND_MESSAGES')) return message.reply('you already have that item');
+      let getchannel = message.guild.channels.cache.cache.get('483551789254311937');
+      if(getchannel.permissionsFor(Member).cache.has('SEND_MESSAGES')) return message.reply('you already have that item');
       if(cost > selfbubbles) return message.reply('**Sorry you do not have enough bubbles to buy this');
       db.subtract(`bubbels_${message.author.id}`, cost);
       getchannel.overwritePermissions(Member, {SEND_MESSAGES:true, READ_MESSAGES:true});
@@ -222,19 +222,19 @@ exports.run = async(bot, message, args) => {
     if (input === n1.split(' ').join(' ').toLowerCase() || arg === `<@460159835544092674> ${n1.split(' ').join(' ').toLowerCase()}`) {
       if (c1 > selfbubbles) return message.channel.send('**Sorry you do not have enough bubbles to buy this item**');
       db.subtract(`bubbles_${message.author.id}`, parseInt(c1));
-      if (message.guild.roles.get(i1)) {
-        if (Member.roles.has(i1)) {
+      if (message.guild.roles.cache.get(i1)) {
+        if (Member.roles.cache.has(i1)) {
           db.add(`bubbles_${message.author.id}`, parseInt(c1));
           message.channel.send('You already have this item.');
         }
         else {
-          Member.addRole(i1);
+          Member.roles.add(i1);
           return message.channel.send(`I have given you the <@&${i1}> role.`);
         }
       }
-      let getchannel = message.guild.channels.find(a => a.id === i1);
+      let getchannel = message.guild.channels.cache.find(a => a.id === i1);
       if (getchannel) {
-        if (message.channel.permissionsFor(Member).has('SEND_MESSAGES')) {
+        if (message.channel.permissionsFor(Member).cache.has('SEND_MESSAGES')) {
           db.add(`bubbles_${message.author.id}`, parseInt(c1));
           message.channel.send('You already have this item.');
         } else {
@@ -242,7 +242,7 @@ exports.run = async(bot, message, args) => {
           message.channel.send(`I have given you access to the <#${i1}> channel.`);
         }
       }
-      if (!message.guild.roles.get(i1) && !getchannel) {
+      if (!message.guild.roles.cache.get(i1) && !getchannel) {
         let inventory = await db.fetch(`inventory1_${message.guild.id}_${message.author.id}_${i1}`);
         if (inventory >= 1) {
           message.channel.send('You already have this item. Do you want to buy it again?');
@@ -272,16 +272,16 @@ exports.run = async(bot, message, args) => {
     if (input === n2.split(' ').join(' ').toLowerCase() || arg === `<@460159835544092674> ${n2.split(' ').join(' ').toLowerCase()}`) {
       if (c2 > selfbubbles) return message.channel.send('**Sorry you do not have enough bubbles to buy this item**');
       db.subtract(`bubbles_${message.author.id}`, parseInt(c2))
-      if (message.guild.roles.get(i2)) {
-        if (Member.roles.has(i2)) return message.channel.send('You already have this item.');
+      if (message.guild.roles.cache.get(i2)) {
+        if (Member.roles.cache.has(i2)) return message.channel.send('You already have this item.');
         else {
-          Member.addRole(i2);
+          Member.roles.add(i2);
           return message.channel.send(`I have given you the <@&${i2}> role.`);
         }
       }
-      let getchannel = message.guild.channels.find(a => a.id === i2);
+      let getchannel = message.guild.channels.cache.find(a => a.id === i2);
       if (getchannel) {
-        if (message.channel.permissionsFor(Member).has('SEND_MESSAGES')) {
+        if (message.channel.permissionsFor(Member).cache.has('SEND_MESSAGES')) {
           db.add(`bubbles_${message.author.id}`, parseInt(c2));
           message.channel.send('You already have this item.');
         } else {
@@ -289,7 +289,7 @@ exports.run = async(bot, message, args) => {
           message.channel.send(`I have given you access to the <#${i2}> channel.`);
         }
       }
-      if (!message.guild.roles.get(i2) && !getchannel) {
+      if (!message.guild.roles.cache.get(i2) && !getchannel) {
         let inventory = await db.fetch(`inventory2_${message.guild.id}_${message.author.id}_${i2}`);
         if (inventory >= 1) {
           message.channel.send('You already have this item. Do you want to buy it again?');
@@ -319,16 +319,16 @@ exports.run = async(bot, message, args) => {
     if (input === n3.split(' ').join(' ').toLowerCase() || arg === `<@460159835544092674> ${n3.split(' ').join(' ').toLowerCase()}`) {
       if (c3 > selfbubbles) return message.channel.send('**Sorry you do not have enough bubbles to buy this item**');
       db.subtract(`bubbles_${message.author.id}`, parseInt(c3))
-      if (message.guild.roles.get(i3)) {
-        if (Member.roles.has(i3)) return message.channel.send('You already have this item.');
+      if (message.guild.roles.cache.get(i3)) {
+        if (Member.roles.cache.has(i3)) return message.channel.send('You already have this item.');
         else {
-          Member.addRole(i3);
+          Member.roles.add(i3);
           return message.channel.send(`I have given you the <@&${i3}> role.`);
         }
       }
-      let getchannel = message.guild.channels.find(a => a.id === i3);
+      let getchannel = message.guild.channels.cache.find(a => a.id === i3);
       if (getchannel) {
-        if (message.channel.permissionsFor(Member).has('SEND_MESSAGES')) {
+        if (message.channel.permissionsFor(Member).cache.has('SEND_MESSAGES')) {
           db.add(`bubbles_${message.author.id}`, parseInt(c3));
           message.channel.send('You already have this item.');
         } else {
@@ -336,7 +336,7 @@ exports.run = async(bot, message, args) => {
           message.channel.send(`I have given you access to the <#${i3}> channel.`);
         }
       }
-      if (!message.guild.roles.get(i3) && !getchannel) {
+      if (!message.guild.roles.cache.get(i3) && !getchannel) {
         let inventory = await db.fetch(`inventory3_${message.guild.id}_${message.author.id}_${i3}`);
         if (inventory >= 1) {
           message.channel.send('You already have this item. Do you want to buy it again?');
@@ -367,16 +367,16 @@ exports.run = async(bot, message, args) => {
     if (input === n4.split(' ').join(' ').toLowerCase() || arg === `<@460159835544092674> ${n4.split(' ').join(' ').toLowerCase()}`) {
       if (c4 > selfbubbles) return message.channel.send('**Sorry you do not have enough bubbles to buy this item**');
       db.subtract(`bubbles_${message.author.id}`, parseInt(c4))
-      if (message.guild.roles.get(i4)) {
-        if (Member.roles.has(i4)) return message.channel.send('You already have this item.');
+      if (message.guild.roles.cache.get(i4)) {
+        if (Member.roles.cache.has(i4)) return message.channel.send('You already have this item.');
         else {
-          Member.addRole(i4);
+          Member.roles.add(i4);
           return message.channel.send(`I have given you the <@&${i4}> role.`);
         }
       }
-      let getchannel = message.guild.channels.find(a => a.id === i4);
+      let getchannel = message.guild.channels.cache.find(a => a.id === i4);
       if (getchannel) {
-        if (message.channel.permissionsFor(Member).has('SEND_MESSAGES')) {
+        if (message.channel.permissionsFor(Member).cache.has('SEND_MESSAGES')) {
           db.add(`bubbles_${message.author.id}`, parseInt(c4));
           message.channel.send('You already have this item.');
         } else {
@@ -384,7 +384,7 @@ exports.run = async(bot, message, args) => {
           message.channel.send(`I have given you access to the <#${i4}> channel.`);
         }
       }
-      if (!message.guild.roles.get(i4) && !getchannel) {
+      if (!message.guild.roles.cache.get(i4) && !getchannel) {
         let inventory = await db.fetch(`inventory4_${message.guild.id}_${message.author.id}_${i4}`);
         if (inventory >= 1) {
           message.channel.send('You already have this item. Do you want to buy it again?');
@@ -414,16 +414,16 @@ exports.run = async(bot, message, args) => {
     if (input === n5.split(' ').join(' ').toLowerCase() || arg === `<@460159835544092674> ${n5.split(' ').join(' ').toLowerCase()}`) {
       if (c5 > selfbubbles) return message.channel.send('**Sorry you do not have enough bubbles to buy this item**');
       db.subtract(`bubbles_${message.author.id}`, parseInt(c5))
-      if (message.guild.roles.get(i5)) {
-        if (Member.roles.has(i5)) return message.channel.send('You already have this item.');
+      if (message.guild.roles.cache.get(i5)) {
+        if (Member.roles.cache.has(i5)) return message.channel.send('You already have this item.');
         else {
-          Member.addRole(i5);
+          Member.roles.add(i5);
           return message.channel.send(`I have given you the <@&${i5}> role.`);
         }
       }
-      let getchannel = message.guild.channels.find(a => a.id === i5);
+      let getchannel = message.guild.channels.cache.find(a => a.id === i5);
       if (getchannel) {
-        if (message.channel.permissionsFor(Member).has('SEND_MESSAGES')) {
+        if (message.channel.permissionsFor(Member).cache.has('SEND_MESSAGES')) {
           db.add(`bubbles_${message.author.id}`, parseInt(c5));
           message.channel.send('You already have this item.');
         } else {
@@ -431,7 +431,7 @@ exports.run = async(bot, message, args) => {
           message.channel.send(`I have given you access to the <#${i5}> channel.`);
         }
       }
-      if (!message.guild.roles.get(i5) && !getchannel) {
+      if (!message.guild.roles.cache.get(i5) && !getchannel) {
         let inventory = await db.fetch(`inventory5_${message.guild.id}_${message.author.id}_${i5}`);
         if (inventory >= 1) {
           message.channel.send('You already have this item. Do you want to buy it again?');
@@ -461,16 +461,16 @@ exports.run = async(bot, message, args) => {
     if (input === n6.split(' ').join(' ').toLowerCase() || arg === `<@460159835544092674> ${n6.split(' ').join(' ').toLowerCase()}`) {
       if (c6 > selfbubbles) return message.channel.send('**Sorry you do not have enough bubbles to buy this item**');
       db.subtract(`bubbles_${message.author.id}`, parseInt(c6))
-      if (message.guild.roles.get(i6)) {
-        if (Member.roles.has(i6)) return message.channel.send('You already have this item.');
+      if (message.guild.roles.cache.get(i6)) {
+        if (Member.roles.cache.has(i6)) return message.channel.send('You already have this item.');
         else {
-          Member.addRole(i6);
+          Member.roles.add(i6);
           return message.channel.send(`I have given you the <@&${i6}> role.`);
         }
       }
-      let getchannel = message.guild.channels.find(a => a.id === i6);
+      let getchannel = message.guild.channels.cache.find(a => a.id === i6);
       if (getchannel) {
-        if (message.channel.permissionsFor(Member).has('SEND_MESSAGES')) {
+        if (message.channel.permissionsFor(Member).cache.has('SEND_MESSAGES')) {
           db.add(`bubbles_${message.author.id}`, parseInt(c6));
           message.channel.send('You already have this item.');
         } else {
@@ -478,7 +478,7 @@ exports.run = async(bot, message, args) => {
           message.channel.send(`I have given you access to the <#${i6}> channel.`);
         }
       }
-      if (!message.guild.roles.get(i6) && !getchannel) {
+      if (!message.guild.roles.cache.get(i6) && !getchannel) {
         let inventory = await db.fetch(`inventory6_${message.guild.id}_${message.author.id}_${i6}`);
         if (inventory >= 1) {
           message.channel.send('You already have this item. Do you want to buy it again?');
@@ -508,16 +508,16 @@ exports.run = async(bot, message, args) => {
     if (input === n7.split(' ').join(' ').toLowerCase() || arg === `<@460159835544092674> ${n7.split(' ').join(' ').toLowerCase()}`) {
       if (c7 > selfbubbles) return message.channel.send('**Sorry you do not have enough bubbles to buy this item**');
       db.subtract(`bubbles_${message.author.id}`, parseInt(c7))
-      if (message.guild.roles.get(i7)) {
-        if (Member.roles.has(i7)) return message.channel.send('You already have this item.');
+      if (message.guild.roles.cache.get(i7)) {
+        if (Member.roles.cache.has(i7)) return message.channel.send('You already have this item.');
         else {
-          Member.addRole(i7);
+          Member.roles.add(i7);
           return message.channel.send(`I have given you the <@&${i7}> role.`);
         }
       }
-      let getchannel = message.guild.channels.find(a => a.id === i7);
+      let getchannel = message.guild.channels.cache.find(a => a.id === i7);
       if (getchannel) {
-        if (message.channel.permissionsFor(Member).has('SEND_MESSAGES')) {
+        if (message.channel.permissionsFor(Member).cache.has('SEND_MESSAGES')) {
           db.add(`bubbles_${message.author.id}`, parseInt(c7));
           message.channel.send('You already have this item.');
         } else {
@@ -525,7 +525,7 @@ exports.run = async(bot, message, args) => {
           message.channel.send(`I have given you access to the <#${i7}> channel.`);
         }
       }
-      if (!message.guild.roles.get(i7) && !getchannel) {
+      if (!message.guild.roles.cache.get(i7) && !getchannel) {
         let inventory = await db.fetch(`inventory7_${message.guild.id}_${message.author.id}_${i7}`);
         if (inventory >= 1) {
           message.channel.send('You already have this item. Do you want to buy it again?');
@@ -555,16 +555,16 @@ exports.run = async(bot, message, args) => {
     if (input === n8.split(' ').join(' ').toLowerCase() || arg === `<@460159835544092674> ${n8.split(' ').join(' ').toLowerCase()}`) {
       if (c8 > selfbubbles) return message.channel.send('**Sorry you do not have enough bubbles to buy this item**');
       db.subtract(`bubbles_${message.author.id}`, parseInt(c8))
-      if (message.guild.roles.get(i8)) {
-        if (Member.roles.has(i8)) return message.channel.send('You already have this item.');
+      if (message.guild.roles.cache.get(i8)) {
+        if (Member.roles.cache.has(i8)) return message.channel.send('You already have this item.');
         else {
-          Member.addRole(i8);
+          Member.roles.add(i8);
           return message.channel.send(`I have given you the <@&${i8}> role.`);
         }
       }
-      let getchannel = message.guild.channels.find(a => a.id === i8);
+      let getchannel = message.guild.channels.cache.find(a => a.id === i8);
       if (getchannel) {
-        if (message.channel.permissionsFor(Member).has('SEND_MESSAGES')) {
+        if (message.channel.permissionsFor(Member).cache.has('SEND_MESSAGES')) {
           db.add(`bubbles_${message.author.id}`, parseInt(c8));
           message.channel.send('You already have this item.');
         } else {
@@ -572,7 +572,7 @@ exports.run = async(bot, message, args) => {
           message.channel.send(`I have given you access to the <#${i8}> channel.`);
         }
       }
-      if (!message.guild.roles.get(i8) && !getchannel) {
+      if (!message.guild.roles.cache.get(i8) && !getchannel) {
         let inventory = await db.fetch(`inventory8_${message.guild.id}_${message.author.id}_${i8}`);
         if (inventory >= 1) {
           message.channel.send('You already have this item. Do you want to buy it again?');
@@ -602,16 +602,16 @@ exports.run = async(bot, message, args) => {
     if (input === n9.split(' ').join(' ').toLowerCase() || arg === `<@460159835544092674> ${n9.split(' ').join(' ').toLowerCase()}`) {
       if (c9 > selfbubbles) return message.channel.send('**Sorry you do not have enough bubbles to buy this item**');
       db.subtract(`bubbles_${message.author.id}`, parseInt(c9))
-      if (message.guild.roles.get(i9)) {
-        if (Member.roles.has(i9)) return message.channel.send('You already have this item.');
+      if (message.guild.roles.cache.get(i9)) {
+        if (Member.roles.cache.has(i9)) return message.channel.send('You already have this item.');
         else {
-          Member.addRole(i9);
+          Member.roles.add(i9);
           return message.channel.send(`I have given you the <@&${i9}> role.`);
         }
       }
-      let getchannel = message.guild.channels.find(a => a.id === i9);
+      let getchannel = message.guild.channels.cache.find(a => a.id === i9);
       if (getchannel) {
-        if (message.channel.permissionsFor(Member).has('SEND_MESSAGES')) {
+        if (message.channel.permissionsFor(Member).cache.has('SEND_MESSAGES')) {
           db.add(`bubbles_${message.author.id}`, parseInt(c9));
           message.channel.send('You already have this item.');
         } else {
@@ -619,7 +619,7 @@ exports.run = async(bot, message, args) => {
           message.channel.send(`I have given you access to the <#${i9}> channel.`);
         }
       }
-      if (!message.guild.roles.get(i9) && !getchannel) {
+      if (!message.guild.roles.cache.get(i9) && !getchannel) {
         let inventory = await db.fetch(`inventory9_${message.guild.id}_${message.author.id}_${i9}`);
         if (inventory >= 1) {
           message.channel.send('You already have this item. Do you want to buy it again?');
@@ -649,16 +649,16 @@ exports.run = async(bot, message, args) => {
     if (input === n10.split(' ').join(' ').toLowerCase() || arg === `<@460159835544092674> ${n10.split(' ').join(' ').toLowerCase()}`) {
       if (c10 > selfbubbles) return message.channel.send('**Sorry you do not have enough bubbles to buy this item**');
       db.subtract(`bubbles_${message.author.id}`, parseInt(c10))
-      if (message.guild.roles.get(i10)) {
-        if (Member.roles.has(i10)) return message.channel.send('You already have this item.');
+      if (message.guild.roles.cache.get(i10)) {
+        if (Member.roles.cache.has(i10)) return message.channel.send('You already have this item.');
         else {
-          Member.addRole(i10);
+          Member.roles.add(i10);
           return message.channel.send(`I have given you the <@&${i10}> role.`);
         }
       }
-      let getchannel = message.guild.channels.find(a => a.id === i10);
+      let getchannel = message.guild.channels.cache.find(a => a.id === i10);
       if (getchannel) {
-        if (message.channel.permissionsFor(Member).has('SEND_MESSAGES')) {
+        if (message.channel.permissionsFor(Member).cache.has('SEND_MESSAGES')) {
           db.add(`bubbles_${message.author.id}`, parseInt(c10));
           message.channel.send('You already have this item.');
         } else {
@@ -666,7 +666,7 @@ exports.run = async(bot, message, args) => {
           message.channel.send(`I have given you access to the <#${i10}> channel.`);
         }
       }
-      if (!message.guild.roles.get(i10) && !getchannel) {
+      if (!message.guild.roles.cache.get(i10) && !getchannel) {
         let inventory = await db.fetch(`inventory10_${message.guild.id}_${message.author.id}_${i10}`);
         if (inventory >= 1) {
           message.channel.send('You already have this item. Do you want to buy it again?');

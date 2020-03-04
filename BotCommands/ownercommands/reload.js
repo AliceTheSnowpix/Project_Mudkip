@@ -13,7 +13,7 @@ exports.run = async (bot, message, args) => {
     let songcommands = ['alien', 'alive', 'apricotjam', 'bad', 'bellyache', 'bored', 'break', 'broken', 'broken2', 'burn', 'copycat', 'cosmic', 'crown', 'damn', 'dirty', 'ending', 'enemies', 'entropy', 'fakelove', 'fireflies', 'friends', 'friendship', 'galaxy', 'god', 'happysong', 'hostahe', 'idwbya', 'japanese', 'lovely', 'lush', 'middle', 'motto', 'my', 'myboy', 'nights', 'ocean', 'off', 'og', 'panic', 'pumpedup', 'ripsong', 'rocksong', 'sadsong', 'shine', 'side', 'six', 'ski', 'smoothie', 'snow', 'something', 'spaceship', 'starting', 'story', 'summertime', 'sun', 'sunshine', 'surf', 'team', 'tennis', 'trials', 'warpstar', 'why'];
 
     try {
-        let Aembed = new Discord.RichEmbed()
+        let Aembed = new Discord.MessageEmbed()
         .setTitle("Reloading...")
         .setColor('RANDOM')
         .setDescription(`${args[0]}.js successfully reloaded!`);

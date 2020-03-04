@@ -5,7 +5,7 @@ exports.run = async(bot, message, args) => {
     let userbubbles = await db.fetch(`bubbles_${message.author.id}`);
 
     if (!userbub) {
-        let userbubembed = new discord.RichEmbed()
+        let userbubembed = new discord.MessageEmbed()
         .setAuthor(message.author.username)
         .setThumbnail(message.author.avatarURL)
         .setColor("#77c9ff")
@@ -13,7 +13,7 @@ exports.run = async(bot, message, args) => {
         message.channel.send(userbubembed);
     } else {
         let memberbubbles = await db.fetch(`bubbles_${userbub.id}`);
-        let membubebed = new discord.RichEmbed()
+        let membubebed = new discord.MessageEmbed()
         .setAuthor(userbub.displayName)
         .setThumbnail(userbub.user.avatarURL)
         .setColor("#77c9ff")

@@ -11,7 +11,7 @@ exports.run = async(bot, message, args) => {
         return message.reply("**please give me a valid calculation**");
     }
 
-    let mathembed = new Discord.RichEmbed()
+    let mathembed = new Discord.MessageEmbed()
     .setColor('RANDOM')
     .setTitle('Math Calculation')
     .addField('Input', `\`\`\`js\n${args.join(' ')}\`\`\``)

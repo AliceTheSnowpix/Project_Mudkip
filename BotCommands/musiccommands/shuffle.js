@@ -19,7 +19,7 @@ exports.run = async(bot, message, _args) => {
 
   	const queue = bot.queue;
 	const serverQueue = queue.get(message.guild.id);
-	if (!message.member.voiceChannel) return message.channel.send('You are not in the same voice channel as me.');
+	if (!message.member.voice.channel) return message.channel.send('You are not in the same voice channel as me.');
 	if (!serverQueue || !serverQueue.songs.length) return message.channel.send('There is nothing to shuffle');
 	serverQueue.songs = fixedAllDifferentShuffle(serverQueue.songs, [true]);
 	message.channel.send('The queue jas been shuffled');

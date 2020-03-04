@@ -1,6 +1,6 @@
 exports.run = async (bot,message,args) => {
     const ytdl = bot.ytdl;
-    let voiceChannel = message.member.voiceChannel;
+    let voiceChannel = message.member.voice.channel;
 
     if (!voiceChannel.permissionsFor(message.guild.member(bot.user)).has("CONNECT")) {
         return message.channel.send("Sorry I can't join that VC try a diffrent VC and make sure i have the connect permission if you need any help contact my owner").catch(console.error);
@@ -14,7 +14,7 @@ exports.run = async (bot,message,args) => {
         return message.reply("please join a voice chat to use this command")
 voiceChannel.join().then(connection =>
 {
-    const dispatcher = connection.playStream(ytdl('https://youtu.be/FG2PgVl0Nlc'));
+    const dispatcher = connection.play(ytdl('https://youtu.be/FG2PgVl0Nlc'));
     dispatcher.on("end", end => {
         voiceChannel.leave();
     })

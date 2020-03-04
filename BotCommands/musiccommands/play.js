@@ -4,7 +4,7 @@ require('dotenv').config();
 const YouTube = require('simple-youtube-api');
 const youtube = new YouTube(process.env.YOUTUBE);
 
-exports.run = async(bot, message, _args) => {
+exports.run = async(bot, message, args) => {
 	const discord = bot.discord;
 	const Util = bot.discord.Util
 	const db = bot.db;
@@ -20,7 +20,7 @@ exports.run = async(bot, message, _args) => {
 	const url = input[1] ? input[1].replace(/<(.+)>/g, '$1') : '';
 	moment.locale(message.guild.id);
   
-  	const voiceChannel = message.member.voiceChannel;
+  	const voiceChannel = message.member.voice.channel;
 	if (!voiceChannel) return message.channel.send('Please connect to a voice channel before using this command');
   
 	async function play(guild, song) {
@@ -40,7 +40,7 @@ exports.run = async(bot, message, _args) => {
 		const stream = await ytdl(song.url, {
 			filter: 'audioonly'
 		});
-		const dispatcher = await serverQueue.connection.playStream(stream).on('end', async _reason => {
+		const dispatcher = await serverQueue.connection.play(stream).on('finish', async reason => {
 			if (sloop === true) {
 				serverQueue.songs.push(serverQueue.songs[0]);
 				serverQueue.songs.pop();
@@ -53,7 +53,7 @@ exports.run = async(bot, message, _args) => {
 
 		const duration = song.duration;
 		const published = song.publishedat;
-		const embed = new discord.RichEmbed()
+		const embed = new discord.MessageEmbed()
 		.setAuthor(message.author.username)
 		.setDescription(duration)
 		.setThumbnail(song.thumbnail)
@@ -109,7 +109,7 @@ exports.run = async(bot, message, _args) => {
 			if (playlist) return;
 			const duration = song.duration;
 			const published = song.publishedat;
-			const embed = new discord.RichEmbed()
+			const embed = new discord.MessageEmbed()
 			.setAuthor(message.author.username)
 			.setDescription(duration)
 			.setThumbnail(song.thumbnail)
@@ -164,7 +164,7 @@ exports.run = async(bot, message, _args) => {
 			const videos = await youtube.searchVideos(searchString, 10);
 			if (videos.length === 0) return message.channel.send('could not find any videos');
 			let index = 0;
-			const embed = new discord.RichEmbed()
+			const embed = new discord.MessageEmbed()
 			.setColor('#7BB3FF')
 			.setDescription(`${videos.map(video2 => `**${++index} -** ${video2.title.replace(/&amp;/g, '&')
 				.replace(/&gt;/g, '>')
@@ -195,7 +195,7 @@ exports.run = async(bot, message, _args) => {
 				.replace(/&trade;/g, '™')
 				.replace(/&reg;/g, '®')
 				.replace(/&nbsp;/g, ' ')}`).join('\n')}`)
-			const embed2 = new discord.RichEmbed()
+			const embed2 = new discord.MessageEmbed()
 			.setColor('#0066CC')
 			.setDescription('Please send a number between 1-10 to select a video');
 			message.channel.send(embed);

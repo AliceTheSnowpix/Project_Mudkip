@@ -12,7 +12,7 @@ exports.run = async (bot, message, _args) => {
     month = (month < 10 ? "0" : "") + month;
     let day  = date.getDate();
     day = (day < 10 ? "0" : "") + day;
-    let timeembed = new Discord.RichEmbed()
+    let timeembed = new Discord.MessageEmbed()
     .setColor('#c464ea')
     .setTitle("Here Is The Time :clock:")
     .addField("Day Of The Year", month + "/" + day + "/" + year)

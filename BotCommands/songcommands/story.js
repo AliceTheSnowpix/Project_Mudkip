@@ -1,6 +1,6 @@
 exports.run = async (bot,message,args) => {
     const ytdl = bot.ytdl;
-    let voiceChannel = message.member.voiceChannel;
+    let voiceChannel = message.member.voice.channel;
 
     if (!voiceChannel) {
         return message.reply("Sorry You are not connected to a voice channel");
@@ -14,8 +14,8 @@ exports.run = async (bot,message,args) => {
 
     await message.channel.send("Song Loading Please Wait")
     voiceChannel.join().then(connection => {
-    const dispatcher = connection.playStream(ytdl('https://youtu.be/hnJIRPiCqRw'));
-        dispatcher.on('end', end => {
+    const dispatcher = connection.play(ytdl('https://youtu.be/hnJIRPiCqRw'));
+        dispatcher.on('finish', end => {
             voiceChannel.leave();
         });
     }).catch(err => console.log(err));

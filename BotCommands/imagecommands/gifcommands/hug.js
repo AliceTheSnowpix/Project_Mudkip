@@ -2,7 +2,7 @@ const request = require('request-promise-native');
 
 exports.run = async (bot, message, args) => {
     const Discord = bot.discord;
-    let hugUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    let hugUser = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
     if (!hugUser) return message.channel.send("Could not find that user make sure you typed it in right and try again.");
 
     require('dotenv').config()
@@ -20,7 +20,7 @@ exports.run = async (bot, message, args) => {
     let response = await request(options);
     if (response.data.length);
     
-    let hugembed = new Discord.RichEmbed()
+    let hugembed = new Discord.MessageEmbed()
     .setColor("#9b42f4")
     .setDescription(`<@${message.author.id}> has given <@${hugUser.id}> a hug.`)
     .setImage(response.data[Math.floor(Math.random() * response.data.length)].images.original.url)

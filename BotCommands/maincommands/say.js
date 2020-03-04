@@ -3,7 +3,7 @@ exports.run = async (bot, message, args) => {
     if (!args.join(" ")) {
         return message.channel.send(":x: " + "| Please Enter Something For The Bot To Say");
     }
-    let sayembed = new Discord.RichEmbed({disabelEveryone: true})
+    let sayembed = new Discord.MessageEmbed({disabelEveryone: true})
     .setColor('RANDOM')
     .setDescription(`<@${message.author.id}>`)
     .addField("**Wanted me to say**", args.join(" "))

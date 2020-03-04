@@ -9,7 +9,7 @@ exports.run = async (bot, message, args) => {
         args.replace(Object.keys(flipText)[i], flipText[Object.keys(flipText)[i]]);
     }
 
-    let ftembed = new Discord.RichEmbed()
+    let ftembed = new Discord.MessageEmbed()
     .setColor("#f3ff77")
     .setTitle("Fliped Texted")
     .setDescription(args.split('').reverse().join(''));

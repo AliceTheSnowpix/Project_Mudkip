@@ -37,7 +37,7 @@ exports.run = async(bot, message, args) => {
         .join('\n');
         message.delete();
 
-        let googembed = new Discord.RichEmbed()
+        let googembed = new Discord.MessageEmbed()
         .addField("Search Term", `${args.join(" ")}`, true)
         .addField("Requested by", `${message.author}`)
         .addField("Search Results", output, false)

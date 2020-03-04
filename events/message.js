@@ -6,7 +6,7 @@ const blacklist = [];
 module.exports = async(bot, message) => {
   const prefixes = new db.table('PREFIXES');
   if(blacklist.includes(message.author.id) || message.author.bot) return;
-  let dmembed = new Discord.RichEmbed()
+  let dmembed = new Discord.MessageEmbed()
     .setColor('RANDOM')
     .setTitle(message.author.username)
     .setAuthor(message.author.id)

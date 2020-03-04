@@ -14,7 +14,7 @@ exports.run = async (bot, message, args) => {
         color = bot.resolveColor(bot.getRandomHex());
     }
 
-    let embed = new Discord.RichEmbed()
+    let embed = new Discord.MessageEmbed()
     .setDescription(`Hex: \`#${color.hex}\`\nRGB: \`${color.red}, ${color.green}, ${color.blue}\`\nHSL: \`${color.hue}, ${color.saturation}, ${color.lightness}\``)
     .setImage(`http://placehold.it/500/${color.hex}/${color.hex}`)
     .setColor(`${color.hex}`);

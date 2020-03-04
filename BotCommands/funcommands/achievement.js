@@ -1,4 +1,4 @@
-const snekfetch = require('snekfetch');
+const fetch = require('node-fetch');
 
 exports.run = async (_bot, message, args) => {
     let [title, contents] = args.join(" ").split("|");
@@ -12,7 +12,7 @@ exports.run = async (_bot, message, args) => {
     if (!args.join(" ")) return message.reply("**Please tell me what the name of the achievement should be**");
     if (title.length > 22 || contents.length > 22) return message.channel.send("Max Length: 22 Characters.");
     const url = `https://www.minecraftskinstealer.com/achievement/a.php?i=${rnd}&h=${encodeURIComponent(title)}&t=${encodeURIComponent(contents)}`;
-    snekfetch.get(url).then(r => message.channel.send({files:[{attachment: r.body}]}));
+    fetch(url).then(r => message.channel.send({files:[{attachment: r.body}]}));
 };
 
 exports.help = {
