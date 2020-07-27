@@ -3,7 +3,7 @@ exports.run = async (bot, message, args) => {
     if (message.author.id !== '293148538886553602') return;
     let economycommands = ['buy', 'bubble', 'daily', 'give', 'inventory', 'leaderboard', 'pay', 'shop', 'take', 'work'];
     let games = ['betflip', 'slots'];
-    let funcommands = ['8ball', 'achievement', 'ascii', 'bingo', 'blocktext', 'card', 'catify', 'clap', 'coin', 'copypaste', 'cowsay', 'destroy', 'diceroll', 'fliptext', 'joke', 'kms', 'mock', 'quote', 'retro', 'robotify', 'rip', 'rps', 'space', 'thisorthat', 'tiny', 'wouldyourather'];
+    let funcommands = ['8ball', 'achievement', 'ascii', 'bingo', 'blocktext', 'card', 'catify', 'clap', 'coin', 'copypaste', 'cowsay', 'destroy', 'diceroll', 'fliptext', 'joke', 'mock', 'quote', 'retro', 'robotify', 'rip', 'rps', 'space', 'thisorthat', 'tiny', 'wouldyourather'];
     let imagecommands = ['brazzers', 'bunny', 'cat', 'deepfry', 'dog', 'duck', 'explode', 'funky', 'haah', 'hooh', 'implode', 'invert', 'magik', 'meme', 'owl', 'penguin', 'photo', 'rainbow', 'retarded', 'shutterstock', 'swirl', 'waaw', 'wall', 'woow'];
     let gifcommands = ['cookie', 'cuddle', 'gif', 'hug', 'pat', 'punch', 'slap', 'tickle'];
     let maincommands = ['advice', 'autouser', 'calc', 'color', 'google', 'help', 'info', 'invite', 'join', 'lmgtfy', 'numbers', 'numfact', 'rate', 'report', 'roleinfo', 'roles', 'say', 'server', 'shorten', 'swatch', 'time', 'tts', 'uptime', 'user', 'videoinfo', 'weather'];

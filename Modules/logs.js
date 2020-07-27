@@ -19,7 +19,7 @@ module.exports = bot => {
     .setTitle('**New User!**')
     .setColor('#ff8ef5')
     .setTimestamp()
-    .setDescription(`Welcome to **${member.guild.name}**, **<@${member.user.id}>** Hope you have a good time here.`)
+    .setDescription(`Welcome to **${member.guild.name}**, **<@${member.user.id}>** Hope you have a good time here.`);
 
     let welcomeEmbed = new Discord.MessageEmbed()
     .setTitle('**New User!**')

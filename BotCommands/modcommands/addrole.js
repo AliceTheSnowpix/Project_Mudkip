@@ -36,11 +36,11 @@ exports.run = async (bot, message, args) => {
 
     if (rMember.roles.cache.has(gRole.id)) return message.reply("They already have that role");
     else await rMember.roles.add(gRole.id);
-    // try {
-    //     await rMember.send(`You have been given the role ${gRole.name}`);
-    // } catch(e) {
-    //     message.channel.send(`<@${rMember.id}> They have been given the role ${gRole.name} I tried to DM them but their DMs are locked`);
-    // }
+    try {
+        await rMember.send(`You have been given the role ${gRole.name}`);
+    } catch(e) {
+        message.channel.send(`<@${rMember.id}> They have been given the role ${gRole.name} I tried to DM them but their DMs are locked`);
+    }
 }
 
 

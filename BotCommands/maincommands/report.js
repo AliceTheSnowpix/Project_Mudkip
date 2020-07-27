@@ -5,10 +5,10 @@ exports.run = async (bot, message, args) => {
     let reportEmbed = new Discord.MessageEmbed()
     .setDescription("Reports")
     .setColor("#FF0000")
-    .addField("Reported From", message.guild.name)
-    .addField("Reported By", message.author.username)
-    .addField("Time", message.createdAt)
-    .addField("Issue", args.join(' '));
+    .addFields([{name: "Reported From", value: message.guild.name},
+                {name: "Reported By", value: message.author.username},
+                {name: "Time", value: message.createdAt},
+                {name: "Issue", value: args.join(' ')}]);
 
     await message.reply('your issue has been sent to the support server')
     bot.guilds.cache.get('456629010890227714').channels.cache.get('478108765707829254').send(reportEmbed);

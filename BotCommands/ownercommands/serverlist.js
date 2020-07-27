@@ -14,13 +14,13 @@ exports.run = async (bot, message, _args) => {
         table.push(
             [
                 g.id, g.name, 
-                // g.members.cache.filter(u => !u.user.bot).size, 
-                // g.members.cache.filter(u => u.user.bot).size, 
-                g.members.size
+                g.members.cache.filter(u => !u.user.bot).size, 
+                g.members.cache.filter(u => u.user.bot).size, 
+                g.members.cache.size
             ]
         )
     );
-    
+    // console.log(table.toString());
     require(`snekfetch`)
     .post(`https://hastebin.com/documents`)
     .set(`Content-Type`, `application/raw`)

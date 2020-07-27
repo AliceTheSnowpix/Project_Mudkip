@@ -28,10 +28,10 @@ exports.run = async (bot, message, _args) => {
         .addField("ID:", message.author.id, true)
         .addField('Nickname:', message.guild.members.cache.get(message.author.id).displayName === message.author.username ? "No nickname currently." : message.guild.members.cache.get(message.author.id).displayName)
         .addField('Currently:', message.author.presence.status.toProperCase(), true)
-        .addField('Current Activity:', message.author.presence.game === null ? "Nothing at the moment." : message.author.presence.game.name, true)
+        .addField('Current Activity:', message.author.presence.activities === null ? "Nothing at the moment." : message.author.presence.activities, true)
         .addField('Joined Discord On:', moment(message.author.createdAt).format('MMMM Do YYYY'), true)
         .addField('Joined Server On:', moment(message.member.joinedAt).format('MMMM Do YYYY'), true)
-        .addField('Roles:', message.member.roles.filter((r => "<@" + r.id + ">", n => n.name !== '@everyone')).array().join(' | '), true);
+        .addField('Roles:', message.member.roles.cache.filter((r => "<@" + r.id + ">", n => n.name !== '@everyone')).array().join(' | '), true);
         message.channel.send(userinfo);
     } else {
         let role = memberInfo.roles.highest;

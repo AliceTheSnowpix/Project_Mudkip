@@ -14,7 +14,7 @@ exports.run = async (bot, message, args) => {
     let mr = await modrole.fetch(`modrole_${message.guild.id}`);
     let lc = await logchannel.fetch(`logchannel_${message.guild.id}`);
     message.guild.roles.cache.get(mr);
-    if (!message.member.hasPermission("BAN_MEMBERS") && !message.member.roles.cache.has(mr)) return message.channel.send("Sorry you can't use this command as you do not have the Ban Members permission");
+    if (!message.member.hasPermission("BAN_MEMBERS") && !message.member.roles.cache.has(mr)) return message.channel.send("You do not have permission to use this command.");
     if (!message.guild.member(bot.user).hasPermission("BAN_MEMBERS")) {
         return message.reply(":x: " + "| I need the \"BAN_MEMBERS\" permission!").catch(console.error);
     }
@@ -28,7 +28,7 @@ exports.run = async (bot, message, args) => {
     }
 
     let breason = args.join(" ").slice(22);
-    if(bUser.hasPermission("BAN_MEMBERS") || bUser.roles.cache.has(mr)) return message.channel.send("Sorry you can not ban this user because they have the Ban Members permission");
+    if(bUser.hasPermission("BAN_MEMBERS") || bUser.roles.cache.has(mr)) return message.channel.send("You can not ban this user.");
     let banEmbed = new Discord.MessageEmbed()
     .setTitle("Ban Report!")
     .setColor("#00AAFF")

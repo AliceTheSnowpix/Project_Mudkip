@@ -16,16 +16,16 @@ exports.run = async (bot, message, args) => {
         .setAuthor(`Weather for ${current.observationpoint}`)
         .setThumbnail(current.imageUrl)
         .setColor("#00AE86")
-        .addField('Timezone',`UTC${location.timezone}`, true) 
-        .addField('Degree Type',location.degreetype, true)
-        .addField('Temperature',`${current.temperature} Degrees`, true)
-        .addField('Feels Like', `${current.feelslike} Degrees`, true)
-        .addField('Winds',current.winddisplay, true)
-        .addField('Humidity', `${current.humidity}%`, true);
+        .addFields([{name: 'Timezone', value: `UTC${location.timezone}`, inline: true}, 
+                    {name: 'Degree Type', value: location.degreetype, inline: true},
+                    {name: 'Temperature', value: `${current.temperature} Degrees`, inline: true},
+                    {name: 'Feels Like', value: `${current.feelslike} Degrees`, inline: true},
+                    {name: 'Winds', value: current.winddisplay, inline: true},
+                    {name: 'Humidity', value: `${current.humidity}%`, inline: true}]);
         message.channel.send(wembed);
     });
 }
 
 exports.help = {
-    name: "weather"
+    name: 'weather'
 }

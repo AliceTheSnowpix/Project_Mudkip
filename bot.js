@@ -1,14 +1,12 @@
-const Discord = require('discord.js');
-const bot = new Discord.Client();
-bot.commands = new Discord.Collection();
-bot.aliases = new Discord.Collection();
+const {Client, Collection} = require('discord.js');
+const bot = new Client();
+bot.commands = new Collection();
+bot.aliases = new Collection();
 bot.queue = new Map();
 bot.skipvote = new Map();
 bot.db = require('quick.db');
 bot.discord = require('discord.js');
 bot.ytdl = require('ytdl-core');
-require("./Modules/functions.js")(bot);
-require("./Modules/logs.js")(bot);
 require('./Modules/loader.js')(bot);
 require('dotenv').config();
 bot.login(process.env.TOKEN);

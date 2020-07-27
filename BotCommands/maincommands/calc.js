@@ -6,7 +6,7 @@ exports.run = async(bot, message, args) => {
     let resp;
 
     try {
-        resp = math.eval(args.join(' '));
+        resp = math.evaluate(args.join(' '));
     } catch (e) {
         return message.reply("**please give me a valid calculation**");
     }
@@ -14,8 +14,8 @@ exports.run = async(bot, message, args) => {
     let mathembed = new Discord.MessageEmbed()
     .setColor('RANDOM')
     .setTitle('Math Calculation')
-    .addField('Input', `\`\`\`js\n${args.join(' ')}\`\`\``)
-    .addField('Output', `\`\`\`js\n${resp}\`\`\``);
+    .addFields([{name: '**Input**', value: `\`\`\`js\n${args.join(' ')}\`\`\``},
+                {name: '**Output**', value: `\`\`\`js\n${resp}\`\`\``}]);
     message.channel.send(mathembed);
 }
 

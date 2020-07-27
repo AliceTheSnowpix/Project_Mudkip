@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const db = require('quick.db');
-const fs = require('fs')
 const blacklist = [];
 
 module.exports = async(bot, message) => {
@@ -23,7 +22,7 @@ module.exports = async(bot, message) => {
       if (command) command.run(bot, message, args);
       if (aliase) aliase.run(bot, message, args);
     } else {
-      bot.users.get('293148538886553602').send(dmembed)
+      bot.users.cache.get('293148538886553602').send(dmembed)
     }
   } else if (message.channel.type === 'text') {
     let p = await prefixes.fetch(`prefix_${message.guild.id}`)

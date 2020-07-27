@@ -8,9 +8,8 @@ exports.run = async (bot, message, _args) => {
 
     axios.post(`https://discordbotlist.com/api/bots/${process.env.BOT_ID}/stats`, {
         shard_id: 0,
-        guilds: bot.guilds.size,
-        users: bot.users.size,
-        voice_connections: bot.voiceConnections.size,
+        guilds: bot.guilds.cache.size,
+        users: bot.users.cache.size
     }, {
       headers: {
           Authorization: `Bot ${process.env.DBLTOKEN}`,

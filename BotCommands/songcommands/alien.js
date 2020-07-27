@@ -14,12 +14,11 @@ exports.run = async (bot, message, args) => {
     
     await message.channel.send("Song Loading Please Wait")
 
-voiceChannel.join().then(connection => 
-{
-    const dispatcher = connection.play(ytdl('https://youtu.be/XqBzY0_ZPjM'));
-    dispatcher.on('finish', end => {
-        voiceChannel.leave();
-    })
+voiceChannel.join().then(connection => {
+        const dispatcher = connection.play(ytdl('https://youtu.be/XqBzY0_ZPjM'));
+        dispatcher.on('finish', end => {
+            voiceChannel.leave();
+        });
     }).catch(err => console.log(err));
 }
 

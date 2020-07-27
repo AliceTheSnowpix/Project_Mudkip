@@ -43,7 +43,7 @@ exports.run = async(bot, message, _args) => {
 					msg.edit(newEmbed);
 			  	}
 		  	});
-			collector.on('end', () => {
+			collector.on('finish', () => {
 				reaction1.remove();
 				reaction2.remove();
 		  	});

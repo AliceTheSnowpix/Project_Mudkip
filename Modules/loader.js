@@ -9,6 +9,15 @@ module.exports = (bot) => {
             bot.on(eventName, event.bind(null, bot));
         });
     });
+
+    fs.readdir("/root/Project_Mudkip/Modules/", (err) => {
+        let files = ["functions", "logs"];
+        if (err) return console.error(err);
+        files.forEach(file => {
+            require(`/root/Project_Mudkip/Modules/${file}.js`)(bot);
+            console.log(`${file}.js loaded`);
+        });
+    });
     
     let folders = ["songcommands", "musiccommands", "imagecommands", "funcommands", "imagecommands/gifcommands", "modcommands", "maincommands", "economycommands", "economycommands/games", "ownercommands"];
     folders.forEach(function(folder) {
@@ -20,9 +29,9 @@ module.exports = (bot) => {
                 return;
             } 
     
-            jsfile.forEach((f, i) => {
+            jsfile.forEach((f) => {
                 let props = require(`/root/Project_Mudkip/BotCommands/${folder}/${f}`);
-                console.log(`${f} Files loaded`);
+                console.log(`${f} loaded`);
                 bot.commands.set(props.help.name, props);
                 if (props.help.aliases) {
                     props.help.aliases.forEach(alias => {

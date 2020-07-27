@@ -10,8 +10,8 @@ exports.run = async (bot, message, args) => {
     let ballembed = new Discord.MessageEmbed()
     .setAuthor(message.author.tag)
     .setColor("#1401FF")
-    .addField("Question", question)
-    .addField("Answer", replies[result]);
+    .addFields([{name: "Question", value: question},
+                {name: "Answer", value: replies[result]}]);
     message.channel.send(ballembed);
 }
 

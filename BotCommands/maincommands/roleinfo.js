@@ -7,12 +7,12 @@ exports.run = (bot, message, args) => {
     const roleinfo = new Discord.MessageEmbed()
     .setColor(role.hexColor)
     .setTitle(`Role: ${role.name}`)
-    .addField('Members', role.members.size, true)
-    .addField('Hex', role.hexColor, true)
-    .addField('Creation Date', role.createdAt.toDateString(), true)
-    .addField('Editable', role.editable.toString(), true)
-    .addField('Managed', role.managed.toString(), true)
-    .addField('ID', role.id, true);
+    .addFields([{name: 'Members', value: role.members.size, inline: true},
+                {name:'Hex', value: role.hexColor, inline: true},
+                {name:'Creation Date', value: role.createdAt.toDateString(), inline: true},
+                {name:'Editable', value: role.editable.toString(), inline: true},
+                {name:'Managed', value: role.managed.toString(), inline: true},
+                {name:'ID', value: role.id, inline: true}]);
     message.channel.send(roleinfo);
 };
 

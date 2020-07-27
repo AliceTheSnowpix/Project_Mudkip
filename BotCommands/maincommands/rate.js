@@ -6,8 +6,8 @@ exports.run = async(bot, message, args) => {
     let rateEmbed = new Discord.MessageEmbed()
     .setAuthor(message.author.username)
     .setColor("RANDOM")
-    .addField("Rate", args.join(' '))
-    .addField("Rating", ratings[result]);
+    .addFields([{name: "Rate", value: args.join(' ')},
+                {name: "Rating", value: ratings[result]}]);
     message.channel.send(rateEmbed)
 }
 

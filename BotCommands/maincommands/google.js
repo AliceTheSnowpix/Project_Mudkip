@@ -38,9 +38,9 @@ exports.run = async(bot, message, args) => {
         message.delete();
 
         let googembed = new Discord.MessageEmbed()
-        .addField("Search Term", `${args.join(" ")}`, true)
-        .addField("Requested by", `${message.author}`)
-        .addField("Search Results", output, false)
+        .addFields([{name: 'Search Term', value: `${args.join(" ")}`, inline: true}, 
+                    {name: 'Requested by', valus: `${message.author}`, inline: true},
+                    {name: 'Search Results', value: output}])
         .setColor('RANDOM');
         message.channel.send(googembed);
     })).catch(console.error);

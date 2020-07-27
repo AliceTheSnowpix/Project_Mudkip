@@ -7,16 +7,16 @@ exports.run = async (bot, message, args) => {
         prefixes.set(`prefix_${message.guild.id}`, ';');
         prefix = ';';
     }
-    let helpEmbed = new Discord.MessageEmbed()
+    let BetHelpEmbed = new Discord.MessageEmbed()
     .setTitle('Command Help')
     .setColor('RANDOM')
-    .addField('Command Info', 'Bet to guess will the result be heads or tails')
-    .addField('Usage', `${prefix}betflip <bet ammount> <heads or tails>\n or ${prefix}bf <bet ammount> <heads or tails>`);
+    .addFields([{name: 'Command Info', value: 'Bet to guess will the result be heads or tails'},
+    {name: 'Usage', value: `${prefix}betflip <bet ammount> <heads or tails>\n or ${prefix}bf <bet ammount> <heads or tails>`}]);
     
     let bubbles = await db.fetch(`bubbles_${message.author.id}`);
     let replies = ["heads", "tails"];
     let bet = args[0];
-    if (isNaN(bet)) return message.channel.send(helpEmbed);
+    if (isNaN(bet)) return message.channel.send(BetHelpEmbed);
     else if (parseInt(bet) === 0) return message.channel.send('You can\'t bet 0');
     else if (parseInt(bet) < 0) return message.channel.send('You can\'t bet negative numbers');
     else if (args[1] !== 'heads' && args[1] !== 'tails') return message.channel.send(helpEmbed);

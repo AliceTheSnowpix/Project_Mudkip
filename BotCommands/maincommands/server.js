@@ -56,25 +56,25 @@ exports.run = async (bot, message, _args) => {
     .setTitle('Server Info')
     .setColor("#27FF00")
     .setThumbnail(message.guild.iconURL ? message.guild.iconURL : bot.user.displayAvatarURL)
-    .addField("Server Name:", message.guild.name)
-    .addField("Server ID:", message.guild.id, true)
-    .addField("Created By:", message.guild.owner, true)
-    .addField("Bot Joined On:", moment(message.member.guild.joinedAt).format('MMMM Do YYYY'), true)
-    .addField("Created On:", moment(message.guild.createdAt).format('MMMM Do YYYY'), true)
-    .addField("Total Members:", message.guild.memberCount, true)
-    .addField("Member Count:", message.guild.members.filter(u => !u.user.bot).size, true)
-    .addField("Bot Count:", message.guild.members.filter(u => u.user.bot).size, true)
-    .addField('Total Members Online:', totalOnline, true)
-    .addField('Total Members Idle:', totalIdle, true)
-    .addField('Total Members DND:', totalDND, true)
-    .addField('Total Members Offline:', totalOffline, true)
-    .addField("Region:", region[message.guild.region], true)
-    .addField("Verification Level:", verifLevels[message.guild.verificationLevel], true)
-    .addField("Roles:", message.guild.roles.size, true)
-    .addField("Channels:", message.guild.channels.size, true)
-    .addField('Total Categories:', totalCategories, true)
-    .addField('Total Text Channels:', totalTextChannels, true)
-    .addField('Total Voice Channels:', totalVoiceChannels, true)
+    .addFields([{name: "Server Name:", value: message.guild.name},
+                {name: "Server ID:", value: message.guild.id, inline: true},
+                {name: "Created By:", value: message.guild.owner, inline: true},
+                {name: "Bot Joined On:", value: moment(message.member.guild.joinedAt).format('MMMM Do YYYY'), inline: true},
+                {name: "Created On:", value: moment(message.guild.createdAt).format('MMMM Do YYYY'), inline: true},
+                {name: "Total Members:", value: message.guild.memberCount, inline: true},
+                {name: "Member Count:",value:  message.guild.members.filter(u => !u.user.bot).size, inline: true},
+                {name: "Bot Count:", value: message.guild.members.filter(u => u.user.bot).size, inline: true},
+                {name: 'Total Members Online:', value: totalOnline, inline: true},
+                {name: 'Total Members Idle:', value: totalIdle, inline: true},
+                {name: 'Total Members DND:', value: totalDND, inline: true},
+                {name: 'Total Members Offline:', value: totalOffline, inline: true},
+                {name: "Region:", value: region[message.guild.region], inline: true},
+                {name: "Verification Level:", value: verifLevels[message.guild.verificationLevel], inline: true},
+                {name: "Roles:", value: message.guild.roles.size, inline: true},
+                {name: "Channels:", value: message.guild.channels.size, inline: true},
+                {name: 'Total Categories:', value: totalCategories, inline: true},
+                {name: 'Total Text Channels:', value: totalTextChannels, inline: true},
+                {name: 'Total Voice Channels:', value: totalVoiceChannels, inline: true}])
     .setTimestamp();
     message.channel.send(serverembed);
 }

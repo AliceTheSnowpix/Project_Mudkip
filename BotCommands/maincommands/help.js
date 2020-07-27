@@ -37,7 +37,7 @@ exports.run = async(bot, message, _args) => {
                 
                 const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 }); 
                 const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 }); 
-                backwards.on('collect', r => { 
+                backwards.on('collect', r => {
                     msg.react('614293189825789972');
                     r.remove(message.author.id);
                     page--; 

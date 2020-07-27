@@ -10,7 +10,7 @@ exports.run = async(_bot, message, args) => {
     let response = await request(options);
     await message.channel.send({
         files: [{
-            attachment: response 
+            attachment: response
         }]
     });
 }
