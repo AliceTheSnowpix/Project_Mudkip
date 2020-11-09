@@ -1,7 +1,6 @@
 const moment = require('moment');
 
 exports.run = async (bot, message, _args) => {
-    const Discord = bot.discord;
     if(message.channel.type === 'dm') return message.channel.send('This command only works in a server.');
     let verifLevels = ["None", "Low", "Medium", "(╯°□°）╯︵  ┻━┻", "┻━┻ミヽ(ಠ益ಠ)ノ彡┻━┻"];
     let region = {
@@ -52,7 +51,7 @@ exports.run = async (bot, message, _args) => {
         }
     }
     
-    let serverembed = new Discord.MessageEmbed()
+    let serverembed = new new bot.discord.MessageEmbed()
     .setTitle('Server Info')
     .setColor("#27FF00")
     .setThumbnail(message.guild.iconURL ? message.guild.iconURL : bot.user.displayAvatarURL)

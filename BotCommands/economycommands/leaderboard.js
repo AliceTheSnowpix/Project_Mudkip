@@ -1,5 +1,4 @@
-exports.run = async(bot, message, args) => {
-  const discord = bot.discord;
+exports.run = async(bot, message, _args) => {
   const db = bot.db;
   const resp = db.all();
 
@@ -7,7 +6,7 @@ exports.run = async(bot, message, args) => {
   let paginatedItems = resp.slice(0, 10);
   let total_pages = Math.ceil(resp.length / 10);
 
-  let lbEmbed = new discord.MessageEmbed()
+  let lbEmbed = new bot.discord.MessageEmbed()
   .setTitle('Leaderboard')
   .setColor('RANDOM')
   .setFooter(`Page 1 out of ${total_pages}`)
@@ -40,7 +39,7 @@ exports.run = async(bot, message, args) => {
       let first = 0;
       let second = 10;
 
-      const collector = msg.createReactionCollector((reaction, user) => user.id === message.author.id, {
+      const collector = msg.createReactionCollector((_reaction, user) => user.id === message.author.id, {
 			  time: 120000
 		  });
 		  collector.on('collect', r => {
@@ -56,7 +55,7 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.MessageEmbed()
+            const newEmbed = new bot.discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
@@ -75,7 +74,7 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.MessageEmbed()
+            const newEmbed = new bot.discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
@@ -94,7 +93,7 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.MessageEmbed()
+            const newEmbed = new bot.discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
@@ -115,7 +114,7 @@ exports.run = async(bot, message, args) => {
               i = 0;
               paginatedItems = resp.slice(first, second);
               
-              const newEmbed = new discord.MessageEmbed()
+              const newEmbed = new bot.discord.MessageEmbed()
               .setColor('RANDOM')
               .setTitle(`LeaderBoard`)
               .setFooter(`Page ${page} out of ${total_pages}`)
@@ -130,69 +129,7 @@ exports.run = async(bot, message, args) => {
               msg.edit(newEmbed);
             }
           }
-            /*first += 10;
-            second += 10;
-            i = 0;
-            paginatedItems = resp.slice(first, second);
-            
-            const newEmbed = new discord.MessageEmbed()
-            .setColor('RANDOM')
-            .setTitle(`LeaderBoard`)
-            .setFooter(`Page ${page} out of ${total_pages}`)
-            paginatedItems.forEach(paginatedItem => {
-              let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              newEmbed.addField(`${words5[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
-            });
-            msg.edit(newEmbed);
-          } else if (page === 6) {
-            first += 10;
-            second += 10;
-            i = 0;
-            paginatedItems = resp.slice(first, second);
-            
-            const newEmbed = new discord.MessageEmbed()
-            .setColor('RANDOM')
-            .setTitle(`LeaderBoard`)
-            .setFooter(`Page ${page} out of ${total_pages}`)
-            paginatedItems.forEach(paginatedItem => {
-              let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              newEmbed.addField(`${words6[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
-            });
-            msg.edit(newEmbed);
-          } else if (page === 7) {
-            first += 10;
-            second += 10;
-            i = 0;
-            paginatedItems = resp.slice(first, second);
-            
-            const newEmbed = new discord.MessageEmbed()
-            .setColor('RANDOM')
-            .setTitle(`LeaderBoard`)
-            .setFooter(`Page ${page} out of ${total_pages}`)
-            paginatedItems.forEach(paginatedItem => {
-              let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              newEmbed.addField(`${words7[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
-            });
-            msg.edit(newEmbed);
-          } else if (page === 8) {
-            page = 1;
-            if (page === 1) {
-              first = 0;
-              second = 10;
-              i = 0;
-              paginatedItems = resp.slice(first, second);
-              
-              const newEmbed = new discord.MessageEmbed()
-              .setColor('RANDOM')
-              .setTitle(`LeaderBoard`)
-              .setFooter(`Page ${page} out of ${total_pages}`)
-              paginatedItems.forEach(paginatedItem => {
-                let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-                newEmbed.addField(`${words[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);              
-              });
-              msg.edit(newEmbed);
-            }
-          }*/
+
         } else if (r.emoji.name === 'Arrow_Left' && reactionremove !== 0) {
           r.remove(message.author.id);
           page--;
@@ -202,7 +139,7 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.MessageEmbed()
+            const newEmbed = new bot.discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
@@ -217,7 +154,7 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.MessageEmbed()
+            const newEmbed = new bot.discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
@@ -232,7 +169,7 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.MessageEmbed()
+            const newEmbed = new bot.discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
@@ -247,7 +184,7 @@ exports.run = async(bot, message, args) => {
             i = 0;
             paginatedItems = resp.slice(first, second);
             
-            const newEmbed = new discord.MessageEmbed()
+            const newEmbed = new bot.discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`LeaderBoard`)
             .setFooter(`Page ${page} out of ${total_pages}`)
@@ -264,7 +201,7 @@ exports.run = async(bot, message, args) => {
               i = 0;
               paginatedItems = resp.slice(first, second);
               
-              const newEmbed = new discord.MessageEmbed()
+              const newEmbed = new bot.discord.MessageEmbed()
               .setColor('RANDOM')
               .setTitle(`LeaderBoard`)
               .setFooter(`Page ${page} out of ${total_pages}`)
@@ -275,54 +212,6 @@ exports.run = async(bot, message, args) => {
               msg.edit(newEmbed);
             }
           }
-            /*first -= 10;
-            second -= 10;
-            i = 0;
-            paginatedItems = resp.slice(first, second);
-            
-            const newEmbed = new discord.MessageEmbed()
-            .setColor('RANDOM')
-            .setTitle(`LeaderBoard`)
-            .setFooter(`Page ${page} out of ${total_pages}`)
-            paginatedItems.forEach(paginatedItem => {
-              let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              newEmbed.addField(`${words5[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
-            });
-            msg.edit(newEmbed);
-          } else if (page === 6) {
-            first -= 10;
-            second -= 10;
-            i = 0;
-            paginatedItems = resp.slice(first, second);
-            
-            const newEmbed = new discord.MessageEmbed()
-            .setColor('RANDOM')
-            .setTitle(`LeaderBoard`)
-            .setFooter(`Page ${page} out of ${total_pages}`)
-            paginatedItems.forEach(paginatedItem => {
-              let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-              newEmbed.addField(`${words6[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);            
-            });
-            msg.edit(newEmbed);
-          } else if (page === 0) {
-            page = 7;
-            if (page === 7) {
-              first = 60;
-              second = 70;
-              i = 0;
-              paginatedItems = resp.slice(first, second);
-              
-              const newEmbed = new discord.MessageEmbed()
-              .setColor('RANDOM')
-              .setTitle(`LeaderBoard`)
-              .setFooter(`Page ${page} out of ${total_pages}`)
-              paginatedItems.forEach(paginatedItem => {
-                let user = (paginatedItem.ID.charAt(8) + paginatedItem.ID.substr(9)).toString();
-                newEmbed.addField(`${words7[i++]} Place is:`, `${bot.users.cache.get(user).tag} With ${paginatedItem.data} Bubbels.`);              
-              });
-              msg.edit(newEmbed);
-            }
-          }*/
         } else if (r.emoji.name = '❌') {
           r.remove(message.author.id);
           reaction1.remove();

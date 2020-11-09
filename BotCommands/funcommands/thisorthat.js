@@ -1,8 +1,7 @@
 const question = require('../assets/thisOrThat.json');
 
 exports.run = async (bot, message, _args) => {
-    const Discord = bot.discord;
-    let thisembed = new Discord.MessageEmbed()
+    let thisembed = new bot.discord.MessageEmbed()
     .setColor("#f99d9d")
     .setDescription(question[Math.floor(Math.random() * question.length)])
     message.channel.send(thisembed);

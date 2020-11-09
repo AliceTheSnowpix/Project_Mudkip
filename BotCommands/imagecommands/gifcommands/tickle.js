@@ -1,7 +1,6 @@
 const request = require('request-promise-native');
 
 exports.run = async (bot, message, args) => {
-    const Discord = bot.discord;
     let tickleUser = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
     if (!tickleUser) return message.channel.send("Could not find that user make sure you typed it in right and try again.");
 
@@ -20,7 +19,7 @@ exports.run = async (bot, message, args) => {
     let response = await request(options);
     if (response.data.length);
     
-    let tickleEmbed = new Discord.MessageEmbed()
+    let tickleEmbed = new bot.discord.MessageEmbed()
     .setColor("#9b42f4")
     .setDescription(`<@${message.author.id}> is tickling <@${tickleUser.id}>`)
     .setImage(response.data[Math.floor(Math.random() * response.data.length)].images.original.url)

@@ -15,7 +15,6 @@ const jackpot = new SlotSymbol("jackpot", { display: "🔅", points: 50, weight:
 const machine = new SlotMachine(3, [cherry, lemon, watermelon, apple, grape, orange, wild, bell, clover, heart, money, diamond, jackpot]);
 
 exports.run = async(bot, message, args) => {
-    const discord = bot.discord;
     const db = bot.db;
     let bubbles = await db.fetch(`bubbles_${message.author.id}`);
     let normal_fee = 10;
@@ -27,7 +26,7 @@ exports.run = async(bot, message, args) => {
     if (isNaN(custom_fee) || custom_fee <= 0) winnings = normal_fee * results.totalPoints;
     else winnings = custom_fee * results.totalPoints;
     
-    const embed = new discord.MessageEmbed()
+    const embed = new bot.discord.MessageEmbed()
     .setColor(6192321)
     .setAuthor("Slots")
     .setDescription(`${results.visualize(false)}\n\n${results.winCount === 0 ? `${message.member.displayName} has lost!\nBetter luck next time!` : `Whoa... ${message.member.displayName} won!`}\n\n${results.winCount === 0 ? "" : `**You have won ${winnings.toLocaleString()} bubbles**`}`)

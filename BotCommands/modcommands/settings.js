@@ -1,27 +1,18 @@
 exports.run = async(bot, message, args) => {
-    const discord = bot.discord;
     const db = bot.db;
-
-    const prefixes = new db.table('PREFIXES');
-    const welcomechannel = new db.table('WELCOMECHANNEL');
-    const leavechannel = new db.table('LEAVECHANNEL');
-    const logchannel = new db.table('LOGCHANNEL');
-    const welcomemessage = new db.table('WELCOMEMESSAGE');
-    const leavemessage = new db.table('LEAVEMESSAGE');
-    const autorole = new db.table('AUTOROLE');
-    const modrole = new db.table('MODROLE');
+    const GuildSettings = new db.table('GuildSetting');
 
     if (message.channel.type === 'dm') return message.channel.send('This commamd only works in servers.');
     if (message.author.id !== '293148538886553602' && !message.member.hasPermission('ADMINISTRATOR')) return message.reply('You need to have administrator permission in order to use this command');
-    let prefix = await prefixes.fetch(`prefix_${message.guild.id}`);
+    let prefix = await GuildSettings.fetch(`prefix_${message.guild.id}`);
     if (!prefix) {
-        prefixes.set(`prefix_${message.guild.id}`, ';');
+        GuildSettings.set(`prefix_${message.guild.id}`, ';');
         prefix = ';';
     }
 
     let cmd = message.content.slice(prefix.length).toLowerCase().split(' ').slice(1, 2).join(' ');
     if (!cmd || cmd === 'help') {
-        let helpembed = new discord.MessageEmbed()
+        let helpembed = new bot.discord.MessageEmbed()
         .setTitle('Config Help Menu')
         .setColor('RANDOM')
         .addField('View This Menu:', `${prefix}config help`)
@@ -41,38 +32,38 @@ exports.run = async(bot, message, args) => {
     
     if (cmd === 'prefix') {
         if (args[1] === undefined) {
-            prefixes.set(`prefix_${message.guild.id}`, ';');
+            GuildSettings.set(`prefix_${message.guild.id}`, ';');
             return message.channel.send('You did not define the new prefix, I have changed it back to my default prefix.');
 
         } else if (args[1] === 'reset') {
-            prefixes.set(`prefix_${message.guild.id}`, ';');
+            GuildSettings.set(`prefix_${message.guild.id}`, ';');
             return message.channel.send('The prefix has been reset to my default prefix');
         }
 
-        const prefix = await prefixes.fetch(`prefix_${message.guild.id}`);
-        if (!prefix || prefix === null || prefix === undefined) prefixes.set(`prefix_${message.guild.id}`, args[1]);
-        else prefixes.set(`prefix_${message.guild.id}`, args[1]);
+        const prefix = await GuildSettings.fetch(`prefix_${message.guild.id}`);
+        if (!prefix || prefix === null || prefix === undefined) GuildSettings.set(`prefix_${message.guild.id}`, args[1]);
+        else GuildSettings.set(`prefix_${message.guild.id}`, args[1]);
         message.channel.send(`I have changed my prefix to ${args[1]}`);
     }
     
     if (cmd === 'welcomechannel') {
         let channel = message.mentions.channels.first() || message.guild.channels.cache.find(c => c.name.toLowerCase().includes(message.content.slice(prefix.length).slice(2)) && c.type == "text");
         if (!channel) {
-            welcomechannel.set(`welcomechannel_${message.guild.id}`, 'not set');
+            GuildSettings.set(`welcomechannel_${message.guild.id}`, 'not set');
             return message.channel.send('Please specify the channel you want for welcome messages.');
         }
-        welcomechannel.set(`welcomechannel_${message.guild.id}`, channel.id);
+        GuildSettings.set(`welcomechannel_${message.guild.id}`, channel.id);
         message.channel.send(`The welcome channel has been set to <#${channel.id}>`);
     }
     
     if (cmd === 'leavechannel') {
         let channel = message.mentions.channels.first() || message.guild.channels.cache.find(c => c.name.toLowerCase().includes(message.content.slice(prefix.length).slice(2)) && c.type == "text");
         if (!channel) {
-            leavechannel.set(`leavechannel_${message.guild.id}`, 'not set');
+            GuildSettings.set(`leavechannel_${message.guild.id}`, 'not set');
             return message.channel.send('Please specify the channel you want for leave messages.');
         }
         
-        leavechannel.set(`leavechannel_${message.guild.id}`, channel.id);
+        GuildSettings.set(`leavechannel_${message.guild.id}`, channel.id);
         message.channel.send(`The leave channel has been set to <#${channel.id}>`);
     }
     
@@ -80,31 +71,31 @@ exports.run = async(bot, message, args) => {
         let channel = message.mentions.channels.first() || message.guild.channels.cache.find(c => c.name.toLowerCase().includes(message.content.slice(prefix.length).slice(2)) && c.type == "text");
         let defaultchannel = message.guild.channels.find(b => b.name === "modlogs");
         if (!channel && !defaultchannel) {
-            logchannel.set(`logchannel_${message.guild.id}`, 'not set ');
+            GuildSettings.set(`logchannel_${message.guild.id}`, 'not set ');
             return message.channel.send('Please specify the channel you want for moderation messages or create a channel called modlogs.');
         }
         
-        logchannel.set(`logchannel_${message.guild.id}`, channel.id);
+        GuildSettings.set(`logchannel_${message.guild.id}`, channel.id);
         message.channel.send(`The log channel has been set to <#${channel.id}>`);
     }
 
     if (cmd === 'welcomemessage') {
         if (args[1] === undefined) {
-            welcomemessage.set(`welcomemessage_${message.guild.id}`, 'not set');
+            GuildSettings.set(`welcomemessage_${message.guild.id}`, 'not set');
             return message.channel.send('Please specify what you want the welcome message to be.');
         }
         
-        welcomemessage.set(`welcomemessage_${message.guild.id}`, args.slice(1).join(' '));
+        GuildSettings.set(`welcomemessage_${message.guild.id}`, args.slice(1).join(' '));
         message.channel.send(`The welcome message has been set to ${args.slice(1).join(' ')}`);
     }
     
     if (cmd === 'leavemessage') {
         if (args[1] === undefined) {
-            leavemessage.set(`leavemessage_${message.guild.id}`, 'not set');
+            GuildSettings.set(`leavemessage_${message.guild.id}`, 'not set');
             return message.channel.send('Please specify what you want the leave message to be');
         }
         
-        leavemessage.set(`leavemessage_${message.guild.id}`, args.slice(1).join(' '));
+        GuildSettings.set(`leavemessage_${message.guild.id}`, args.slice(1).join(' '));
         message.channel.send(`The leave message has been set to ${args.slice(1).join(' ')}`);
     }
     
@@ -113,19 +104,19 @@ exports.run = async(bot, message, args) => {
         let gRole = message.guild.roles.cache.find(a => a.name === role);
         let bRole = message.guild.roles.cache.find(b => b.name === 'project_chicken');
         if (!role) {
-            autorole.set(`autorole_${message.guild.id}`, 'not set');
+            GuildSettings.set(`autorole_${message.guild.id}`, 'not set');
             return message.channel.send('Please specify the role you want every new member to have');
         }
 
         if (!gRole) {
-            autorole.set(`autorole_${message.guild.id}`, 'not set');
+            GuildSettings.set(`autorole_${message.guild.id}`, 'not set');
             return message.channel.send(`There is no role named **${role}**, Please check your spelling and try again.`);
 
         } else if (gRole.position > bRole.position || !message.guild.member(bot.user).hasPermission('MANAGE_ROLES')) {
-            autorole.set(`autorole_${message.guild.id}`, 'not set');
+            GuildSettings.set(`autorole_${message.guild.id}`, 'not set');
             return message.channel.send(`Please make sure I have a role above <@&${gRole.id}> and I have the manage roles permission.`);
         }
-        autorole.set(`autorole_${message.guild.id}`, gRole.id);
+        GuildSettings.set(`autorole_${message.guild.id}`, gRole.id);
         message.channel.send(`Every new member will now get <@&${gRole.id}> role.`);
     }
       
@@ -134,12 +125,12 @@ exports.run = async(bot, message, args) => {
         let gRole = message.guild.roles.cache.find(a => a.name.toLowerCase() === role);
         let permissions = ['MANAGE_MESSAGES', 'BAN_MEMBERS', 'KICK_MEMBERS', 'MANAGE_ROLES'];
         if (!role) {
-            modrole.set(`modrole_${message.guild.id}`, 'not set');
+            GuildSettings.set(`modrole_${message.guild.id}`, 'not set');
             return message.channel.send('Please specify a role.');
         }
 
         if (!gRole) {
-            modrole.set(`modrole_${message.guild.id}`, 'not set');
+            GuildSettings.set(`modrole_${message.guild.id}`, 'not set');
             return message.channel.send(`There is no role named **${role}**, Please check your spelling and try again`);
         }
 
@@ -153,37 +144,37 @@ exports.run = async(bot, message, args) => {
                     errors: ['time']
                 });
             } catch (err) {
-                modrole.set(`modrole_${message.guild.id}`, 'not set')
+                GuildSettings.set(`modrole_${message.guild.id}`, 'not set')
                 message.channel.send('You did not send a vaild response or you did not respond in time.');
             }
             
             if (response.first().content.toLowerCase() === 'yes') {
-                modrole.set(`modrole_${message.guild.id}`, gRole.id);
+                GuildSettings.set(`modrole_${message.guild.id}`, gRole.id);
                 message.channel.send(`People with <@&${gRole.id}> will now be able to use mod commands`);
             } else if (response.first().content.toLowerCase() === 'no') {
-                modrole.set(`modrole_${message.guild.id}`, 'not set');
+                GuildSettings.set(`modrole_${message.guild.id}`, 'not set');
                 message.channel.send('If you want to set the mod role make sure it has the following permissions: Manage Messages, Ban Members, Kick Members, and Manage Roles.');
             } else {
-                modrole.set(`modrole_${message.guild.id}`, 'not set');
+                GuildSettings.set(`modrole_${message.guild.id}`, 'not set');
                 message.channel.send('If you want to set the mod role make sure it has the following permissions: Manage Messages, Ban Members, Kick Members, and Manage Roles.');
             }
         } else {
-            modrole.set(`modrole_${message.guild.id}`, gRole.id);
+            GuildSettings.set(`modrole_${message.guild.id}`, gRole.id);
             message.channel.send(`People with <@&${gRole.id}> will now be able to use mod commands`);
         }
     }
     
     if (cmd === 'list') {
         let defaultchannel = message.guild.channels.find(b => b.name === "modlogs");
-        const wc = await welcomechannel.fetch(`welcomechannel_${message.guild.id}`);
-        const lc = await leavechannel.fetch(`leavechannel_${message.guild.id}`);
-        const mc = await logchannel.fetch(`logchannel_${message.guild.id}`);
-        const wm = await welcomemessage.fetch(`welcomemessage_${message.guild.id}`);
-        const lm = await leavemessage.fetch(`leavemessage_${message.guild.id}`);
-        const ar = await autorole.fetch(`autorole_${message.guild.id}`);
-        const mr = await modrole.fetch(`modrole_${message.guild.id}`);
+        const wc = await GuildSettings.fetch(`welcomechannel_${message.guild.id}`);
+        const lc = await GuildSettings.fetch(`leavechannel_${message.guild.id}`);
+        const mc = await GuildSettings.fetch(`logchannel_${message.guild.id}`);
+        const wm = await GuildSettings.fetch(`welcomemessage_${message.guild.id}`);
+        const lm = await GuildSettings.fetch(`leavemessage_${message.guild.id}`);
+        const ar = await GuildSettings.fetch(`autorole_${message.guild.id}`);
+        const mr = await GuildSettings.fetch(`modrole_${message.guild.id}`);
 
-        let listembed = new discord.MessageEmbed()
+        let listembed = new bot.discord.MessageEmbed()
         .setTitle('Config List')
         .setColor('RANDOM')
         .addField('Prefix:', prefix)
@@ -206,14 +197,14 @@ exports.run = async(bot, message, args) => {
     }
     
     if (cmd === 'reset') {
-        prefixes.set(`prefix_${message.guild.id}`, ';');
-        welcomechannel.set(`welcomechannel_${message.guild.id}`, 'not set');
-        leavechannel.set(`leavechannel_${message.guild.id}`, 'not set');
-        leavechannel.set(`leavechannel_${message.guild.id}`, 'not set');
-        welcomemessage.set(`welcomemessage_${message.guild.id}`, 'not set');
-        leavemessage.set(`leavemessage_${message.guild.id}`, 'not set');
-        autorole.set(`autorole_${message.guild.id}`, 'not set');
-        modrole.set(`modrole_${message.guild.id}`, 'not set');
+        GuildSettings.set(`prefix_${message.guild.id}`, ';');
+        GuildSettings.set(`welcomechannel_${message.guild.id}`, 'not set');
+        GuildSettings.set(`leavechannel_${message.guild.id}`, 'not set');
+        GuildSettings.set(`leavechannel_${message.guild.id}`, 'not set');
+        GuildSettings.set(`welcomemessage_${message.guild.id}`, 'not set');
+        GuildSettings.set(`leavemessage_${message.guild.id}`, 'not set');
+        GuildSettings.set(`autorole_${message.guild.id}`, 'not set');
+        GuildSettings.set(`modrole_${message.guild.id}`, 'not set');
         message.channel.send('The settings have been reset to default.')
     }
 }

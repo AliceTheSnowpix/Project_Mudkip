@@ -1,5 +1,4 @@
 exports.run = async (bot, message, args) => {
-    const Discord = bot.discord;
     if (args[0] == "help") return message.reply("Usage: ;8ball <question>");
 
     if (!args[1]) return message.reply("Please give me a question");
@@ -7,7 +6,7 @@ exports.run = async (bot, message, args) => {
     let result = Math.floor((Math.random() * replies.length));
     let question = args.slice(0).join(' ');
 
-    let ballembed = new Discord.MessageEmbed()
+    let ballembed = new bot.discord.MessageEmbed()
     .setAuthor(message.author.tag)
     .setColor("#1401FF")
     .addFields([{name: "Question", value: question},

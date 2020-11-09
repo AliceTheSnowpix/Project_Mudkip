@@ -1,9 +1,8 @@
 exports.run = async(bot, message, args) => {
-    const Discord = bot.discord;
     if (!message.member.hasPermission('ADMINISTRATOR')) return message.reply('Sorry you cant do this right now. Try again when you have the administrator permission');
     if (!args[0]) return message.reply('You need to give me something so I can make a poll');
 
-    let pollembed = new Discord.MessageEmbed()
+    let pollembed = new bot.discord.MessageEmbed()
     .setColor('RANDOM')
     .setFooter('React to vote')
     .setDescription(args.join(' '))

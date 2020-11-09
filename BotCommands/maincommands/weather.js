@@ -1,7 +1,6 @@
 const weather = require('weather-js');
 
 exports.run = async (bot, message, args) => {
-    const Discord = bot.discord;
     weather.find({search: args.join(" "), degreeType: 'F'}, function(err, result) { 
         if (err) message.channel.send(err);
         if (result === undefined || result.length === 0) {
@@ -11,7 +10,7 @@ exports.run = async (bot, message, args) => {
 
         var current = result[0].current;
         var location = result[0].location; 
-        const wembed = new Discord.MessageEmbed()
+        const wembed = new bot.discord.MessageEmbed()
         .setDescription(`**${current.skytext}**`) 
         .setAuthor(`Weather for ${current.observationpoint}`)
         .setThumbnail(current.imageUrl)

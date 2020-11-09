@@ -1,7 +1,7 @@
 exports.run = async (bot, message, args) => {
     const db = bot.db;
-    const modrole = new db.table('MODROLE');
-    let mr = await modrole.fetch(`modrole_${message.guild.id}`);
+    const GuildSettings = new db.table('GuildSetting');
+    let mr = await GuildSettings.fetch(`modrole_${message.guild.id}`);
     if (!message.member.hasPermission("MANAGE_ROLES") && !message.member.roles.cache.has(mr)) return message.channel.send("Sorry you cant do that try again when mod");
     if (!message.guild.member(bot.user).hasPermission("MANAGE_ROLES")) {
         return message.reply(":x: " + "| i need the \"MANAGE_ROLES\" permission!").catch(console.error);

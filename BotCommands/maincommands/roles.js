@@ -1,12 +1,11 @@
 exports.run = async (bot, message, _args) => {
-    const discord = bot.discord;
     if(message.channel.type === 'dm') return message.channel.send('This command only works in server.');
     let roles = message.guild.roles.cache.filter(r => r.position !== 0).map(r => `${r.name.toProperCase()} - ${r.id}`).sort();
     let noOfPages = roles.length / 15;
     let paginatedItems = roles.slice(0, 15);
     let page = 1;
     
-    let rolesembed = new discord.MessageEmbed()
+    let rolesembed = new bot.discord.MessageEmbed()
     .setColor("RANDOM")
     .setTitle("Roles")
     .setFooter(`Page: ${page} of ${Math.floor(noOfPages + 1)}`);
@@ -36,7 +35,7 @@ exports.run = async (bot, message, _args) => {
                     second += 15;
                     paginatedItems = roles.slice(first, second);
 
-                    const newEmbed = new discord.MessageEmbed()
+                    const newEmbed = new bot.discord.MessageEmbed()
                     .setColor('RANDOM')
                     .setTitle("Roles")
                     .setFooter(`Page: ${page} of ${Math.floor(noOfPages + 1)}`)
@@ -51,7 +50,7 @@ exports.run = async (bot, message, _args) => {
                     second -= 15;
                     paginatedItems = roles.slice(first, second);
 
-                    const newEmbed = new discord.MessageEmbed()
+                    const newEmbed = new bot.discord.MessageEmbed()
                     .setColor('RANDOM')
                     .setTitle(`Roles`)
                     .setFooter(`Page: ${page} of ${Math.floor(noOfPages + 1)}`)

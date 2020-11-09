@@ -8,5 +8,5 @@ exports.run = async (_bot, message, _args) => {
 };
 
 exports.help = {
-    name: "exit"
+    name: "restart"
 }; 

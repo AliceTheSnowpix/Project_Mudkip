@@ -1,8 +1,7 @@
 exports.run = async (bot, message, args) => {
-    const Discord = bot.discord;
     if (args.length < 1) return message.channel.send('you need to provide the issue you are having');
 
-    let reportEmbed = new Discord.MessageEmbed()
+    let reportEmbed = new bot.discord.MessageEmbed()
     .setDescription("Reports")
     .setColor("#FF0000")
     .addFields([{name: "Reported From", value: message.guild.name},

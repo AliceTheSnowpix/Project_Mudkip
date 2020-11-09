@@ -1,7 +1,6 @@
 const request = require('request-promise-native');
 
 exports.run = async (bot, message, args) => {
-    const Discord = bot.discord;
     let cookUser = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
     if (!cookUser) return message.channel.send("Could not find that user make sure you typed it in right and try again.");
     require('dotenv').config();
@@ -20,7 +19,7 @@ exports.run = async (bot, message, args) => {
     let response = await request(options);
     if (response.data.length);
     
-    let cookembed = new Discord.MessageEmbed()
+    let cookembed = new bot.discord.MessageEmbed()
     .setColor("#9b42f4")
     .setDescription(`<@${message.author.id}> has given <@${cookUser.id}> a cookie! :cookie: `)
     .setImage(response.data[Math.floor(Math.random() * response.data.length)].images.original.url)

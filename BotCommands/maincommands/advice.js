@@ -1,8 +1,7 @@
 exports.run = (bot, message, _args) => {
-    const discord = bot.discord;
     require('request')('http://api.adviceslip.com/advice', function(error, response, body) {
         if (!error && response.statusCode == 200) {
-            let adviceembed = new discord.MessageEmbed()
+            let adviceembed = new bot.discord.MessageEmbed()
             .setTitle(`**Advice:**`)
             .setColor('RANDOM')
             .setDescription(`${JSON.parse(body).slip.advice}`)

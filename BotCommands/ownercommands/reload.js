@@ -1,5 +1,4 @@
 exports.run = async (bot, message, args) => {
-    const Discord = bot.discord;
     if (message.author.id !== '293148538886553602') return;
     let economycommands = ['buy', 'bubble', 'daily', 'give', 'inventory', 'leaderboard', 'pay', 'shop', 'take', 'work'];
     let games = ['betflip', 'slots'];
@@ -9,11 +8,11 @@ exports.run = async (bot, message, args) => {
     let maincommands = ['advice', 'autouser', 'calc', 'color', 'google', 'help', 'info', 'invite', 'join', 'lmgtfy', 'numbers', 'numfact', 'rate', 'report', 'roleinfo', 'roles', 'say', 'server', 'shorten', 'swatch', 'time', 'tts', 'uptime', 'user', 'videoinfo', 'weather'];
     let modcommands = ['addrole', 'ban', 'clear', 'kick', 'mute', 'poll', 'removerole', 'settings', 'tempmute', 'unban', 'unmute'];
     let musiccommands = ['forceskip', 'loop', 'nowplaying', 'pause', 'play', 'queue', 'resume', 'shuffle', 'stop', 'summon', 'voteskip'];
-    let ownercommands = ['dblstatsupdate', 'eval', 'exit', 'find', 'message-channel', 'message-server', 'reload', 'serverlist', 'webhook'];
+    let ownercommands = ['dblstatsupdate', 'eval', 'exec', 'exit', 'find', 'message-channel', 'message-user', 'reload', 'serverlist', 'webhook'];
     let songcommands = ['alien', 'alive', 'apricotjam', 'bad', 'bellyache', 'bored', 'break', 'broken', 'broken2', 'burn', 'copycat', 'cosmic', 'crown', 'damn', 'dirty', 'ending', 'enemies', 'entropy', 'fakelove', 'fireflies', 'friends', 'friendship', 'galaxy', 'god', 'happysong', 'hostahe', 'idwbya', 'japanese', 'lovely', 'lush', 'middle', 'motto', 'my', 'myboy', 'nights', 'ocean', 'off', 'og', 'panic', 'pumpedup', 'ripsong', 'rocksong', 'sadsong', 'shine', 'side', 'six', 'ski', 'smoothie', 'snow', 'something', 'spaceship', 'starting', 'story', 'summertime', 'sun', 'sunshine', 'surf', 'team', 'tennis', 'trials', 'warpstar', 'why'];
 
     try {
-        let Aembed = new Discord.MessageEmbed()
+        let Aembed = new bot.discord.MessageEmbed()
         .setTitle("Reloading...")
         .setColor('RANDOM')
         .setDescription(`${args[0]}.js successfully reloaded!`);

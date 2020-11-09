@@ -1,9 +1,8 @@
 const moment = require('moment');
 
 exports.run = async (bot, message, _args) => {
-    const Discord = bot.discord;
     if (message.channel.type === 'dm') {
-        let userEmbed = new Discord.MessageEmbed()
+        let userEmbed = new bot.discord.MessageEmbed()
         .setAuthor(message.author.username)
         .setThumbnail(message.author.avatarURL)
         .setDescription('Here is your user info!')
@@ -19,7 +18,7 @@ exports.run = async (bot, message, _args) => {
     let memberInfo = message.mentions.members.first();
     if (!memberInfo) {
         let role = message.member.roles.highest;
-        let userinfo = new Discord.MessageEmbed()
+        let userinfo = new bot.discord.MessageEmbed()
         .setAuthor(message.author.username)
         .setThumbnail(message.author.avatarURL)
         .setDescription("Here is your user info!")
@@ -35,7 +34,7 @@ exports.run = async (bot, message, _args) => {
         message.channel.send(userinfo);
     } else {
         let role = memberInfo.roles.highest;
-        let memberinfo = new Discord.MessageEmbed()
+        let memberinfo = new bot.discord.MessageEmbed()
         .setAuthor(memberInfo.displayName)
         .setThumbnail(memberInfo.user.avatarURL)
         .setDescription("This is the user's info!")

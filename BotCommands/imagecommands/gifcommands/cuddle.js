@@ -1,7 +1,6 @@
 const request = require('request-promise-native');
 
 exports.run = async (bot, message, args) => {
-    const Discord = bot.discord;
     let cuddleUser = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
     if(!cuddleUser) return message.channel.send("Could not find that user make sure you typed it in right and try again.");
     require('dotenv').config();
@@ -21,7 +20,7 @@ exports.run = async (bot, message, args) => {
     let response = await request(options);
     if (response.data.length);
     
-    let cuddleembed = new Discord.MessageEmbed()
+    let cuddleembed = new bot.discord.MessageEmbed()
     .setColor("#9b42f4")
     .setDescription(`<@${message.author.id}> is cuddling with <@${cuddleUser.id}>`)
     .setImage(response.data[Math.floor(Math.random() * response.data.length)].images.original.url)

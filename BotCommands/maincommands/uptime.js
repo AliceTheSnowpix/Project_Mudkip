@@ -1,5 +1,4 @@
 exports.run = async (bot, message, _args) => {
-    const Discord = bot.discord;
     let seconds = parseInt((bot.uptime / 1000) % 60),
     minutes = parseInt((bot.uptime / (1000 * 60)) % 60),
     hours = parseInt((bot.uptime / (1000 * 60 * 60)) % 24),
@@ -10,7 +9,7 @@ exports.run = async (bot, message, _args) => {
     minutes = (minutes < 10) ? "0" + minutes : minutes;
     seconds = (seconds < 10) ? "0" + seconds : seconds;
 
-    let upembed = new Discord.MessageEmbed()
+    let upembed = new bot.discord.MessageEmbed()
     .setColor('#c464ea')
     .setTitle(":chart_with_upwards_trend: I've been running for")
     .setDescription("** " + days + " **days, **" + hours + " **hours, **" + minutes + "** minutes and **" + seconds + "** seconds!");

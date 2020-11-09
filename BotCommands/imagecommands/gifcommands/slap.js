@@ -1,7 +1,6 @@
 const request = require('request-promise-native');
 
 exports.run = async (bot, message, args) => {
-    const Discord = bot.discord;
     let sUser = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
     if (!sUser) return message.channel.send("Please give me a user you want to slap");
     
@@ -20,7 +19,7 @@ exports.run = async (bot, message, args) => {
     let response = await request(options);
     if (response.data.length);
     
-    let slapEmbed = new Discord.MessageEmbed()
+    let slapEmbed = new bot.discord.MessageEmbed()
     .setColor("#9b42f4")
     .setDescription(`<@${message.author.id}> slapped <@${sUser.id}>!`)
     .setImage(response.data[Math.floor(Math.random()* response.data.length)].images.original.url)

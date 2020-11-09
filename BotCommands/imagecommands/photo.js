@@ -1,9 +1,8 @@
 const fetch = require('snekfetch');
 
 exports.run = function (bot, message, _args) {
-    const Discord = bot.discord;
     fetch.get('http://www.splashbase.co/api/v1/images/random').then(photo => {
-        const embed = new Discord.MessageEmbed()
+        const embed = new bot.discord.MessageEmbed()
         .setColor('#01FF6D')
         .setTitle("Random Photo :frame_photo:")
         .setImage(`${photo.body.url}`);

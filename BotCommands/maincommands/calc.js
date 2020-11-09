@@ -1,7 +1,6 @@
 const math = require('mathjs');
 
 exports.run = async(bot, message, args) => {
-    const Discord = bot.discord;
     if (!args[0]) return message.reply("**Please give me a calculation**");
     let resp;
 
@@ -11,7 +10,7 @@ exports.run = async(bot, message, args) => {
         return message.reply("**please give me a valid calculation**");
     }
 
-    let mathembed = new Discord.MessageEmbed()
+    let mathembed = new bot.discord.MessageEmbed()
     .setColor('RANDOM')
     .setTitle('Math Calculation')
     .addFields([{name: '**Input**', value: `\`\`\`js\n${args.join(' ')}\`\`\``},

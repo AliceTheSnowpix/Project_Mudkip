@@ -1,4 +1,4 @@
-const RetroText = require('retrotext')
+const RetroText = require('retrotext').default;
 
 exports.run = async (_bot, message, args) => {
     if (args.length !== 0) {
@@ -6,7 +6,7 @@ exports.run = async (_bot, message, args) => {
         if (/^[\w\ ]+$/i.test(line1) === false || /^[\w\ ]+$/i.test(line2) === false || /^[\w\ ]+$/i.test(line3) === false) return message.reply("Only alphanumeric characters, spaces, and underscores are allowed!");
 
         if (line3 !== undefined) {
-            const text = new RetroText().setLine(1, line1).setLine(2, line2).setLine(3, line3).setBackgroundStyle("outlineTri").setTextStyle("chrome");
+            const text = new RetroText().setLine1(line1).setLine2(line2).setLine3(line3).setBackgroundStyle("outlineTri").setTextStyle("chrome");
             const textImage = await text.fetchURL();
             message.channel.send({
                 files: [{
@@ -16,7 +16,7 @@ exports.run = async (_bot, message, args) => {
             });
 
         } else if (line2 !== undefined) {
-            const text = new RetroText().setLine(1, line1).setLine(2, line2).setBackgroundStyle("outlineTri").setTextStyle("chrome");
+            const text = new RetroText().setLine1(line1).setLine2(line2).setBackgroundStyle("outlineTri").setTextStyle("chrome");
             const textImage = await text.fetchURL();
             message.channel.send({
                 files: [{
@@ -26,7 +26,7 @@ exports.run = async (_bot, message, args) => {
             });
 
         } else {
-            const text = new RetroText().setLine(2, line1).setBackgroundStyle("outlineTri").setTextStyle("chrome");
+            const text = new RetroText().setLine2(line1).setBackgroundStyle("outlineTri").setTextStyle("chrome");
             const textImage = await text.fetchURL();
             message.channel.send({
                 files: [{

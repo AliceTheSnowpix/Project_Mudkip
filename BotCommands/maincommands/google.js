@@ -2,8 +2,6 @@ const request = require("request")
 const cheerio = require('cheerio');
 
 exports.run = async(bot, message, args) => {
-    const Discord = bot.discord;
-    
     function getText(children) {
         if (children.children) return getText(children.children);
         return children.map(c => {
@@ -37,7 +35,7 @@ exports.run = async(bot, message, args) => {
         .join('\n');
         message.delete();
 
-        let googembed = new Discord.MessageEmbed()
+        let googembed = new bot.discord.MessageEmbed()
         .addFields([{name: 'Search Term', value: `${args.join(" ")}`, inline: true}, 
                     {name: 'Requested by', valus: `${message.author}`, inline: true},
                     {name: 'Search Results', value: output}])

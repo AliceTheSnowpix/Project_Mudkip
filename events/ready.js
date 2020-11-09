@@ -1,8 +1,4 @@
 module.exports = bot => {
-    // bot.guilds.cache.forEach(guild => {
-    //     guild.fetchMembers();
-    // });
-
     const activities = [';help commands', `${bot.users.cache.size} users`, 
                         `${bot.guilds.cache.size} servers`, `${bot.commands.size} commands`];
     console.log(`${bot.user.username} is now ready for action!`);

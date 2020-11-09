@@ -1,16 +1,13 @@
 exports.run = async(bot, message, args) => {
-    const discord = bot.discord;
     const db = bot.db;
-    const logchannel = new db.table('LOGCHANNEL');
-    const modrole = new db.table('MODROLE');
-    const prefixes = new db.table('PREFIXES');
-    let prefix = await prefixes.fetch(`prefix_${message.guild.id}`);
+    const GuildSettings = new db.table('GuildSetting');
+    let prefix = await GuildSettings.fetch(`prefix_${message.guild.id}`);
     if (!prefix) {
-        prefixes.set(`prefix_${message.guild.id}`, ';');
+        GuildSettings.set(`prefix_${message.guild.id}`, ';');
         prefix = ';';
     }
     
-    let lc = await logchannel.fetch(`logchannel_${message.guild.id}`);
+    let lc = await GuildSettings.fetch(`logchannel_${message.guild.id}`);
     const reason = args.slice(1).join(' ');
     const user = args[0];
     bot.unbanReason = reason;
@@ -21,7 +18,7 @@ exports.run = async(bot, message, args) => {
     if (reason.length < 1) return message.reply('You must supply a reason for the unban.');
     if (!user) return message.reply('You need to send the id of the user you want to unban').catch(console.error);
 
-    let unbanEmbed = new discord.MessageEmbed()
+    let unbanEmbed = new bot.discord.MessageEmbed()
     .setColor('00AAFF')
     .setTitle("Unban")
     .addField("Unbanned User", `<@${user}> with ID ${user}`)

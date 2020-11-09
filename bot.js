@@ -5,7 +5,7 @@ bot.aliases = new Collection();
 bot.queue = new Map();
 bot.skipvote = new Map();
 bot.db = require('quick.db');
-bot.discord = require('discord.js');
+bot.discord = require('discord.js')
 bot.ytdl = require('ytdl-core');
 require('./Modules/loader.js')(bot);
 require('dotenv').config();

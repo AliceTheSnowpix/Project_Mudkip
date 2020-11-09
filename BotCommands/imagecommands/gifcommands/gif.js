@@ -1,7 +1,6 @@
 const request = require('request-promise-native');
 
 exports.run = async (bot, message, args) => {
-    const Discord = bot.discord;
     require('dotenv').config();
     
     if (args.length < 1) {
@@ -17,7 +16,7 @@ exports.run = async (bot, message, args) => {
         
         let response = await request(options);
         if (response.data.length);
-        let gifembed = new Discord.MessageEmbed()
+        let gifembed = new bot.discord.MessageEmbed()
         .setColor("#01FF6D")
         .setTitle("Here Is A Random Gif")
         .setImage(response.data[Math.floor(Math.random()* response.data.length)].images.original.url)
@@ -38,7 +37,7 @@ exports.run = async (bot, message, args) => {
     
     let response = await request(options);
     if (response.data.length);
-    let gifembed = new Discord.MessageEmbed()
+    let gifembed = new bot.discord.MessageEmbed()
     .setColor("#01FF6D")
     .setTitle("Here Is A Gif")
     .setImage(response.data[Math.floor(Math.random()* response.data.length)].images.original.url)

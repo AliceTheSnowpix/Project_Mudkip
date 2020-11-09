@@ -1,7 +1,7 @@
 exports.run = async (bot, message, args) => {
     const db = bot.db;
-    const modrole = new db.table('MODROLE');
-    let mr = modrole.fetch(`modrole${message.guild.id}`);
+    const GuildSettings = new db.table('GuildSetting');
+    let mr = GuildSettings.fetch(`modrole${message.guild.id}`);
     if (!message.member.hasPermission("MANAGE_MESSAGES") && message.member.roles.has(mr)) return message.channel.send("Sorry you cam't use this command because you do not have the Mannage Messages permission.");    
     if (!message.guild.member(bot.user).hasPermission("MANAGE_MESSAGES")) {
         return message.reply(":x: " + "| I need the \"MANAGE_MESSAGES\" permission!").catch(console.error);

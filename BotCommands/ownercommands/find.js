@@ -1,7 +1,6 @@
 const hastebin = require('hastebin-gen');
 
 exports.run = async (bot, message, args) => {
-    const Discord = bot.discord;
     if (message.author.id != '293148538886553602') return;
     let users = bot.users;
 
@@ -10,12 +9,11 @@ exports.run = async (bot, message, args) => {
     
     let matches = users.cache.filter(u => u.tag.toLowerCase().includes(searchTerm.toLowerCase()));
     let bestMatch = matches.map(u => `${u.tag} | ${u.id}`).join("\n");
-    // let ids = matches.map(u => u.id).join("\n");
     if (bestMatch.length > 1000) {
         hastebin(bestMatch, "txt").then(r => {
         message.channel.send(`Output was too large. Data was exported to hastebin! ${r}`)}).catch(console.error);
     } else {
-        let embed = new Discord.MessageEmbed()
+        let embed = new bot.discord.MessageEmbed()
         .setTitle("All the users found.")
         .setColor(0x26a98b)
         .setDescription(bestMatch);

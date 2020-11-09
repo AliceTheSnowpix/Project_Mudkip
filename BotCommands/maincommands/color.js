@@ -1,5 +1,4 @@
 exports.run = async (bot, message, args) => {
-    const Discord = bot.discord;
     if (args.length < 1) {
         args[0] = message.member.highestRole.hexColor;
     }
@@ -14,7 +13,7 @@ exports.run = async (bot, message, args) => {
         color = bot.resolveColor(bot.getRandomHex());
     }
 
-    let embed = new Discord.MessageEmbed()
+    let embed = new bot.discord.MessageEmbed()
     .setDescription(`Hex: \`#${color.hex}\`\nRGB: \`${color.red}, ${color.green}, ${color.blue}\`\nHSL: \`${color.hue}, ${color.saturation}, ${color.lightness}\``)
     .setImage(`http://placehold.it/500/${color.hex}/${color.hex}`)
     .setColor(`${color.hex}`);

@@ -1,7 +1,6 @@
 const moment = require('moment');
 
 exports.run = async (bot, message, _args) => {
-    const Discord = bot.discord;
     const users = bot.users.cache.array();
     const channels = bot.channels.cache.array();
     let totalOnline = 0;
@@ -34,7 +33,7 @@ exports.run = async (bot, message, _args) => {
         }
     }
 
-    let botEmbed = new Discord.MessageEmbed()
+    let botEmbed = new bot.discord.MessageEmbed()
     .setColor('RANDOM')
     .setThumbnail(bot.user.displayAvatarURL)
     .addFields([{name: '**Bot Name**', value: bot.user.username, inline: true},

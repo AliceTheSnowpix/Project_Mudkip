@@ -5,15 +5,11 @@ const YouTube = require('simple-youtube-api');
 const youtube = new YouTube(process.env.YOUTUBE);
 
 exports.run = async(bot, message, args) => {
-	const discord = bot.discord;
 	const Util = bot.discord.Util
 	const db = bot.db;
 	const queue = bot.queue;
 	const ytdl = bot.ytdl;
-
-	const songloop = new db.table('SONGLOOP');
-	const queueloop = new db.table('QUEUELOOP');
-	const noloop = new db.table('NOLOOP');
+	const GuildSettings = new db.table('GuildSetting');
 
 	const input = message.content.split(' ');
 	const searchString = input.slice(1).join(' ');
@@ -25,12 +21,12 @@ exports.run = async(bot, message, args) => {
   
 	async function play(guild, song) {
 		const serverQueue = await queue.get(message.guild.id);
-		let sloop = await songloop.fetch(`song_${message.guild.id}`);
-		let qloop = await queueloop.fetch(`queue_${message.guild.id}`);
-		let off = await noloop.fetch(`noloop_${message.guild.id}`);
-		if (sloop === null) songloop.set(`song_${message.guild.id}`, false);
-		if (qloop === null) queueloop.set(`queue_${message.guild.id}`, false);
-		if (off === null) noloop.set(`noloop_${message.guild.id}`, true);
+		let sloop = await GuildSettings.fetch(`song_${message.guild.id}`);
+		let qloop = await GuildSettings.fetch(`queue_${message.guild.id}`);
+		let off = await GuildSettings.fetch(`noloop_${message.guild.id}`);
+		if (sloop === null) GuildSettings.set(`song_${message.guild.id}`, false);
+		if (qloop === null) GuildSettings.set(`queue_${message.guild.id}`, false);
+		if (off === null) GuildSettings.set(`noloop_${message.guild.id}`, true);
 		if (!song) {
 			await voiceChannel.leave();
 			await queue.delete(message.guild.id);
@@ -53,7 +49,7 @@ exports.run = async(bot, message, args) => {
 
 		const duration = song.duration;
 		const published = song.publishedat;
-		const embed = new discord.MessageEmbed()
+		const embed = new bot.discord.MessageEmbed()
 		.setAuthor(message.author.username)
 		.setDescription(duration)
 		.setThumbnail(song.thumbnail)
@@ -109,7 +105,7 @@ exports.run = async(bot, message, args) => {
 			if (playlist) return;
 			const duration = song.duration;
 			const published = song.publishedat;
-			const embed = new discord.MessageEmbed()
+			const embed = new bot.discord.MessageEmbed()
 			.setAuthor(message.author.username)
 			.setDescription(duration)
 			.setThumbnail(song.thumbnail)
@@ -164,7 +160,7 @@ exports.run = async(bot, message, args) => {
 			const videos = await youtube.searchVideos(searchString, 10);
 			if (videos.length === 0) return message.channel.send('could not find any videos');
 			let index = 0;
-			const embed = new discord.MessageEmbed()
+			const embed = new bot.discord.MessageEmbed()
 			.setColor('#7BB3FF')
 			.setDescription(`${videos.map(video2 => `**${++index} -** ${video2.title.replace(/&amp;/g, '&')
 				.replace(/&gt;/g, '>')
@@ -195,7 +191,7 @@ exports.run = async(bot, message, args) => {
 				.replace(/&trade;/g, '™')
 				.replace(/&reg;/g, '®')
 				.replace(/&nbsp;/g, ' ')}`).join('\n')}`)
-			const embed2 = new discord.MessageEmbed()
+			const embed2 = new bot.discord.MessageEmbed()
 			.setColor('#0066CC')
 			.setDescription('Please send a number between 1-10 to select a video');
 			message.channel.send(embed);

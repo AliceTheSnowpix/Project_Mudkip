@@ -1,23 +1,21 @@
 exports.run = async (bot, message, args) => {
-    const Discord = bot.discord;
     const db = bot.db;
-    const modrole = new db.table('MODROLE');
-    const prefixes = new db.table('PREFIXES');
-    let prefix = await prefixes.fetch(`prefix_${message.guild.id}`);
+    const GuildSettings = new db.table('GuildSetting');
+    let prefix = await GuildSettings.fetch(`prefix_${message.guild.id}`);
 
     if (!prefix) {
-        prefixes.set(`prefix_${message.guild.id}`, ';');
+        GuildSettings.set(`prefix_${message.guild.id}`, ';');
         prefix = ';';
     }
 
-    let mr = await modrole.fetch(`modrole_${message.guild.id}`);
+    let mr = await GuildSettings.fetch(`modrole_${message.guild.id}`);
     message.guild.roles.cache.get(mr);
     if (!message.member.hasPermission("MANAGE_ROLES") && !message.member.roles.cache.has(mr)) return message.channel.send("You do not have permission to use this command.");
     if (!message.guild.member(bot.user).hasPermission("MANAGE_ROLES")) {
         return message.reply(":x: " + "| I need the \"MANAGE_ROLES\" permission!").catch(console.error);
     }
 
-    let errorEmbed = new Discord.MessageEmbed().setTitle('Incorrect command usage:').setColor('RED');
+    let errorEmbed = new bot.discord.MessageEmbed().setTitle('Incorrect command usage:').setColor('RED');
     let rMember = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
     if (!rMember) {
         errorEmbed.setDescription('No user given or Invalid user given');
@@ -42,7 +40,6 @@ exports.run = async (bot, message, args) => {
         message.channel.send(`<@${rMember.id}> They have been given the role ${gRole.name} I tried to DM them but their DMs are locked`);
     }
 }
-
 
 exports.help = {
     name: "addrole"

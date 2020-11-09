@@ -1,18 +1,15 @@
 exports.run = async (bot,message,args) => {
-    const Discord = bot.discord;
     const db = bot.db;
-    const logchannel = new db.table('LOGCHANNEL');
-    const modrole = new db.table('MODROLE');
-    const prefixes = new db.table('PREFIXES');
+    const GuildSettings = new db.table('GuildSetting');
 
-    let prefix = await prefixes.fetch(`prefix_${message.guild.id}`);
+    let prefix = await GuildSettings.fetch(`prefix_${message.guild.id}`);
     if (!prefix) {
-        prefixes.set(`prefix_${message.guild.id}`, ';');
+        GuildSettings.set(`prefix_${message.guild.id}`, ';');
         prefix = ';';
     }
 
-    let mr = await modrole.fetch(`modrole_${message.guild.id}`);
-    let lc = await logchannel.fetch(`logchannel_${message.guild.id}`);
+    let mr = await GuildSettings.fetch(`modrole_${message.guild.id}`);
+    let lc = await GuildSettings.fetch(`logchannel_${message.guild.id}`);
     message.guild.roles.cache.get(mr);
     if (!message.member.hasPermission("KICK_MEMBERS") && !message.member.roles.cache.has(mr)) return message.channel.send("Sorry you cant do that try again when mod");
     if (!message.guild.member(bot.user).hasPermission("KICK_MEMBERS")) {
@@ -23,7 +20,7 @@ exports.run = async (bot,message,args) => {
     if (!kUser) return message.channel.send("Could not find that user make sure you typed it in right and try again.");
     let kreason = args.join(" ").slice(22);
     if (kUser.hasPermission("KICK_MEMBERS") || kUser.roles.cache.has(mr)) return message.channel.send("Sorry you can not kick that preson");
-    let kickEmbed = new Discord.MessageEmbed()
+    let kickEmbed = new bot.discord.MessageEmbed()
     .setTitle("Kick Report")
     .setColor("#00AAFF")
     .addField("Kicked User", `${kUser} with ID ${kUser.id}`)
